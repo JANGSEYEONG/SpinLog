@@ -17,10 +17,10 @@ type SocialLoginProps = {
 const SocialLogin = ({ provider }: SocialLoginProps) => {
   // const AUTH_URL = `${import.meta.env.VITE_SPINLOG_SERVER_URL}/oauth2/authorization/${provider}`; // api 서버 돌아가면 변경할 것
   // const AUTH_URL = `${import.meta.env.VITE_NGROK_URL}/oauth2/authorization/${provider}`;
-  const navigate = useNavigate();
-  const { setLoginState } = useAuthStore((state) => {
-    return { setLoginState: state.setLoginState };
-  });
+  //const navigate = useNavigate();
+  //const { setLoginState } = useAuthStore((state) => {
+  //  return { setLoginState: state.setLoginState };
+  //});
 
   const handleClickLogin = async () => {
     try {
