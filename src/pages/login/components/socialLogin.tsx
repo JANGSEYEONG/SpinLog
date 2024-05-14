@@ -1,7 +1,7 @@
 // import axios from 'axios';
 import styled from 'styled-components';
-import { useAuthStore } from '@stores/authStore';
-import { useNavigate } from 'react-router-dom';
+// import { useAuthStore } from '@stores/authStore';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 type ProviderName = 'naver' | 'kakao'; //| 'google'
