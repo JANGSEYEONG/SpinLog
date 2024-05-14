@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import { useAuthStore } from '@stores/authStore';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 type ProviderName = 'naver' | 'kakao'; //| 'google'
 
@@ -14,17 +15,35 @@ type SocialLoginProps = {
 };
 
 const SocialLogin = ({ provider }: SocialLoginProps) => {
-  //   const AUTH_URL = `${import.meta.env.VITE_SPINLOG_SERVER_URL}/oauth2/authorization/${provider}`; // api 서버 돌아가면 변경할 것
+  const AUTH_URL = `${import.meta.env.VITE_SPINLOG_SERVER_URL}/oauth2/authorization/${provider}`; // api 서버 돌아가면 변경할 것
   // const AUTH_URL = `${import.meta.env.VITE_NGROK_URL}/oauth2/authorization/${provider}`;
   const navigate = useNavigate();
   const { setLoginState } = useAuthStore((state) => {
     return { setLoginState: state.setLoginState };
   });
 
-  const handleClickLogin = () => {
-    // axios.get(AUTH_URL).then(() => {}); // 백쪽 서버 살아나는대로 변경할 것
-    setLoginState();
-    navigate('/');
+  const handleClickLogin = async () => {
+    try {
+      const response = await axios.get('https://www.api-spinlog.shop/api/users/login/kakao');
+      console.log(response.data);
+      alert();
+    } catch (error) {
+      console.error('Error fetching article: ', error);
+      alert(error);
+    }
+
+    // axiosInstance
+    //   .get('/api/')
+    //   .then((data) => {
+    //     console.log(data);
+    //     alert(data);
+    //     setLoginState();
+    //     navigate('/');
+    //   })
+    //   .catch((err) => {
+    //     alert(err);
+    //     console.log(err);
+    //   });
   };
 
   return <Button provider={provider} onClick={handleClickLogin} />;
