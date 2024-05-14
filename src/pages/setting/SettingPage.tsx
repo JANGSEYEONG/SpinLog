@@ -11,6 +11,8 @@ import { useState } from 'react';
 
 type Gender = 'male' | 'female' | null;
 
+type Budget = number | string;
+
 type Mbti = 'E' | 'I' | 'N' | 'S' | 'T' | 'F' | 'J' | 'P';
 
 type NavLayoutProps = {
@@ -45,6 +47,7 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
 // #20240429.syjang, 환경설정 테스트 페이지입니다. 추후 테마 변경 시 아래와 같이 가져다 쓰면 됩니다.
 const SettingPage = () => {
   const navigate = useNavigate();
+  const [budget, setBudget] = useState<Budget>();
   const [genderColor, setGenderColor] = useState<Gender>(null);
   const [selections, setSelections] = useState({
     EI: '',
@@ -60,6 +63,12 @@ const SettingPage = () => {
   const handleGenderColor = (gender: Gender) => {
     setGenderColor(gender);
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBudget(e.target.value);
+  };
+
+  const handleSubmit = () => {};
 
   // handleSelection 함수 수정
   const handleSelection = (type: Mbti) => {
@@ -78,10 +87,6 @@ const SettingPage = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    //저장 코드
-  };
-
   const handleLogout = () => {
     setLogoutState();
     navigate('/login');
@@ -89,10 +94,11 @@ const SettingPage = () => {
 
   return (
     <NavigationLayout>
-      <SettingContainer>
+      <SettingContainer onSubmit={handleSubmit}>
+        <MyBudgetTitle>나의 예산</MyBudgetTitle>
         <MyBudgetWrapper>
-          <MyBudgetTitle>나의 예산</MyBudgetTitle>
-          <MyBudget value={`${123123}원`} />
+          <MyBudget value={budget} onChange={(e) => handleChange(e)} />
+          <span>원</span>
         </MyBudgetWrapper>
         <ProfileWrapper>
           <ProfileTitle>프로필</ProfileTitle>
@@ -115,24 +121,51 @@ const SettingPage = () => {
             <MbtiWrapper>
               <MbtiTitle>Mbti</MbtiTitle>
               <MbtiGrid>
-                {(['E', 'I', 'N', 'S', 'T', 'F', 'J', 'P'] as const).map((type) => (
-                  <Mbti
-                    key={type}
-                    isSelected={
-                      selections.EI === type ||
-                      selections.NS === type ||
-                      selections.TF === type ||
-                      selections.JP === type
-                    }
-                    onClick={() => handleSelection(type)}>
-                    {type}
-                  </Mbti>
-                ))}
+                <MbtiColumn>
+                  {(['E', 'I'] as const).map((type) => (
+                    <Mbti
+                      key={type}
+                      isSelected={selections.EI === type}
+                      onClick={() => handleSelection(type)}>
+                      {type}
+                    </Mbti>
+                  ))}
+                </MbtiColumn>
+                <MbtiColumn>
+                  {(['N', 'S'] as const).map((type) => (
+                    <Mbti
+                      key={type}
+                      isSelected={selections.NS === type}
+                      onClick={() => handleSelection(type)}>
+                      {type}
+                    </Mbti>
+                  ))}
+                </MbtiColumn>
+                <MbtiColumn>
+                  {(['T', 'F'] as const).map((type) => (
+                    <Mbti
+                      key={type}
+                      isSelected={selections.NS === type}
+                      onClick={() => handleSelection(type)}>
+                      {type}
+                    </Mbti>
+                  ))}
+                </MbtiColumn>
+                <MbtiColumn>
+                  {(['J', 'P'] as const).map((type) => (
+                    <Mbti
+                      key={type}
+                      isSelected={selections.NS === type}
+                      onClick={() => handleSelection(type)}>
+                      {type}
+                    </Mbti>
+                  ))}
+                </MbtiColumn>
               </MbtiGrid>
             </MbtiWrapper>
           </Profile>
         </ProfileWrapper>
-        <SaveBtn onClick={handleSubmit}>저장</SaveBtn>
+        <SaveBtn>저장</SaveBtn>
         <Logout onClick={handleLogout}>로그아웃</Logout>
       </SettingContainer>
     </NavigationLayout>
@@ -141,14 +174,10 @@ const SettingPage = () => {
 
 export default SettingPage;
 
-const SettingContainer = styled.div`
+const SettingContainer = styled.form`
   width: 100%;
   height: 100%;
   padding: 16px;
-`;
-
-const MyBudgetWrapper = styled.div`
-  margin-bottom: 16.69px;
 `;
 
 const MyBudgetTitle = styled.div`
@@ -158,12 +187,17 @@ const MyBudgetTitle = styled.div`
   margin-bottom: 8px;
 `;
 
+const MyBudgetWrapper = styled.div`
+  margin-bottom: 16.69px;
+  ${flexBetween}
+`;
+
 const MyBudget = styled.input`
-  width: 100%;
-  height: 90px;
+  width: 310px;
+  height: 80px;
   padding: 27.5px;
   border-radius: 6px;
-  background-color: ${(props) => props.theme.colors.main};
+  background-color: #767676;
   color: #ffffff;
   font-size: 24px;
   font-weight: 700;
@@ -229,12 +263,23 @@ const MbtiTitle = styled.div`
 const MbtiGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  gap: 5.78px;
+`;
+
+const MbtiColumn = styled.div`
+  width: 60px;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid #e3e3e3;
+  border-radius: 6px;
+  padding: 4.5px 5px;
 `;
 
 const Mbti = styled.button<{ isSelected: boolean }>`
   width: 50px;
-  height: 40px;
+  height: 30px;
   border-radius: 6px;
   background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.main : '#dddddd')};
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#9f9f9f')};
