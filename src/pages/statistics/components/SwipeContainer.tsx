@@ -34,7 +34,7 @@ const SwipeContainer = ({ children }: SwipeContainerProps) => {
 export default SwipeContainer;
 
 const StyledSwiper = styled(Swiper)`
-  height: 500px;
+  height: 100%;
 
   .swiper-slide {
     text-align: center;
@@ -92,5 +92,5 @@ const StyledSwiper = styled(Swiper)`
 const ContentContainer = styled.div`
   height: 100%;
   width: 100%;
-  padding: 0px 20px;
+  padding-bottom: 40px;
 `;

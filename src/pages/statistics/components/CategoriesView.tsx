@@ -41,7 +41,6 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   height: 100%;
-  position: relative;
   gap: 50px;
 `;
 
@@ -53,6 +52,7 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   gap: 4px;
+  margin: 0 100px;
 `;
 
 const CategoryButton = styled.button<{ $isSelected: boolean }>`
@@ -68,6 +68,7 @@ const ContentContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  margin-bottom: 50px;
 `;
 
 const StyleBird = styled(Bird)`

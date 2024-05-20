@@ -12,10 +12,10 @@ import CategoriesView from './components/CategoriesView';
 import { Register } from '@models/index';
 import { TabOption } from './type';
 import MemoContainer from './components/Memo/MemoContainer';
+import SatisfactionContainer from './components/Satisfaction/SatisfactionContainer';
 
 const EmotionComponent = () => <div>감정 컴포넌트</div>;
 const DailyComponent = () => <div>일별 컴포넌트</div>;
-const SatisfactionComponent = () => <div>만족모 컴포넌트</div>;
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -40,7 +40,8 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
               />
             }
           />
-        }></TopNavigation>
+        }
+      />
       {children}
       <BottomNavigation location="statistics" />
     </>
@@ -69,7 +70,11 @@ const StatisticsPage = () => {
       name: '메모',
       component: <MemoContainer tabOption={selectedTab} register={registerType} />,
     },
-    { id: 'categorySatisfaction', name: '만족도', component: <SatisfactionComponent /> },
+    {
+      id: 'categorySatisfaction',
+      name: '만족도',
+      component: <SatisfactionContainer tabOption={selectedTab} register={registerType} />,
+    },
   ];
 
   const tabData: TabProps<TabOption>[] = [
@@ -120,10 +125,8 @@ const Period = styled.div`
   font-size: 12px;
 `;
 const StatisticsContainer = styled.div`
-  background-color: transparent;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   margin-top: 10px;
   padding: 0 15px 0 15px;
 `;

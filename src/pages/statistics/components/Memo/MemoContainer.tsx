@@ -4,12 +4,12 @@ import { fetchWordFrequencyByGender, fetchWordFrequencyByMbti } from '@api/get';
 import Memo from './Memo';
 import Spinner from '@components/information/Spinner';
 import { Register } from '@models/index';
+import styled from 'styled-components';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getFrequencyContentsForMbti = (data: any) => {
   let maxFrequencyWordOfAll = '';
   let maxFrequencyOfAll = 0;
-  console.log(data);
 
   const allWordFrequencies = data
     ? data.allWordFrequencies.map((item: { word: string; frequency: number }) => {
@@ -60,7 +60,6 @@ const getFrequencyContentsForMbti = (data: any) => {
 const getFrequencyContentsForGender = (data: any) => {
   let maxFrequencyWordOfFemale = '';
   let maxFrequencyOfFemale = 0;
-  console.log(data);
 
   const femaleWordFrequencies = data
     ? data.femaleWordFrequencies.map((item: { word: string; frequency: number }) => {
@@ -114,14 +113,14 @@ type MemoContainerProps = {
 
 const MemoContainer = ({ tabOption, register }: MemoContainerProps) => {
   const { data: memoForMbti, isLoading: isMeoForMbtiLoading } = useQuery(
-    'fetchWordFrequencyByMbtiQueryKey',
+    ['fetchWordFrequencyByMbtiQueryKey', register],
     () => fetchWordFrequencyByMbti(register),
     {
       enabled: tabOption === 'TAB_MBTI',
     },
   );
   const { data: memoForGender, isLoading: isMeoForGenderLoading } = useQuery(
-    'fetchWordFrequencyByGenderQueryKey',
+    ['fetchWordFrequencyByGenderQueryKey', register],
     () => fetchWordFrequencyByGender(register),
     {
       enabled: tabOption === 'TAB_GENDER',
@@ -129,7 +128,11 @@ const MemoContainer = ({ tabOption, register }: MemoContainerProps) => {
   );
 
   if (isMeoForMbtiLoading || isMeoForGenderLoading) {
-    return <Spinner />;
+    return (
+      <LoadingContainer>
+        <Spinner />
+      </LoadingContainer>
+    );
   }
 
   const contents =
@@ -141,3 +144,9 @@ const MemoContainer = ({ tabOption, register }: MemoContainerProps) => {
 };
 
 export default MemoContainer;
+
+const LoadingContainer = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+`;
