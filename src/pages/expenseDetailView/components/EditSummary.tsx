@@ -10,10 +10,13 @@ import {
 } from '@styles/CommonStyles';
 import styled from 'styled-components';
 
-import { useFormContext } from 'react-hook-form';
-import { EmotionKey, EmotionKeys } from '@models/index';
+import { useFormContext, Controller } from 'react-hook-form';
+
 import Emotion from '@components/emotion';
 import MultiText from '@components/input/MultiText';
+
+import { EmotionKey, EmotionKeys } from '@models/index';
+import { formatAmountNumber } from '@utils/index';
 
 type EditSummaryProps = {
   isEditMode: boolean;
@@ -28,8 +31,14 @@ const EditSummary = ({
   selectEmotion,
   setSelectEmotion,
 }: EditSummaryProps) => {
-  const { register, setValue } = useFormContext();
+  const { register, setValue, control } = useFormContext();
   const satisfactionLabels = [1, 2, 3, 4, 5];
+
+  const handleAmountChange = (value: string, onChange: (value: string) => void) => {
+    const formattedValue = formatAmountNumber(value);
+    onChange(formattedValue);
+  };
+
   return (
     <>
       <div style={{ display: 'flex', width: '100%', gap: '10px' }}>
@@ -104,10 +113,20 @@ const EditSummary = ({
       <Content className="amount">
         <AmountWrapper>
           <span className="title">금액</span>
-          <AmountInput
-            placeholder="0"
-            disabled={!isEditMode}
-            {...register('amount', { required: true })}
+          <Controller
+            name="amount"
+            control={control}
+            defaultValue={''}
+            rules={{ required: true }}
+            render={({ field: { onChange, value, ...field } }) => (
+              <AmountInput
+                {...field}
+                value={value}
+                onChange={(event) => handleAmountChange(event.target.value, onChange)}
+                placeholder="0"
+                disabled={!isEditMode}
+              />
+            )}
           />
         </AmountWrapper>
         <AmountText>원</AmountText>
@@ -222,16 +241,9 @@ const AmountWrapper = styled.div`
   height: 70px;
 `;
 
-const AmountInput = styled.input.attrs({ type: 'number' })`
+const AmountInput = styled.input.attrs({ type: 'text' })`
   ${textArea}
-  background-color: transparent;
-  // 화살표 숨기기
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  appearance: textfield;
+  text-align: right;
 `;
 
 const AmountText = styled.div`

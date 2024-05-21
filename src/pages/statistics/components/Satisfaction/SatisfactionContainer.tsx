@@ -96,7 +96,7 @@ const SatisfactionContainer = ({ tabOption, register }: SatisfactionContainerPro
   if (isMbtiDataLoading || isGenderDataLoading) {
     return (
       <LoadingContainer>
-        <Spinner />;
+        <Spinner />
       </LoadingContainer>
     );
   }

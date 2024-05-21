@@ -3,7 +3,7 @@ import { ExpenseFormType } from '@models/expense';
 import type { UserFormType } from '@models/user';
 
 /**
- * 입력 페이지 저장 쿼리메인 페이지 데이터 (예산, 달력, 요약 정보)
+ * 입력 페이지 저장 쿼리
  * @param expenseData 게시글 데이터 (ExpenseFormType)
  * @returns
  */

@@ -63,6 +63,7 @@ const AddExpensePage = () => {
     criteriaMode: 'all',
     defaultValues: {
       registerType: 'SPEND', // 소비, 절약
+      amount: '', // 금액, #,##0 형태
       content: '', // 소비 내용 (원래 물건)
       spendDate: '', // 소비 날짜, 시간 (저장 시간 아님) -> 추가 필요 필드
       event: '', // 사건
@@ -113,7 +114,9 @@ const AddExpensePage = () => {
 
   // 제출
   const handleSubmit = (data: ExpenseFormType) => {
-    expenseMutation.mutate(data);
+    // amount: #,##0  => 다시 숫자만 남은 형태로 변경 필요
+    const numberAmount = data.amount.replace(/,/g, '');
+    expenseMutation.mutate({ ...data, amount: numberAmount });
   };
 
   return (

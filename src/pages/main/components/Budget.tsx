@@ -12,19 +12,34 @@ type BudgetProps = BudgetType;
 const Budget = ({ monthBudget, monthSpend, monthSave }: BudgetProps) => {
   const navigate = useNavigate();
 
-  // 예산이 0인 경우 처리 추가 필요!!!!
-  const percent: string = `${Math.ceil((monthSpend / monthBudget) * 100)}%`;
-  const remain: number = Math.floor(monthBudget - monthSpend);
-  const recommend: number = Math.floor(monthBudget / 30);
+  const isBudgetZero = !monthBudget || monthBudget === 0; // budget이 없거나 0인 케이스 둘 다 예산 없는 것으로 처리.
+  const remainPrice = Math.floor(monthBudget - monthSpend); // 남은 예산 (음수일 수 있음)
+
+  // 1. 남은 예산 텍스트 : 예산이 없을 경우(= 0일 경우), 초과일 경우, 남은 경우 구분
+  const remainPriceText: string = isBudgetZero
+    ? '예산을 설정해주세요.'
+    : remainPrice < 0
+      ? `${addCommasToNumber(Math.abs(remainPrice))} 원 초과`
+      : `${addCommasToNumber(remainPrice)} 원 남음`;
+
+  // 2. 권장 지출 텍스트 : 예산이 없거나 초과일 경우, 남은 경우 구분
+  // 예산 0원일 때, 초과했을 때 권장지출 다 0원
+  const recommendSpend: number = isBudgetZero || remainPrice < 0 ? 0 : Math.floor(monthBudget / 30);
+
+  // 3. 막대 그래프 퍼센트 비율 및 텍스트
+  // 예산 0원일 때 그래프 : 0%, 초과일 때 100+%;
+  let percent: number = 0;
+  if (!isBudgetZero) percent = Math.ceil((monthSpend / monthBudget) * 100); // budget이 0원이 아닌 경우에만 계산 진행
+  const percentText: string = percent > 100 ? '100+%' : `${percent}%`; // 100% 초과 시 '100+%' 로 표시
 
   return (
     <>
       <Remain>
         <RemainDetail>
           <span className="remain-month">한 달 예산</span>
-          <span className="remain-price">{addCommasToNumber(remain)} 원 남음</span>
+          <span className="remain-price">{remainPriceText}</span>
           <span className="remain-recommend">
-            목표 달성을 위한 하루 권장 지출 : {addCommasToNumber(recommend)}원
+            목표 달성을 위한 하루 권장 지출 : {addCommasToNumber(recommendSpend)}원
           </span>
         </RemainDetail>
         <GoSetting>
@@ -36,10 +51,10 @@ const Budget = ({ monthBudget, monthSpend, monthSave }: BudgetProps) => {
         </GoSetting>
       </Remain>
       <Bar>
-        <BarDetail percent={percent}>
+        <BarDetail percent={`${percent}%`}>
           <span className="bar-mark"></span>
           <span className="bar-percent"></span>
-          <span className="bar-text">{percent}</span>
+          <span className="bar-text">{percentText}</span>
         </BarDetail>
       </Bar>
       <Info>
@@ -121,6 +136,9 @@ const Bar = styled.div`
   width: 100%;
   height: 20%;
   padding: 5px;
+
+  font-size: 14px;
+  color: #333331;
 `;
 
 // @keyframes를 사용하여 애니메이션 정의

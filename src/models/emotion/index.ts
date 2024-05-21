@@ -37,7 +37,7 @@ export const Emotions: Readonly<EmotionMap> = Object.freeze({
   TIRED: { text: '피곤/지침', color: '#111F68', icon: getStyledComponent(Tired) },
   DEPRESSED: { text: '우울/권태', color: '#867BF4', icon: getStyledComponent(Depressed) },
   SAD: { text: '슬픔/절망', color: '#2E4FFF', icon: getStyledComponent(Sad) },
-  SHY: { text: '부끄러움/민망', color: '#FFB49C', icon: getStyledComponent(Shy) },
+  SHY: { text: '민망/수치', color: '#FFB49C', icon: getStyledComponent(Shy) },
   SORRY: { text: '죄책감/미안함', color: '#333331', icon: getStyledComponent(Sorry) },
   EXCITED: { text: '기분좋은/신나는', color: '#FFC700', icon: getStyledComponent(Excited) },
   FLUTTER: { text: '설렘/기대', color: '#FF84AA', icon: getStyledComponent(Flutter) },

@@ -72,10 +72,10 @@ const DayExpenseListTop2 = ({ data, currentDate }: DayExpenseListTop2Props) => {
                 <span className="sub">{`총 ${data.length}건`}</span>
               </Title>
               <ListWrapper>
-                {data.map((x) => {
+                {data.map((summary) => {
                   return (
-                    <ExpenseBox key={x.articleId}>
-                      <ExpenseSummary {...x} />
+                    <ExpenseBox key={summary.articleId}>
+                      <ExpenseSummary {...summary} />
                     </ExpenseBox>
                   );
                 })}

@@ -1,20 +1,22 @@
 import styled from 'styled-components';
-import TopNavigation from '@layout/TopNavigation';
-
-import { useNavigate } from 'react-router-dom';
-
-import TopBar from '@components/layout/TopBar';
-import { fetchUserData } from '@api/get';
-import { useMutation, useQuery } from 'react-query';
 import { flexBetween, flexCenter, flexColumnCenter, mainSection } from '@styles/CommonStyles';
 
-import { useForm } from 'react-hook-form';
-import type { UserFormType } from '@models/user';
-import Spinner from '@components/information/Spinner';
+import TopBar from '@components/layout/TopBar';
+import TopNavigation from '@layout/TopNavigation';
+
 import { useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useMutation, useQuery } from 'react-query';
+import { useForm, Controller } from 'react-hook-form';
+
+import Spinner from '@components/information/Spinner';
 import LoadingModal from '@components/modal/LoadingModal';
+
+import type { UserFormType } from '@models/user';
 import { saveUserData } from '@api/post';
+import { fetchUserData } from '@api/get';
 import { useAuthStore } from '@stores/authStore';
+import { formatAmountNumber } from '@utils/index';
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -23,18 +25,18 @@ type NavLayoutProps = {
 const NavigationLayout = ({ children }: NavLayoutProps) => {
   const navigate = useNavigate();
 
+  const [searchParams] = useSearchParams();
+  const isFirstLogin = searchParams.get('isFirstLogin');
+  const handlePrev = () => {
+    if (isFirstLogin === 'true') navigate('/');
+    else navigate(-1);
+  };
   return (
     <>
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar
-            leftContent={
-              <TopBar.PrevButton
-                onClick={() => {
-                  navigate(-1);
-                }}
-              />
-            }
+            leftContent={<TopBar.PrevButton onClick={handlePrev} />}
             centerContent={<div>내 정보</div>}
           />
         }
@@ -60,7 +62,7 @@ const SettingPage = () => {
     reValidateMode: 'onChange',
     criteriaMode: 'all',
     defaultValues: {
-      budget: 0,
+      budget: '',
       gender: 'MALE',
       EI: 'E',
       NS: 'N',
@@ -71,21 +73,32 @@ const SettingPage = () => {
   const saveMutation = useMutation(saveUserData, {
     onSuccess: (data) => {
       console.log(`유저 저장 성공 : ${JSON.stringify(data)}`);
+      alert('저장했습니다.');
     },
     onError: (error) => {
       console.log(`유저 저장 실패: ${error}`);
+      alert('다시 시도해주세요.');
     },
   });
   const handleSubmit = methods.handleSubmit((data: UserFormType) => {
-    saveMutation.mutate(data);
+    // budget : #,##0  => 다시 숫자만 남은 형태로 변경 필요
+    saveMutation.mutate({ ...data, budget: data.budget.replace(/,/g, '') });
   });
+
+  const handleBudgetChange = (value: string, onChange: (value: string) => void) => {
+    const formattedValue = formatAmountNumber(value, true);
+    onChange(formattedValue);
+  };
 
   useEffect(() => {
     if (!isLoadingUserData && userData && userData.data) {
       const data = userData.data;
 
+      // 서버에서 받는 예산 데이터는 숫자 형태이므로, 다시 #,##0 형태로 변환하여 세팅 필요
+      const formattedValue = formatAmountNumber(data.budget.toString() || ''); // data.budget이 서버에서 null값으로 오는 경우 처리
+
       methods.reset({
-        budget: data.budget,
+        budget: formattedValue,
         gender: data.gender,
         EI: data.mbti[0],
         NS: data.mbti[1],
@@ -108,8 +121,26 @@ const SettingPage = () => {
               <Spinner />
             ) : (
               <>
-                <BudgetInput {...methods.register('budget', { required: true })} />
-                <span>원</span>
+                <Controller
+                  name="budget"
+                  control={methods.control}
+                  defaultValue={''}
+                  rules={{ required: '예산을 입력해주세요.' }}
+                  render={({ field: { onChange, value, ...field }, fieldState: { error } }) => (
+                    <>
+                      <BudgetWrapper>
+                        <BudgetInput
+                          {...field}
+                          value={value}
+                          onChange={(event) => handleBudgetChange(event.target.value, onChange)}
+                          placeholder="0"
+                        />
+                        <span>원</span>
+                      </BudgetWrapper>
+                      <ErrorMessage>{error?.message}</ErrorMessage>
+                    </>
+                  )}
+                />
               </>
             )}
           </BudgetContainer>
@@ -119,6 +150,10 @@ const SettingPage = () => {
               <Spinner />
             ) : (
               <>
+                <ProfileDiv>
+                  <span>로그인 계정</span>
+                  {userData?.data?.email}
+                </ProfileDiv>
                 <ProfileDiv>
                   <span>성별</span>
                   <GenderWrapper>
@@ -210,7 +245,7 @@ const SettingPage = () => {
               </>
             )}
           </ProfileContainer>
-          <Button>저장</Button>
+          <Button disabled={!methods.formState.isValid}>저장</Button>
         </Form>
         <Button onClick={handleLogout}>로그아웃</Button>
       </SettingContainer>
@@ -236,9 +271,14 @@ const Form = styled.form`
 `;
 
 const BudgetContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const BudgetWrapper = styled.div`
   ${flexCenter}
   width: 100%;
-  margin-bottom: 30px;
   & > span {
     ${flexCenter}
     flex-shrink: 0;
@@ -254,9 +294,9 @@ const ProfileContainer = styled.div`
   ${flexColumnCenter}
   ${mainSection}
   width: 100%;
-  height: 172px;
+  height: 200px;
   margin-bottom: 15px;
-  padding-top: 0;
+  gap: 20px;
 `;
 
 const Title = styled.div`
@@ -279,11 +319,22 @@ const Button = styled.button`
 
   border-radius: 6px;
   box-shadow: ${(props) => props.theme.shadows.around};
+
+  &:disabled {
+    color: #fff;
+    background-color: #dcdada;
+    cursor: not-allowed;
+    &:hover {
+      filter: none;
+    }
+  }
 `;
 
-const BudgetInput = styled.input.attrs({ type: 'number' })`
+const BudgetInput = styled.input.attrs({ type: 'text' })`
   height: 80px;
   width: 100%;
+
+  text-align: right;
 
   background-color: #767676;
   color: #ffffff;
@@ -292,21 +343,17 @@ const BudgetInput = styled.input.attrs({ type: 'number' })`
   font-size: 24px;
   font-weight: 700;
 
-  padding: 22.5px 27.5px 22.5px 27.5px;
+  padding: 22.5px 27.5px;
 
-  // 화살표 숨기기
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  &::placeholder {
+    font-weight: 500;
+    color: #c6c6c6;
   }
-  appearance: textfield;
 `;
 
 const ProfileDiv = styled.div`
   ${flexBetween}
   width: 100%;
-  height: 50%;
 
   font-size: 14px;
   color: #575755;
@@ -351,4 +398,11 @@ const MBTIWrapper = styled.div`
   border-radius: 6px;
   padding: 5px;
   gap: 6px;
+`;
+
+const ErrorMessage = styled.div`
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+  margin-bottom: 30px;
 `;

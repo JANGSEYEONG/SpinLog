@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { borderCheck, flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
 
+import CheckIcon from '@assets/images/icon/checkIcon.svg?react';
 import type { EmotionKey } from '@models/index';
 import { getEmotionIcon, getEmotionText } from '@models/emotion';
 
@@ -25,9 +26,9 @@ const Emotion = ({
     <EmotionWrapper>
       <EmotionIcon onClick={onClick} size={`${iconSize}px`}>
         <EmotionSVG />
+        {isSelect && <SelectMark size={`${selectSize}px`} />}
       </EmotionIcon>
       <EmotionText size={`${textSize}px`}>{getEmotionText(emotionKey)}</EmotionText>
-      {isSelect && <SelectMark size={`${selectSize}px`} />}
     </EmotionWrapper>
   );
 };
@@ -39,11 +40,11 @@ const EmotionWrapper = styled.div`
   margin-bottom: 5px;
   cursor: pointer;
   width: 90px;
-  position: relative;
 `;
 
 const EmotionIcon = styled.div<{ size: string }>`
   ${flexCenter}
+  position: relative;
   width: ${(props) => props.size};
   height: ${(props) => props.size};
   border-radius: 50%;
@@ -58,21 +59,15 @@ const EmotionText = styled.div<{ size: string }>`
   white-space: nowrap;
 `;
 
-const SelectMark = styled.div<{ size: string }>`
+const SelectMark = styled(CheckIcon)<{ size: string }>`
   position: absolute;
+  top: 0;
+  right: 0;
+
   width: ${(props) => props.size};
   height: ${(props) => props.size};
   background-color: #333331;
   border-radius: 50%;
 
-  top: 0;
-  right: 0;
-  transform: translateY(-25%);
-
-  &::after {
-    ${borderCheck}
-    width: 4px;
-    height: 9px;
-    border-color: #ffffff;
-  }
+  padding: 3px;
 `;

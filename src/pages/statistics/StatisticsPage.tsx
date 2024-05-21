@@ -13,9 +13,9 @@ import { Register } from '@models/index';
 import { TabOption } from './type';
 import MemoContainer from './components/Memo/MemoContainer';
 import SatisfactionContainer from './components/Satisfaction/SatisfactionContainer';
+import DailyAmountsContainer from './components/DailyAmount/DailyAmountsContainer';
 
 const EmotionComponent = () => <div>감정 컴포넌트</div>;
-const DailyComponent = () => <div>일별 컴포넌트</div>;
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -64,7 +64,11 @@ const StatisticsPage = () => {
 
   const categories: { id: string; name: string; component: JSX.Element }[] = [
     { id: 'categoryEmotion', name: '감정', component: <EmotionComponent /> },
-    { id: 'categoryDaily', name: '일별', component: <DailyComponent /> },
+    {
+      id: 'categoryDaily',
+      name: '일별',
+      component: <DailyAmountsContainer tabOption={selectedTab} register={registerType} />,
+    },
     {
       id: 'categoryMemo',
       name: '메모',

@@ -147,7 +147,7 @@ const Calendar = ({ currentDate, setCurrentDate, data }: CalendarProps) => {
               )}
               {daySave > 0 && (
                 <Detail>
-                  절약:<span>{`${addCommasToNumber(daySave)}원`}</span>
+                  절약:<span>{`+${addCommasToNumber(daySave)}원`}</span>
                 </Detail>
               )}
             </ExpenseDetail>

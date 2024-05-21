@@ -9,13 +9,14 @@ import {
   textArea,
   textAreaWrapper,
 } from '@styles/CommonStyles';
+import { formatAmountNumber } from '@utils/index';
 import { useEffect, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, Controller } from 'react-hook-form';
 import styled from 'styled-components';
 
 // 지출 타입, 내용, 금액, 날짜
 const WriteExpense = () => {
-  const { register, watch } = useFormContext();
+  const { register, watch, control } = useFormContext();
   const [activeLabel, setActiveLabel] = useState('');
 
   const selectedRegisterType = watch('registerType');
@@ -23,6 +24,11 @@ const WriteExpense = () => {
   useEffect(() => {
     setActiveLabel(selectedRegisterType);
   }, [selectedRegisterType]);
+
+  const handleAmountChange = (value: string, onChange: (value: string) => void) => {
+    const formattedValue = formatAmountNumber(value);
+    onChange(formattedValue);
+  };
 
   return (
     <Container>
@@ -56,7 +62,19 @@ const WriteExpense = () => {
       <AmountContainer>
         <InputWrapper>
           <span className="title">금액</span>
-          <AmountInput placeholder="0" {...register('amount', { required: true })} />
+          <Controller
+            name="amount"
+            control={control}
+            defaultValue={''}
+            rules={{ required: true }}
+            render={({ field: { onChange, value, ...field } }) => (
+              <AmountInput
+                {...field}
+                value={value}
+                onChange={(event) => handleAmountChange(event.target.value, onChange)}
+                placeholder="0"
+              />
+            )}></Controller>
         </InputWrapper>
         <AmountText>원</AmountText>
       </AmountContainer>
@@ -148,16 +166,9 @@ const InputWrapper = styled.div`
   height: 70px;
 `;
 
-const AmountInput = styled.input.attrs({ type: 'number' })`
+const AmountInput = styled.input.attrs({ type: 'text' })`
   ${textArea}
-
-  // 화살표 숨기기
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  appearance: textfield;
+  text-align: right;
 `;
 
 const AmountText = styled.div`

@@ -11,21 +11,25 @@ import {
   summaryArea,
 } from '@styles/CommonStyles';
 
-import { getSpendSumamryText } from '@utils/index';
-import ExpenseSummary from '@components/expense/ExpenseSummary';
-import { EmotionKey, Register } from '@models/index';
-import MultiText from '@components/input/MultiText';
-import { useForm, FormProvider } from 'react-hook-form';
-import { ExpenseFormType } from '@models/expense';
 import { useEffect, useState } from 'react';
-import { VolumeBtn } from '@components/button';
-import EditSummary from './components/EditSummary';
+import { useForm, FormProvider } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
-import { fetchExpenseById } from '@api/get';
+
+import type { EmotionKey, Register } from '@models/index';
+import type { ExpenseFormType } from '@models/expense';
+
+import EditSummary from './components/EditSummary';
+import ExpenseSummary from '@components/expense/ExpenseSummary';
+import MultiText from '@components/input/MultiText';
 import LoadingModal from '@components/modal/LoadingModal';
+import { VolumeBtn } from '@components/button';
+
+import { fetchExpenseById } from '@api/get';
 import { saveExpenseData } from '@api/patch';
 import { deleteExpenseById } from '@api/delete';
 import { fetchAIComment } from '@api/post';
+
+import { formatAmountNumber, getSpendSumamryText } from '@utils/index';
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -141,7 +145,7 @@ const ExpenseDetailViewPage = () => {
     criteriaMode: 'all',
     defaultValues: {
       content: '',
-      amount: 0,
+      amount: '',
       spendDate: '',
       event: '',
       thought: '',
@@ -217,7 +221,9 @@ const ExpenseDetailViewPage = () => {
   });
 
   const handleSubmit = methods.handleSubmit((data: ExpenseFormType) => {
-    saveMutation.mutate(data);
+    // amount: #,##0  => 다시 숫자만 남은 형태로 변경 필요
+    const numberAmount = data.amount.replace(/,/g, '');
+    saveMutation.mutate({ ...data, amount: numberAmount });
     toggleEditMode();
   });
 
@@ -236,7 +242,11 @@ const ExpenseDetailViewPage = () => {
   useEffect(() => {
     // 데이터 로딩이 완료되었고, 실제 데이터가 존재하는 경우에만 reset을 실행
     if (!isLoadingExpenseData && expenseData && expenseData.data) {
-      methods.reset(expenseData.data);
+      const data = expenseData.data;
+      // 서버에서 받는 예산 데이터는 숫자 형태이므로, 다시 #,##0 형태로 변환하여 세팅 필요
+      const formattedValue = formatAmountNumber(data.amount.toString() || ''); // data.amount가 서버에서 null값으로 오는 경우 처리
+      methods.reset({ ...data, amount: formattedValue });
+
       // 감정 state도 최신 데이터로 업데이트 필요
       setSelectEmotion(expenseData.data.emotion as EmotionKey);
     }

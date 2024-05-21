@@ -11,16 +11,10 @@ import { getEmotionIcon } from '@models/emotion';
 type SatisfactionRangeProps = {
   emotion: EmotionKey;
   satisfaction: number;
-  // setSatisfaction?: (state: number) => void; // isEdit이 true인 경우 같이 넘겨줘야함.
   isEdit?: boolean;
 };
 
-const SatisfactionRange = ({
-  emotion,
-  satisfaction,
-  isEdit = false,
-  // setSatisfaction,
-}: SatisfactionRangeProps) => {
+const SatisfactionRange = ({ emotion, satisfaction, isEdit = false }: SatisfactionRangeProps) => {
   const max = 5;
   const min = 1;
 
@@ -28,24 +22,11 @@ const SatisfactionRange = ({
   const thumb = 16;
   const height = 10;
   const [rangeWidth, setRangeWidth] = useState<number>(212);
-  // const [value, setValue] = useState<number>(satisfaction); // props로 넘겨받게될듯
   const value: number = satisfaction;
   const rangeRef = useRef<HTMLDivElement>(null);
 
   const EmotionSVG = getEmotionIcon(emotion);
 
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (isEdit && setSatisfaction && event.target) {
-  //     setSatisfaction(parseInt(event.target.value));
-  //   }
-  //   setValue(parseInt(event.target?.value));
-  // };
-  // const handleClick = (satisfaction: number) => {
-  //   if (isEdit && setSatisfaction) {
-  //     setSatisfaction(satisfaction);
-  //   }
-  //   setValue(satisfaction);
-  // };
   const getNomalized = (val: number): number => (val - min) / (max - min);
   const calculateLeft = (val: number) => {
     return getNomalized(val) * (rangeWidth - thumb) + thumb / 2;
@@ -80,19 +61,13 @@ const SatisfactionRange = ({
             min={min}
             max={max}
             step={0.1}
-            // onChange={handleChange}
             height={height}
             thumb={thumb}
             disabled={!isEdit}
           />
           <RangeButtonContainer>
-            {[1, 2, 3, 4, 5].map((x, i) => (
-              <RangeButton
-                key={i}
-                // onClick={() => {handleClick(x);}}
-              >
-                {x}
-              </RangeButton>
+            {[1, 2, 3, 4, 5].map((score, i) => (
+              <RangeButton key={i}>{score}</RangeButton>
             ))}
           </RangeButtonContainer>
         </RangeSection>

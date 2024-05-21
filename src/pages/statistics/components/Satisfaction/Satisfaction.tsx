@@ -8,6 +8,7 @@ type SatisfactionProps = {
     name: string[];
   }[];
 };
+
 const Satisfaction = ({ satisfactions }: SatisfactionProps) => {
   return (
     <SwipeContainer>
@@ -15,7 +16,7 @@ const Satisfaction = ({ satisfactions }: SatisfactionProps) => {
         return (
           <StatisticsContentLayout
             key={index}
-            message={`최근 1개월 내 감정 소비에 대해\n${name[0]}는 ${data[0]}점, ${name[1]}은 ${data[1]}점을 주었어요`}>
+            message={`최근 90일 내 감정 소비에 대해\n${name[0]}는 ${data[0]}점, ${name[1]}은 ${data[1]}점을 주었어요`}>
             <Chart
               height={'80%'}
               width={'90%'}

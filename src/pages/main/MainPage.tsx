@@ -4,7 +4,7 @@ import BottomNavigation from '@layout/BottomNavigation';
 import Background from '@components/background';
 
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import useMonthNavigator from '@hooks/useMonthNavigator';
 import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
@@ -78,10 +78,6 @@ const MonthNavWrapper = styled.div`
 `;
 
 const MainPage = () => {
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get('isFirstLogin');
-  console.log(query);
-
   const monthNav = useMonthNavigator(); // monthNav.currentDate = 현재 선택된 월
 
   const selectDate = formatYMD(monthNav.currentDate, 'none');
