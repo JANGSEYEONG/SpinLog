@@ -4,10 +4,13 @@ import ErrorBird from '@assets/images/bird/errorBird.svg?react';
 
 import { useNavigate } from 'react-router-dom';
 
+import MetaThemeColor from '@components/background/MetaThemeColor';
+
 const ErrorPage = () => {
   const navigator = useNavigate();
   return (
     <Container>
+      <MetaThemeColor color="#F4F4F4" />
       <ErrorBird></ErrorBird>
       <Text>원하는 페이지를 찾을 수 없어요</Text>
       <Button

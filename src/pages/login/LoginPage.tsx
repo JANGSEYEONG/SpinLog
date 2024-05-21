@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-import { useAuthStore } from '@stores/authStore';
-import { Navigate } from 'react-router-dom';
+import { flexColumnCenter } from '@styles/CommonStyles';
 
 import LogoIcon from '@assets/images/icon/logoGreen.svg?react';
 import LogoIconTitle from '@assets/images/icon/logoTitle.svg?react';
 
-import { flexColumnCenter } from '@styles/CommonStyles';
+import { useAuthStore } from '@stores/authStore';
+import { Navigate } from 'react-router-dom';
+
 import SocialLogin from './components/socialLogin';
+import MetaThemeColor from '@components/background/MetaThemeColor';
 
 const LoginPage = () => {
   // #20240501.syjang, 이미 로그인된 상태라면 메인 페이지로 보낸다.
@@ -18,6 +20,7 @@ const LoginPage = () => {
 
   return (
     <LoginContainer>
+      <MetaThemeColor color="#F4F4F4" />
       <LogoWrapper>
         <Logo />
         <LogoTitle />

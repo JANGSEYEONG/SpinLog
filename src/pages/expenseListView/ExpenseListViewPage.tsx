@@ -34,6 +34,7 @@ import { getEmotionText } from '@models/emotion';
 import { useInfiniteQuery } from 'react-query';
 import { fetchExpensesByCondition } from '@api/get';
 import Spinner from '@components/information/Spinner';
+import MetaThemeColor from '@components/background/MetaThemeColor';
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -52,6 +53,7 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
 
   return (
     <>
+      <MetaThemeColor color="#47CFB0" />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar
@@ -68,7 +70,8 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
               />
             }
           />
-        }></TopNavigation>
+        }
+      />
       {children}
       <BottomNavigation location="expenseList" />
       {showBackground && <Background height="60px" color="#47CFB0" />}

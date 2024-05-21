@@ -15,6 +15,8 @@ import { useMutation } from 'react-query';
 import { saveExpense } from '@api/post';
 import LoadingModal from '@components/modal/LoadingModal';
 
+import MetaThemeColor from '@components/background/MetaThemeColor';
+
 type AddNavProps = {
   title: string;
   hasPrev: boolean;
@@ -26,6 +28,7 @@ const NavigationLayout = ({ children, title, prevStep, hasPrev }: AddNavProps) =
   const navigate = useNavigate();
   return (
     <>
+      <MetaThemeColor color="#F4F4F4" />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar
@@ -49,7 +52,8 @@ const NavigationLayout = ({ children, title, prevStep, hasPrev }: AddNavProps) =
               />
             }
           />
-        }></TopNavigation>
+        }
+      />
       {children}
     </>
   );

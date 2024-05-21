@@ -1,15 +1,18 @@
 import styled from 'styled-components';
+import { flexColumnBetween, mainSection, overflowWithoutScroll } from '@styles/CommonStyles';
+
 import TopNavigation from '@layout/TopNavigation';
 import BottomNavigation from '@layout/BottomNavigation';
+import Spinner from '@components/information/Spinner';
 import Background from '@components/background';
+import MetaThemeColor from '@components/background/MetaThemeColor';
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
 
 import useMonthNavigator from '@hooks/useMonthNavigator';
 import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
-
-import { flexColumnBetween, mainSection, overflowWithoutScroll } from '@styles/CommonStyles';
 
 import Budget from './components/Budget';
 import DayExpenseListTop2 from './components/DayExpenseTop2';
@@ -17,8 +20,6 @@ import Calendar from './components/Calendar';
 
 import { fetchMainData } from '@api/get';
 import { formatYMD } from '@utils/index';
-import { useQuery } from 'react-query';
-import Spinner from '@components/information/Spinner';
 
 type MainNavProps = {
   currentDate: Date;
@@ -42,6 +43,7 @@ const NavigationLayout = ({ children, currentDate, previousMonth, nextMonth }: M
   }, []);
   return (
     <>
+      <MetaThemeColor color="#47CFB0" />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar

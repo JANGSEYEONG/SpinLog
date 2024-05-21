@@ -11,6 +11,7 @@ import { useForm, Controller } from 'react-hook-form';
 
 import Spinner from '@components/information/Spinner';
 import LoadingModal from '@components/modal/LoadingModal';
+import MetaThemeColor from '@components/background/MetaThemeColor';
 
 import type { UserFormType } from '@models/user';
 import { saveUserData } from '@api/post';
@@ -33,6 +34,7 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
   };
   return (
     <>
+      <MetaThemeColor color="#F4F4F4" />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar

@@ -1,19 +1,24 @@
 import styled from 'styled-components';
+
 import TopNavigation from '@layout/TopNavigation';
 import BottomNavigation from '@layout/BottomNavigation';
 
+import TabLayout, { TabProps } from '@components/layout/TabLayout';
+import MetaThemeColor from '@components/background/MetaThemeColor';
+
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import TabLayout, { TabProps } from '@components/layout/TabLayout';
-import { useState } from 'react';
+import type { TabOption } from './type';
+import type { Register } from '@models/index';
+
 import SlideButton from './components/SlideButton';
-import { format, subDays } from 'date-fns';
 import CategoriesView from './components/CategoriesView';
-import { Register } from '@models/index';
-import { TabOption } from './type';
 import MemoContainer from './components/Memo/MemoContainer';
 import SatisfactionContainer from './components/Satisfaction/SatisfactionContainer';
 import DailyAmountsContainer from './components/DailyAmount/DailyAmountsContainer';
+
+import { format, subDays } from 'date-fns';
 
 const EmotionComponent = () => <div>감정 컴포넌트</div>;
 
@@ -26,6 +31,7 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
 
   return (
     <>
+      <MetaThemeColor color="#F4F4F4" />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar

@@ -30,6 +30,7 @@ import { deleteExpenseById } from '@api/delete';
 import { fetchAIComment } from '@api/post';
 
 import { formatAmountNumber, getSpendSumamryText } from '@utils/index';
+import MetaThemeColor from '@components/background/MetaThemeColor';
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -53,6 +54,7 @@ const NavigationLayout = ({
   const query = searchParams.get('prev');
   return (
     <>
+      <MetaThemeColor color="#F4F4F4" />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar
@@ -85,7 +87,8 @@ const NavigationLayout = ({
               </Toolbar>
             }
           />
-        }></TopNavigation>
+        }
+      />
       {children}
     </>
   );

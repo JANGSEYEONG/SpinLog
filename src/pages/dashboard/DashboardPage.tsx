@@ -10,6 +10,7 @@ import TabLayout, { TabProps } from '@components/layout/TabLayout';
 import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
 import TabContent from './components/TabContent';
 import Spinner from '@components/information/Spinner';
+import MetaThemeColor from '@components/background/MetaThemeColor';
 
 import { useQuery } from 'react-query';
 import { fetchDashboardData } from '@api/get';
@@ -35,6 +36,7 @@ const NavigationLayout = ({
 
   return (
     <>
+      <MetaThemeColor color="#F4F4F4" />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar

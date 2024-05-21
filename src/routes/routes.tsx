@@ -1,5 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
+
+// dynamic import 오류 시 fetch 재시도
+import { lazyWithRetries } from './lazyWithRetries';
 
 import App from '../App';
 import Layout from '../components/layout/Layout';
@@ -11,14 +14,16 @@ import AuthPage from '../pages/auth/AuthPage';
 import Loading from '@components/information/Loading';
 
 // 바로 로딩되지 않아도 되는 컴포넌트 lazy loading 추가
-const ExpenseListViewPage = lazy(() => import('../pages/expenseListView/ExpenseListViewPage'));
-const DashboardPage = lazy(() => import('../pages/dashboard/DashboardPage'));
-const AddExpensePage = lazy(() => import('../pages/addExpense/AddExpensePage'));
-const ExpenseDetailViewPage = lazy(
+const ExpenseListViewPage = lazyWithRetries(
+  () => import('../pages/expenseListView/ExpenseListViewPage'),
+);
+const DashboardPage = lazyWithRetries(() => import('../pages/dashboard/DashboardPage'));
+const AddExpensePage = lazyWithRetries(() => import('../pages/addExpense/AddExpensePage'));
+const ExpenseDetailViewPage = lazyWithRetries(
   () => import('../pages/expenseDetailView/ExpenseDetailViewPage'),
 );
-const StatisticsPage = lazy(() => import('../pages/statistics/StatisticsPage'));
-const SettingPage = lazy(() => import('../pages/setting/SettingPage'));
+const StatisticsPage = lazyWithRetries(() => import('../pages/statistics/StatisticsPage'));
+const SettingPage = lazyWithRetries(() => import('../pages/setting/SettingPage'));
 
 export const router = createBrowserRouter([
   {
