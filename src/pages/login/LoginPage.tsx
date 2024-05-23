@@ -10,6 +10,10 @@ import LoginBird from '@assets/images/bird/loginBird.svg?react';
 
 import MetaThemeColor from '@components/background/MetaThemeColor';
 
+import kakaoImg from '@assets/images/login/kakao.png';
+import naverImg from '@assets/images/login/naver.png';
+import googleImg from '@assets/images/login/google.png';
+
 const LoginPage = () => {
   // #20240501.syjang, 이미 로그인된 상태라면 메인 페이지로 보낸다.
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
@@ -34,13 +38,13 @@ const LoginPage = () => {
       <LoginButtonContainer>
         <LoginButton href={`${AUTH_URL}/kakao`}>
           <Bird />
-          <Img src="src/assets/images/login/kakao.png" />
+          <Img src={kakaoImg} />
         </LoginButton>
         <LoginButton href={`${AUTH_URL}/naver`}>
-          <Img src="src/assets/images/login/naver.png" />
+          <Img src={naverImg} />
         </LoginButton>
         <LoginButton href={`${AUTH_URL}/google`}>
-          <Img src="src/assets/images/login/google.png" />
+          <Img src={googleImg} />
         </LoginButton>
       </LoginButtonContainer>
       {/* <ExperienceWrapper>
