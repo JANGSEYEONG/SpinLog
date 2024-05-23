@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const Slider = styled.label`
@@ -48,6 +47,7 @@ const UncheckedLabel = styled.div<{ $checked: boolean }>`
   left: 7px;
   top: 14px;
   font-size: 12px;
+  font-family: 'SUIT';
 `;
 
 const CheckedLabel = styled.div<{ $checked: boolean }>`
@@ -57,27 +57,26 @@ const CheckedLabel = styled.div<{ $checked: boolean }>`
   right: 6px;
   top: 14px;
   font-size: 12px;
+  font-family: 'SUIT';
 `;
 
 type SlideButtonProps = {
-  onClick: (isChecked: boolean) => void;
+  isChecked: boolean;
+  onChange: () => void;
 };
-const SlideButton = ({ onClick }: SlideButtonProps) => {
-  const [checked, setChecked] = useState(false);
-
+const SlideButton = ({ isChecked, onChange }: SlideButtonProps) => {
   const handleToggleClick = () => {
-    setChecked(!checked);
-    onClick(checked);
+    onChange();
   };
 
   return (
     <Slider>
       <Container>
-        <UncheckedLabel $checked={checked}>지출</UncheckedLabel>
-        <CheckedLabel $checked={checked}>절약</CheckedLabel>
+        <UncheckedLabel $checked={isChecked}>지출</UncheckedLabel>
+        <CheckedLabel $checked={isChecked}>절약</CheckedLabel>
       </Container>
-      <HiddenCheckbox checked={checked} onChange={handleToggleClick} />
-      <Knob $checked={checked} />
+      <HiddenCheckbox checked={isChecked} onChange={handleToggleClick} />
+      <Knob $checked={isChecked} />
     </Slider>
   );
 };

@@ -1,10 +1,14 @@
 import { flexCenter } from '@styles/CommonStyles';
 import styled, { keyframes } from 'styled-components';
 
-const Spinner = () => {
+type SpinnerProps = {
+  size?: number;
+};
+
+const Spinner = ({ size = 50 }: SpinnerProps) => {
   return (
     <SpinnerWrapper>
-      <Circle />
+      <Circle size={`${size}px`} />
     </SpinnerWrapper>
   );
 };
@@ -22,11 +26,11 @@ const spin = keyframes`
   100% { transform: rotate(360deg); }
 `;
 
-const Circle = styled.div`
+const Circle = styled.div<{ size: string }>`
   border: 8px solid rgba(0, 0, 0, 0.1); // 회색 테두리
   border-top: 8px solid #47cfb0; // 파란색 상단 테두리
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: ${(props) => props.size};
+  height: ${(props) => props.size};
   animation: ${spin} 2s linear infinite;
 `;

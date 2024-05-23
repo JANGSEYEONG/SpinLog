@@ -8,7 +8,7 @@ import { getEmotionIcon, getEmotionText } from '@models/emotion';
 type EmotionProps = {
   emotionKey: EmotionKey; // key에 맞는 감정의 아이콘(색), 텍스트 표시
   isSelect: boolean; // true일 경우 우측 상단에 초록색 체크 표시
-  onClick: () => void; // 클릭 이벤트 실행 (부모 컴포넌트는 setState 함수를 실행시키는 함수를 보내야함)
+  onClick?: () => void; // 클릭 이벤트 실행 (부모 컴포넌트는 setState 함수를 실행시키는 함수를 보내야함)
   iconSize?: number;
   textSize?: number;
   selectSize?: number;
@@ -16,7 +16,7 @@ type EmotionProps = {
 const Emotion = ({
   emotionKey,
   isSelect,
-  onClick,
+  onClick = () => {},
   iconSize = 80,
   textSize = 14,
   selectSize = 24,

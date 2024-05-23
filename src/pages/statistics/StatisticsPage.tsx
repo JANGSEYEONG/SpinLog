@@ -19,8 +19,7 @@ import SatisfactionContainer from './components/Satisfaction/SatisfactionContain
 import DailyAmountsContainer from './components/DailyAmount/DailyAmountsContainer';
 
 import { format, subDays } from 'date-fns';
-
-const EmotionComponent = () => <div>감정 컴포넌트</div>;
+import EmotionalAmountChartContainer from './components/Emotion/EmotionalAmountChartContainer';
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -58,18 +57,22 @@ const StatisticsPage = () => {
   const [registerType, setRegisterType] = useState<Register>('SPEND');
   const [selectedTab, setSelectedTab] = useState<TabOption>('TAB_MBTI');
 
-  const today = format(new Date(), 'yyyy.MM.dd');
-  const nintyDaysBefore = format(subDays(new Date(), 90), 'yyyy.MM.dd');
+  const yesterday = subDays(new Date(), 1);
+  const nintyDaysBefore = subDays(yesterday, 89);
 
-  const handleRegisterTypeClick = (isSpend: boolean) => {
-    setRegisterType(isSpend ? 'SAVE' : 'SPEND');
+  const handleRegisterTypeClick = () => {
+    setRegisterType(registerType === 'SPEND' ? 'SAVE' : 'SPEND');
   };
   const handleTabSelect = (tabId: string) => {
     setSelectedTab(tabId as TabOption);
   };
 
   const categories: { id: string; name: string; component: JSX.Element }[] = [
-    { id: 'categoryEmotion', name: '감정', component: <EmotionComponent /> },
+    {
+      id: 'categoryEmotion',
+      name: '감정',
+      component: <EmotionalAmountChartContainer tabOption={selectedTab} register={registerType} />,
+    },
     {
       id: 'categoryDaily',
       name: '일별',
@@ -103,8 +106,8 @@ const StatisticsPage = () => {
   return (
     <NavigationLayout>
       <OptionContainer>
-        <SlideButton onClick={handleRegisterTypeClick} />
-        <Period>{`${today}~${nintyDaysBefore}기준`}</Period>
+        <SlideButton isChecked={registerType === 'SAVE'} onChange={handleRegisterTypeClick} />
+        <Period>{`${format(nintyDaysBefore, 'yy.MM.dd')}~${format(yesterday, 'yy.MM.dd')} 기준`}</Period>
       </OptionContainer>
       <StatisticsContainer>
         <TabLayout

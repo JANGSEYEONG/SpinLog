@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { flexColumnCenter } from '@styles/CommonStyles';
 
-import LogoIcon from '@assets/images/icon/logoGreen.svg?react';
-import LogoIconTitle from '@assets/images/icon/logoTitle.svg?react';
-
-import { useAuthStore } from '@stores/authStore';
 import { Navigate } from 'react-router-dom';
+import { useAuthStore } from '@stores/authStore';
 
-import SocialLogin from './components/socialLogin';
+import LogoIcon from '@assets/images/icon/logoGreen.svg?react';
+import LogoIconTitle from '@assets/images/icon/logoTitleGray.svg?react';
+import LoginBird from '@assets/images/bird/loginBird.svg?react';
+
 import MetaThemeColor from '@components/background/MetaThemeColor';
 
 const LoginPage = () => {
@@ -18,6 +18,8 @@ const LoginPage = () => {
     return <Navigate to="/" />;
   }
 
+  const AUTH_URL = `https://www.api-spinlog.shop/api/users/login`;
+
   return (
     <LoginContainer>
       <MetaThemeColor color="#F4F4F4" />
@@ -25,14 +27,25 @@ const LoginPage = () => {
         <Logo />
         <LogoTitle />
       </LogoWrapper>
+      <LogoText>
+        소비 중 감정 발현 시<br />
+        소비내역과 감정일기 가계부
+      </LogoText>
       <LoginButtonContainer>
-        <SocialLogin provider={'kakao'} />
-        <SocialLogin provider={'naver'} />
-        <SocialLogin provider={'google'} />
+        <LoginButton href={`${AUTH_URL}/kakao`}>
+          <Bird />
+          <Img src="src/assets/images/login/kakao.png" />
+        </LoginButton>
+        <LoginButton href={`${AUTH_URL}/naver`}>
+          <Img src="src/assets/images/login/naver.png" />
+        </LoginButton>
+        <LoginButton href={`${AUTH_URL}/google`}>
+          <Img src="src/assets/images/login/google.png" />
+        </LoginButton>
       </LoginButtonContainer>
-      <ExperienceWrapper>
+      {/* <ExperienceWrapper>
         <ExperienceButton>체험하기</ExperienceButton>
-      </ExperienceWrapper>
+      </ExperienceWrapper> */}
     </LoginContainer>
   );
 };
@@ -41,53 +54,84 @@ export default LoginPage;
 
 const LoginContainer = styled.div`
   ${flexColumnCenter}
-
-  color: ${(props) => props.theme.colors.font};
-
-  background-color: ${(props) => props.theme.colors.background};
   width: 100%;
   height: 100%;
 
-  padding-top: 50px;
-  padding: 10px;
+  color: #bcbcbc;
+  background-color: ${(props) => props.theme.colors.background};
 `;
 
 const LogoWrapper = styled.div`
   ${flexColumnCenter}
   width: 100%;
-  height: 45%;
 `;
 
 const Logo = styled(LogoIcon)`
-  width: 100px;
-  height: 100px;
+  margin-top: 100px;
 `;
 
 const LogoTitle = styled(LogoIconTitle)`
-  width: 86px;
-  height: 24px;
+  margin-top: 5px;
+`;
+
+const LogoText = styled.div`
+  margin-top: 23px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
 `;
 
 const LoginButtonContainer = styled.div`
   ${flexColumnCenter}
+  margin-top: 142px;
   background-color: transparent;
   width: 100%;
   height: 35%;
-`;
-const ExperienceWrapper = styled.div`
-  background-color: transparent;
-  width: 100%;
-  height: 20%;
-  text-align: center;
+  gap: 12px;
 `;
 
-const ExperienceButton = styled.button`
-  width: 350px;
-  height: 35%;
+const LoginButton = styled.a`
+  width: 358px;
+  height: 60px;
+
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+
+  cursor: pointer;
+
   border-radius: 6px;
-  background-color: ${(props) => props.theme.colors.button};
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: medium;
-  font-size: 18px;
-  color: white;
+  box-shadow: ${(props) => props.theme.shadows.around};
 `;
+
+const Img = styled.img`
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+`;
+
+const Bird = styled(LoginBird)`
+  position: absolute;
+  top: -77px;
+  right: -20px;
+  z-index: -1;
+`;
+
+// 1차 배포 - 체험하기 숨김처리
+// const ExperienceWrapper = styled.div`
+//   background-color: transparent;
+//   width: 100%;
+//   height: 20%;
+//   text-align: center;
+// `;
+
+// const ExperienceButton = styled.button`
+//   width: 350px;
+//   height: 35%;
+//   border-radius: 6px;
+//   background-color: ${(props) => props.theme.colors.button};
+//   font-family: 'Noto Sans KR', sans-serif;
+//   font-weight: medium;
+//   font-size: 18px;
+//   color: white;
+// `;

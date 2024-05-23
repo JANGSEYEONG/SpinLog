@@ -1,13 +1,17 @@
-import { Gender, Register } from '@models/index';
-import { TabOption } from '../../type';
-import Spinner from '@components/information/Spinner';
+import styled from 'styled-components';
+
+import type { Gender, Register } from '@models/index';
+import type { TabOption } from '../../type';
+
 import DailyAmounts from './DailyAmounts';
 import useDailyAmountsData from './hooks/useDailyAmountsData';
-import styled from 'styled-components';
+
+import Spinner from '@components/information/Spinner';
+import { subDays } from 'date-fns';
 
 const transformMbtiData = (
   input: {
-    mbtiFactor: string;
+    mbtiFactor: string; // I, E, N, F, ...
     dailyAmountSums: { amountSum: number; date: string }[];
   }[],
 ) => {
@@ -92,7 +96,8 @@ const DailyAmountsContainer = ({ tabOption, register }: DailyAmountsContainerPro
       ? transformGenderData(genderData)
       : transformMbtiData(mbtiData.mbtiDailyAmountSums);
 
-  return <DailyAmounts dailyAmounts={dailyAmounts} date={new Date()} />;
+  // #20240521.syjang, 데이터는 오늘 포함이 아니라, "어제" 포함 90일이라 subDays로 어제 날짜 전달 필요
+  return <DailyAmounts dailyAmounts={dailyAmounts} date={subDays(new Date(), 1)} />;
 };
 
 export default DailyAmountsContainer;

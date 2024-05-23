@@ -5,6 +5,7 @@ import ReactApexChart from 'react-apexcharts';
 
 import type { EmotionAmountTotalType } from '@models/api/dashboard';
 import { getEmotionColor, getEmotionText } from '@models/emotion';
+import { cloneDeep } from 'lodash';
 
 // 차트 옵션과 시리즈 데이터 타입 정의
 type ChartOptions = {
@@ -17,9 +18,23 @@ type EmotionChartProps = {
 };
 
 const EmotionChart = ({ data }: EmotionChartProps) => {
-  const chartLabels = data.map((data) => getEmotionText(data.emotion));
-  const chartSeries = data.map((data) => data.amount);
-  const chartColors = data.map((data) => getEmotionColor(data.emotion));
+  // #20240522.syjang, 상위 3개 감정 + 나머지는 "기타" 로 표시
+  const sortedData = cloneDeep(data);
+  sortedData.sort((a, b) => b.amount - a.amount);
+  const chartData = sortedData.splice(0, 3).map((data) => ({
+    ...data,
+    emotion: getEmotionText(data.emotion),
+    color: getEmotionColor(data.emotion),
+  }));
+  chartData.push({
+    emotion: '기타',
+    amount: sortedData.reduce((acc, val) => acc + val.amount, 0),
+    color: '#E3E3E3',
+  });
+
+  const chartLabels = chartData.map((data) => data.emotion);
+  const chartSeries = chartData.map((data) => data.amount);
+  const chartColors = chartData.map((data) => data.color);
 
   // 전체 값의 합계 계산
   const total = chartSeries.reduce((acc, value) => acc + value, 0);

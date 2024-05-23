@@ -47,6 +47,7 @@ const Satisfaction = ({ satisfactions }: SatisfactionProps) => {
                     },
                   },
                 },
+                tooltip: { enabled: false },
                 plotOptions: {
                   bar: {
                     borderRadius: 15,
@@ -56,6 +57,18 @@ const Satisfaction = ({ satisfactions }: SatisfactionProps) => {
                       position: 'top',
                     },
                     distributed: true,
+                  },
+                },
+                states: {
+                  hover: {
+                    filter: {
+                      type: 'none', // 마우스 오버 시 필터 없음
+                    },
+                  },
+                  active: {
+                    filter: {
+                      type: 'none', // 클릭 시 필터 없음
+                    },
                   },
                 },
                 colors: ['#47CFB0', '#C3EBE2'],

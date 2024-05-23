@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { flexBetween, flexColumnCenter } from '@styles/CommonStyles';
+import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
 
 import { useNavigate } from 'react-router-dom';
 
 import type { ExpenseSummaryType } from '@models/expense';
-import { getEmotionText } from '@models/emotion';
 
-import SatisfactionRange from '@components/expense/SatisfactionRange';
+import Emotion from '@components/emotion';
 import { addCommasToNumber } from '@utils/index';
 
 type ExpenseSummaryProps = ExpenseSummaryType & {
@@ -19,7 +18,7 @@ const ExpenseSummary = ({
   content,
   satisfaction,
   emotion,
-  hideHeader = false,
+  // hideHeader = false,
 }: ExpenseSummaryProps) => {
   const navigate = useNavigate();
 
@@ -32,7 +31,34 @@ const ExpenseSummary = ({
       onClick={() => {
         handleClick(articleId);
       }}>
-      {!hideHeader && (
+      <EmotionWrapper>
+        <Emotion emotionKey={emotion} isSelect={false} iconSize={80} textSize={14} />
+      </EmotionWrapper>
+      <InfoWrapper>
+        <InfoItem>
+          <span className="info-title">내용</span>
+          <InfoDataWrapper>
+            <InfoData>{content}</InfoData>
+          </InfoDataWrapper>
+        </InfoItem>
+        <InfoItem>
+          <span className="info-title">{registerType === 'SPEND' ? '지출' : '절약'}</span>
+          <InfoDataWrapper>
+            <InfoData>{addCommasToNumber(amount)}</InfoData>
+          </InfoDataWrapper>
+          <span className="info-text">원</span>
+        </InfoItem>
+        <InfoItem>
+          <span className="info-title">만족도</span>
+          <InfoDataWrapper>
+            <InfoData>{satisfaction}</InfoData>
+            <span className="satisfaction-standard">/5</span>
+          </InfoDataWrapper>
+          <span className="info-text">점</span>
+        </InfoItem>
+      </InfoWrapper>
+      {/* 이전 UI (만족도 range 사용) */}
+      {/* {!hideHeader && (
         <EmotionText>
           {getEmotionText(emotion)} {satisfaction}점
         </EmotionText>
@@ -49,7 +75,7 @@ const ExpenseSummary = ({
           <span className="info-text">{registerType === 'SPEND' ? '지출' : '절약'}</span>
           <span className="info-price">{addCommasToNumber(amount)}원</span>
         </InfoItem>
-      </Info>
+      </Info> */}
     </Container>
   );
 };
@@ -57,43 +83,106 @@ const ExpenseSummary = ({
 export default ExpenseSummary;
 
 const Container = styled.div`
+  ${flexCenter}
+  width: 100%;
+  padding: 22px 40px;
+  gap: 33px;
+`;
+
+const EmotionWrapper = styled.div`
+  ${flexCenter}
+  width: 80px;
+  height: 100%;
+  flex-shrink: 0;
+`;
+const InfoWrapper = styled.div`
   ${flexColumnCenter}
-  width: 100%;
-  gap: 2px;
-`;
+  height: 100%;
+  gap: 10px;
 
-const EmotionText = styled.div`
-  width: 100%;
-  font-weight: 700;
-  color: #333331;
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #9f9f9f;
 `;
-
-const RangeWrapper = styled.div`
-  width: 100%;
-`;
-
-const Info = styled.div`
-  ${flexColumnCenter}
-  width: 100%;
-  gap: 5px;
-`;
-
 const InfoItem = styled.div`
-  ${flexBetween}
+  display: flex;
+  align-items: center;
   width: 100%;
-  flex: 1;
+  height: 24px;
 
-  & span.info-text {
-    font-size: 14px;
-    color: #9f9f9f;
-    font-weight: 300;
+  & > span.info-title {
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 100%;
   }
 
-  & span.info-price {
-    color: #333331;
+  & > span.info-text {
     font-size: 16px;
-    font-weight: 700;
+    margin-left: 5px;
   }
 `;
+const InfoDataWrapper = styled.div`
+  ${flexCenter}
+  width: 120px;
+  height: 100%;
+  margin-left: 23px;
+  & > span.satisfaction-standard {
+    font-size: 12px;
+    font-weight: 500;
+    margin: 3px;
+  }
+`;
+const InfoData = styled.div`
+  display: block;
+  text-align: center;
+
+  height: 100%;
+  width: 100%;
+
+  border-bottom: 1px solid #dddddd;
+  font-weight: 700;
+  color: #575755;
+
+  // 길어질 경우 '...' 처리
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+/* 이전 UI (만족도 range 사용) */
+// const EmotionText = styled.div`
+//   width: 100%;
+//   font-weight: 700;
+//   color: #333331;
+//   font-size: 16px;
+//   margin-bottom: 10px;
+// `;
+
+// const RangeWrapper = styled.div`
+//   width: 100%;
+// `;
+
+// const Info = styled.div`
+//   ${flexColumnCenter}
+//   width: 100%;
+//   gap: 5px;
+// `;
+
+// const InfoItem = styled.div`
+//   ${flexBetween}
+//   width: 100%;
+//   flex: 1;
+
+//   & span.info-text {
+//     font-size: 14px;
+//     color: #9f9f9f;
+//     font-weight: 300;
+//   }
+
+//   & span.info-price {
+//     color: #333331;
+//     font-size: 16px;
+//     font-weight: 700;
+//   }
+// `;

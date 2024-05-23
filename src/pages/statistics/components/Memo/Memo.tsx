@@ -19,7 +19,7 @@ const Memo = ({ contents }: MemoProps) => {
         return (
           <StatisticsContentLayout
             key={index}
-            message={`최근 1개월 내 ${user}는\n소비내역 중 내용 부분에 '${topWord}'라는\n단어를 가장 많이 썼어요 `}>
+            message={`최근 90일 내 ${user}는\n소비내역 중 내용 부분에 '${topWord}'라는\n단어를 가장 많이 썼어요 `}>
             <ReactWordcloud words={words} />
           </StatisticsContentLayout>
         );

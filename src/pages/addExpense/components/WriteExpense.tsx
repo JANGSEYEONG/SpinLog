@@ -59,7 +59,7 @@ const WriteExpense = () => {
         />
       </ContentContainer>
 
-      <AmountContainer>
+      <ItemContainer>
         <InputWrapper>
           <span className="title">금액</span>
           <Controller
@@ -76,11 +76,15 @@ const WriteExpense = () => {
               />
             )}></Controller>
         </InputWrapper>
-        <AmountText>원</AmountText>
-      </AmountContainer>
+        <ItemText>원</ItemText>
+      </ItemContainer>
       <DateContainer>
         <label htmlFor="date">날짜</label>
-        <DatetimeInput id="date" {...register('spendDate', { required: true })}></DatetimeInput>
+        <ItemContainer>
+          <DatetimeInput id="date" {...register('spendDate', { required: true })} />
+          {/* input 위치 조절용 text */}
+          <ItemText />
+        </ItemContainer>
       </DateContainer>
     </Container>
   );
@@ -102,12 +106,16 @@ const Subject = styled.h1`
 const RegisterTypeContainer = styled.div`
   display: flex;
 `;
-const ContentContainer = styled.div``;
-const AmountContainer = styled.div`
-  ${flexCenter}
+const ContentContainer = styled.div`
+  margin-top: 20px;
+`;
+const ItemContainer = styled.div`
+  display: flex;
+  justify-content: center;
   align-items: flex-end;
   width: 100%;
   gap: 10px;
+  margin-top: 10px;
 `;
 
 const HiddenRadio = styled.input.attrs({ type: 'radio' })`
@@ -171,7 +179,7 @@ const AmountInput = styled.input.attrs({ type: 'text' })`
   text-align: right;
 `;
 
-const AmountText = styled.div`
+const ItemText = styled.div`
   ${flexCenter}
   width: 50px;
   height: 50px;
@@ -196,11 +204,10 @@ const DateContainer = styled.div`
 
 const DatetimeInput = styled.input.attrs({ type: 'datetime-local' })`
   ${mainSection}
-  display: flex;
-  justify-content: flex-start;
+  display: block;
   outline: none;
   border: none;
-  width: 220px;
+  width: 100%;
   height: 40px;
   font-size: 14px;
   font-weight: 500;

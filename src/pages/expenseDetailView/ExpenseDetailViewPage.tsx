@@ -31,6 +31,7 @@ import { fetchAIComment } from '@api/post';
 
 import { formatAmountNumber, getSpendSumamryText } from '@utils/index';
 import MetaThemeColor from '@components/background/MetaThemeColor';
+import Spinner from '@components/information/Spinner';
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -362,7 +363,7 @@ const ExpenseDetailViewPage = () => {
                   <AICommentButton
                     onClick={handleAIComment}
                     className={`${isEditMode || aiComment || commentMutation.isLoading ? '' : 'able'}`}>
-                    <VolumeBtn />
+                    {commentMutation.isLoading ? <Spinner size={35} /> : <VolumeBtn />}
                   </AICommentButton>
                 </Content>
               </ContentContainer>

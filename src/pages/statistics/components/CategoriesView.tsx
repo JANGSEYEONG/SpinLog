@@ -28,13 +28,22 @@ const CategoriesView = ({ categories }: CategoriesViewProps) => {
       </ButtonContainer>
       <ContentContainer>
         <StyleBird />
-        {categories.map((category) => selectedCategory === category.id && category.component)}
+        {categories.map(
+          (category, index) =>
+            selectedCategory === category.id && (
+              <CategoryContainer key={index}>{category.component}</CategoryContainer>
+            ),
+        )}
       </ContentContainer>
     </Container>
   );
 };
 
 export default CategoriesView;
+
+const CategoryContainer = styled.div`
+  height: 100%;
+`;
 
 const Container = styled.div`
   display: flex;

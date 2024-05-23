@@ -1,10 +1,12 @@
-import StatisticsContentLayout from '../StatisticsContentLayout';
-
 import Chart from 'react-apexcharts';
+
+import type { DailyAmountsChartData } from './types';
+
+import StatisticsContentLayout from '../StatisticsContentLayout';
 import SwipeContainer from '../SwipeContainer';
-import { getNinetyDaysDateObjArray } from '@utils/index';
+
 import { format } from 'date-fns';
-import { DailyAmountsChartData } from './types';
+import { addCommasToNumber, getNinetyDaysDateObjArray } from '@utils/index';
 
 type DailyAmountProps = {
   date: Date;
@@ -38,16 +40,10 @@ const DailyAmounts = ({ date, dailyAmounts }: DailyAmountProps) => {
 
         const overallMaxValue = Math.max(...series.flatMap((s) => s.data));
 
-        const yAxisLabelFormatter = (value: number) => {
-          if (value === 0) return '0';
-          if (value === overallMaxValue) return '최댓값';
-          return '';
-        };
-
         return (
           <StatisticsContentLayout
             key={index}
-            message={`최근 3개월 내 감정 소비를 가장 많이 한 날은\n${dailyAmount[0].name}는 ${chartLabels[maxValues[0].index]}, ${dailyAmount[1].name}는 ${chartLabels[maxValues[1].index]} 이에요`}>
+            message={`최근 90일 내 감정 소비를 가장 많이 한 날은\n${dailyAmount[0].name}는 ${chartLabels[maxValues[0].index]}, ${dailyAmount[1].name}는 ${chartLabels[maxValues[1].index]} 이에요`}>
             <Chart
               height={'100%'}
               width={'100%'}
@@ -57,20 +53,48 @@ const DailyAmounts = ({ date, dailyAmounts }: DailyAmountProps) => {
                 chart: {
                   type: 'line',
                   height: 440,
-                  width: 500,
+                  width: 1000,
                   toolbar: { show: false },
+                  // offsetX: 110,
                 },
-                legend: { position: 'top' },
+                legend: {
+                  position: 'top',
+                  offsetX: 160,
+                  fontSize: '12px',
+                  fontFamily: 'SUIT',
+                  fontWeight: 300,
+                  itemMargin: {
+                    vertical: 10,
+                    horizontal: 8, // 라벨 사이 간격
+                  },
+                  markers: {
+                    width: 6,
+                    height: 6,
+                    offsetX: -4,
+                  },
+                  formatter: (legendName) => {
+                    if (legendName == '남자') return '남';
+                    if (legendName == '여자') return '여';
+                    return legendName;
+                  },
+                },
                 colors: colors,
+                tooltip: { enabled: false },
                 dataLabels: {
                   enabled: true,
-                  formatter: function (val, opts) {
+                  formatter: (val, opts) => {
                     const seriesIndex = opts.seriesIndex;
                     const maxValue = maxValues[seriesIndex].value;
-                    return val === maxValue ? val : '';
+                    return val === maxValue ? addCommasToNumber(val) : ''; // 최댓값만 데이터 라벨 표시
                   },
-                  offsetY: -5,
-                  style: { colors: ['black'] },
+                  offsetX: -15,
+                  offsetY: -10,
+                  style: {
+                    colors: ['black'],
+                    fontFamily: 'SUIT',
+                    fontSize: '12px',
+                    fontWeight: 500,
+                  },
                   background: { enabled: false },
                 },
                 stroke: {
@@ -81,12 +105,13 @@ const DailyAmounts = ({ date, dailyAmounts }: DailyAmountProps) => {
                   labels: {
                     show: true,
                     style: {
-                      fontSize: '14px',
+                      fontSize: '9px',
                       fontFamily: 'SUIT',
                       fontWeight: 500,
-                      colors: chartLabels.map((_, i) => (i % 15 === 0 ? '#9F9F9F' : 'transparent')),
+                      colors: '#9F9F9F',
                     },
-                    formatter: (_, i) => (i ? chartLabels[i] : ''),
+                    // i는 1부터 시작
+                    formatter: (_, i) => (i && (i == 1 || i % 15 == 0) ? chartLabels[i - 1] : ''),
                   },
                 },
                 yaxis: {
@@ -94,9 +119,10 @@ const DailyAmounts = ({ date, dailyAmounts }: DailyAmountProps) => {
                   min: 0,
                   max: overallMaxValue,
                   labels: {
-                    formatter: yAxisLabelFormatter,
+                    formatter: (val: number) =>
+                      val === 0 ? '0' : val === overallMaxValue ? '최대값' : '',
                     style: {
-                      fontSize: '14px',
+                      fontSize: '12px',
                       fontFamily: 'SUIT',
                       fontWeight: 500,
                       colors: '#9F9F9F',
@@ -114,14 +140,14 @@ const DailyAmounts = ({ date, dailyAmounts }: DailyAmountProps) => {
                       fillColor: colors[seriesIndex],
                       seriesIndex,
                       dataPointIndex: max.index,
-                      size: 4,
+                      size: 6,
                     })),
                     ...smallMarkers.flatMap((indices, seriesIndex) =>
                       indices.map((index) => ({
                         fillColor: colors[seriesIndex],
                         seriesIndex,
                         dataPointIndex: index,
-                        size: 3,
+                        size: 4,
                       })),
                     ),
                   ],
