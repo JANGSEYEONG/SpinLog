@@ -97,7 +97,7 @@ const SettingPage = () => {
       const data = userData.data;
 
       // 서버에서 받는 예산 데이터는 숫자 형태이므로, 다시 #,##0 형태로 변환하여 세팅 필요
-      const formattedValue = formatAmountNumber(data.budget.toString() || ''); // data.budget이 서버에서 null값으로 오는 경우 처리
+      const formattedValue = formatAmountNumber(data.budget?.toString() || ''); // data.budget이 서버에서 null값으로 오는 경우 처리
 
       methods.reset({
         budget: formattedValue,
