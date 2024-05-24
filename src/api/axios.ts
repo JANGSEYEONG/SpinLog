@@ -4,7 +4,6 @@ const axiosInstance = axios.create({
   baseURL: 'https://www.api-spinlog.shop/api',
   headers: {
     'Content-Type': 'application/json',
-    TemporaryAuth: 'OurAuthValue', // 임시 헤더 -> 로컬 요청 처리
   },
   withCredentials: true,
 });
