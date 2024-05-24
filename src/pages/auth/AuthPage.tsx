@@ -19,6 +19,8 @@ const AuthPage = () => {
             console.log('Storage access granted.');
           }
           // 권한이 부여되거나 이미 권한이 있는 경우 메인 페이지로 리디렉트
+          alert('Storage access granted1.');
+          console.log('Storage access 원래 부여');
           useAuthStore.getState().setLoginState();
           navigate('/');
         } catch (error) {
