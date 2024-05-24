@@ -103,8 +103,6 @@ const MainPage = () => {
     refetchOnWindowFocus: false, // 윈도우 포커스 시, 자동 새로고침 방지
   });
 
-  if (mainDataError) return <div>An error occurred</div>;
-
   return (
     <>
       <NavigationLayout {...monthNav}>
@@ -112,6 +110,8 @@ const MainPage = () => {
           <BudgetContainer isloading={isLoadingMainData.toString()}>
             {isLoadingMainData ? (
               <Spinner />
+            ) : mainDataError ? (
+              <div>An error occurred</div>
             ) : !mainData.data.budget ? (
               <div>예산 데이터 없음</div>
             ) : (
@@ -121,6 +121,8 @@ const MainPage = () => {
           <CalendarWrapper>
             {isLoadingMainData ? (
               <Spinner />
+            ) : mainDataError ? (
+              <div>An error occurred</div>
             ) : !mainData.data.monthSpendList ? (
               <div>소비 데이터 없음</div>
             ) : (
@@ -128,10 +130,10 @@ const MainPage = () => {
             )}
           </CalendarWrapper>
           <DayListContainer>
-            {subDataError ? (
-              <div>Error..</div>
-            ) : isLoadingSubData ? (
+            {isLoadingSubData ? (
               <Spinner />
+            ) : subDataError ? (
+              <div>An error occurred</div>
             ) : !subData.data.daySpendList ? (
               <div>리스트 데이터 없음</div>
             ) : (
