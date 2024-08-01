@@ -43,7 +43,7 @@
 ![Badge](https://img.shields.io/badge/Zustand-F56D2C?style=flat&logoColor=white) 
 
 **서버 상태 관리**
-![Badge](https://img.shields.io/badge/React_Query-FF4154?style=flat&logo=reactquery&logoColor=white) + 
+![Badge](https://img.shields.io/badge/TanStack_Query-FF4154?style=flat&logo=reactquery&logoColor=white) + 
 ![Badge](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
 
 
