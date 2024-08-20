@@ -8,7 +8,6 @@ type NavLayoutProps = {
   children: React.ReactNode;
   isValid: boolean;
   isEditMode: boolean;
-  isDemoMode: boolean;
   handleUpdate: () => void;
   handleDelete: () => void;
   handleMovePrevPage: () => void;
@@ -19,7 +18,6 @@ const NavigationLayout = ({
   children,
   isValid,
   isEditMode,
-  isDemoMode,
   handleUpdate,
   handleDelete,
   handleMovePrevPage,
@@ -27,21 +25,14 @@ const NavigationLayout = ({
 }: NavLayoutProps) => {
   return (
     <>
-      <MetaThemeColor color="#F4F4F4" />
+      <MetaThemeColor />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar
             leftContent={
               !isEditMode && <TopNavigation.TopBar.PrevButton onClick={handleMovePrevPage} />
             }
-            centerContent={
-              <TopNavigation.TopBar.CenterTitle>
-                작성완료 내역
-                {isDemoMode && (
-                  <span style={{ fontSize: '12px', color: '#47cfb0' }}> (체험중)</span>
-                )}
-              </TopNavigation.TopBar.CenterTitle>
-            }
+            centerContent={<TopNavigation.TopBar.Title title="작성완료 내역" />}
             rightContent={
               <Toolbar>
                 {isEditMode ? (
@@ -72,11 +63,11 @@ const Toolbar = styled.div`
 const toolbarStyle = css`
   width: 24px;
   height: 24px;
-  color: #bcbcbc;
+  color: ${(props) => props.theme.colors.gray2};
   cursor: pointer;
 
   &:hover {
-    color: #47cfb0;
+    color: ${(props) => props.theme.colors.lightGreen};
   }
 `;
 
@@ -89,7 +80,7 @@ const DeleteButton = styled(TopNavigation.TopBar.DeleteButton)`
 `;
 
 const SaveButton = styled.button`
-  color: #47cfb0;
+  color: ${(props) => props.theme.colors.lightGreen};
   font-size: 16px;
   font-weight: 700;
   &:hover {
@@ -97,7 +88,7 @@ const SaveButton = styled.button`
   }
 
   &:disabled {
-    color: #ccc;
+    color: ${(props) => props.theme.colors.gray};
     cursor: not-allowed;
     &:hover {
       filter: none;

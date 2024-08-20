@@ -28,7 +28,7 @@ export const flexColumnBetween = css`
 `;
 
 export const mainSection = css`
-  background-color: ${(props) => props.theme.colors.contentBox};
+  background-color: ${(props) => props.theme.backgroundColor.contentBox};
   border-radius: 6px;
   box-shadow: ${(props) => props.theme.shadows.under};
   display: flex;
@@ -61,7 +61,7 @@ export const addPageContainer = css`
 export const addPageSubject = css`
   font-size: 20px;
   font-weight: 700;
-  color: ${(props) => props.theme.colors.font};
+  color: ${(props) => props.theme.colors.lightBlack};
   height: 40px;
 `;
 

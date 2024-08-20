@@ -267,7 +267,7 @@ const ContentContainer = styled.div`
 
 const Title = styled.div`
   width: 100%;
-  color: #333331;
+  color: ${(props) => props.theme.colors.lightBlack};
   font-size: 20px;
   font-weight: 700;
 `;
@@ -290,24 +290,24 @@ const AICommentButton = styled.div`
   ${flexCenter}
   width: 50px;
   height: 50px;
-  background-color: #dddddd;
+  background-color: ${(props) => props.theme.colors.lightGray};
   flex-shrink: 0;
   border-radius: 6px;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   transition:
     background-color,
     color 0.2s ease;
   cursor: not-allowed;
 
   &.able:hover {
-    background-color: #47cfb0;
-    color: #ffffff;
+    background-color: ${(props) => props.theme.colors.lightGreen};
+    color: ${(props) => props.theme.colors.white};
     cursor: pointer;
   }
 `;
 
 const SpendDateInput = styled.input`
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   font-size: 14px;
   font-weight: 400;
   border-radius: 6px;

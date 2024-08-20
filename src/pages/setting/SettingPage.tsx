@@ -63,7 +63,7 @@ const SettingPage = () => {
   }, [userData, methods, isLoadingUserData]);
 
   return (
-    <NavigationLayout isDemoMode={isDemoMode}>
+    <NavigationLayout>
       <SettingContainer>
         <Form onSubmit={methods.handleSubmit(handleSaveSubmit)}>
           <Title>나의 예산</Title>
@@ -202,7 +202,7 @@ const BudgetWrapper = styled.div`
     height: 50px;
     font-size: 16px;
     font-weight: 600;
-    color: #9f9f9f;
+    color: ${(props) => props.theme.colors.darkLightGray};
   }
 `;
 
@@ -216,7 +216,7 @@ const ProfileContainer = styled.div`
 `;
 
 const Title = styled.div`
-  color: #333331;
+  color: ${(props) => props.theme.colors.lightBlack};
   font-size: 20px;
   font-weight: 700;
 
@@ -229,8 +229,8 @@ const Button = styled.button`
   height: 60px;
   margin-bottom: 15px;
 
-  color: #9f9f9f;
-  background-color: #ffffff;
+  color: ${(props) => props.theme.colors.darkLightGray};
+  background-color: ${(props) => props.theme.colors.white};
   font-size: 16px;
   font-weight: 700;
 
@@ -238,8 +238,8 @@ const Button = styled.button`
   box-shadow: ${(props) => props.theme.shadows.around};
 
   &:disabled {
-    color: #fff;
-    background-color: #dcdada;
+    color: ${(props) => props.theme.colors.white};
+    background-color: ${(props) => props.theme.colors.lightGray};
     cursor: not-allowed;
     &:hover {
       filter: none;
@@ -253,8 +253,8 @@ const BudgetInput = styled.input.attrs({ type: 'text', inputMode: 'numeric' })`
 
   text-align: right;
 
-  background-color: #767676;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.darkLightGray2};
+  color: ${(props) => props.theme.colors.white};
   border-radius: 6px;
 
   font-size: 24px;
@@ -264,7 +264,7 @@ const BudgetInput = styled.input.attrs({ type: 'text', inputMode: 'numeric' })`
 
   &::placeholder {
     font-weight: 500;
-    color: #c6c6c6;
+    color: ${(props) => props.theme.colors.gray};
   }
 `;
 
@@ -273,7 +273,7 @@ const ProfileDiv = styled.div`
   width: 100%;
 
   font-size: 14px;
-  color: #575755;
+  color: ${(props) => props.theme.colors.darkLightGray2};
   font-weight: 400;
 `;
 
@@ -282,8 +282,8 @@ const Label = styled.label`
   width: 50px;
   height: 30px;
 
-  color: #9f9f9f;
-  background-color: #e3e3e3;
+  color: ${(props) => props.theme.colors.darkLightGray};
+  background-color: ${(props) => props.theme.colors.lightGray2};
 
   border-radius: 6px;
   cursor: pointer;
@@ -299,8 +299,8 @@ const HiddenRadio = styled.input.attrs({ type: 'radio' })`
   opacity: 0;
 
   &:checked + label {
-    color: #ffffff;
-    background-color: #47cfb0;
+    color: ${(props) => props.theme.colors.white};
+    background-color: ${(props) => props.theme.colors.lightGreen};
   }
 `;
 
@@ -311,7 +311,7 @@ const MBTIContainer = styled.div`
 
 const MBTIWrapper = styled.div`
   ${flexColumnCenter}
-  border: 1px solid #E3E3E3;
+  border: 1px solid ${(props) => props.theme.colors.lightGray2};
   border-radius: 6px;
   padding: 5px;
   gap: 6px;
@@ -319,7 +319,7 @@ const MBTIWrapper = styled.div`
 
 const ErrorMessage = styled.div`
   margin-top: 10px;
-  color: red;
+  color: ${(props) => props.theme.colors.red};
   font-size: 14px;
   margin-bottom: 30px;
 `;
@@ -329,12 +329,12 @@ const InquiryButton = styled.div`
   width: 100%;
   height: 44px;
 
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.white};
 
   padding: 16px;
 
   font-size: 14px;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   font-weight: 300;
 
   border-radius: 6px;
@@ -344,13 +344,13 @@ const InquiryButton = styled.div`
 const InquiryArrow = styled(PrevBtn)`
   width: 10px;
   height: 10px;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   stroke-width: 4;
   transform: rotate(180deg);
 
   &:hover {
-    color: #4b4949;
-    stroke-width: 3;
+    color: ${(props) => props.theme.colors.darkGray};
+    stroke-width: 5;
     transform: rotate(180deg);
   }
 `;

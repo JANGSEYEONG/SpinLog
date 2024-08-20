@@ -176,7 +176,7 @@ const BarDetail = styled.div<{ $percent: string }>`
     left: 0;
     height: 100%;
 
-    background-color: ${(props) => props.theme.colors.main};
+    background-color: ${(props) => props.theme.colors.lightGreen};
     border-radius: 0 6px 6px;
 
     width: 0%; // 초기 너비 설정
@@ -225,6 +225,6 @@ const InfoItem = styled.div`
   }
 
   & span.minus {
-    color: ${(props) => props.theme.colors.minus};
+    color: ${(props) => props.theme.colors.lightRed};
   }
 `;

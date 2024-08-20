@@ -56,7 +56,7 @@ const Container = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   border-radius: 6px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.white};
   padding: 5px;
   justify-content: space-between;
   width: 100%;
@@ -68,8 +68,10 @@ const CategoryButton = styled.button<{ $isSelected: boolean }>`
   min-width: 80px;
   height: 30px;
   border-radius: 6px;
-  background-color: ${(props) => (props.$isSelected ? '#47cfb0' : '#E3E3E3')};
-  color: ${(props) => (props.$isSelected ? '#ffffff' : '#9F9F9F')};
+  background-color: ${(props) =>
+    props.$isSelected ? props.theme.colors.lightGreen : props.theme.colors.lightGray2};
+  color: ${(props) =>
+    props.$isSelected ? props.theme.colors.white : props.theme.colors.darkLightGray};
   width: 100%;
 `;
 

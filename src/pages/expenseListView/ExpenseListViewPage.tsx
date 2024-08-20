@@ -113,7 +113,7 @@ const ExpenseListViewPage = () => {
     : [];
 
   return (
-    <NavigationLayout isDemoMode={isDemoMode}>
+    <NavigationLayout>
       <ExpenseListViewContainer>
         <SearchCondition
           inputRef={inputRef}
@@ -187,7 +187,7 @@ const ExpenseListHeader = styled.div`
   flex-shrink: 0;
 
   & span.title {
-    color: ${(props) => props.theme.font};
+    color: ${(props) => props.theme.colors.lightBlack};
     font-size: 20px;
     font-weight: 700;
   }
@@ -195,7 +195,7 @@ const ExpenseListHeader = styled.div`
   & span.sort {
     ${flexCenter}
     gap: 3px;
-    color: #767676;
+    color: ${(props) => props.theme.colors.darkLightGray2};
     font-size: 14px;
     font-weight: 600;
 
@@ -223,7 +223,7 @@ const ExpenseBox = styled.div`
 const arrowStyle = css`
   width: 10px;
   height: 10px;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray2};
   stroke-width: 4;
 `;
 
@@ -232,7 +232,7 @@ const Arrow = styled(PrevBtn)<{ deg: string }>`
   transform: rotate(${(props) => props.deg});
 
   &:hover {
-    color: #9f9f9f;
+    color: ${(props) => props.theme.colors.darkLightGray2};
     transform: rotate(${(props) => props.deg});
     stroke-width: 4;
   }
@@ -242,5 +242,5 @@ const EmptyMessage = styled.div`
   ${flexCenter}
   height: 100%;
   font-size: 16px;
-  color: #767676;
+  color: ${(props) => props.theme.colors.darkLightGray2};
 `;

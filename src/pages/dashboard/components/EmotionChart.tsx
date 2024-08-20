@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
 
 import ReactApexChart from 'react-apexcharts';
@@ -20,6 +20,7 @@ type EmotionChartProps = {
 const EmotionChart = ({ data }: EmotionChartProps) => {
   // #20240522.syjang, 상위 3개 감정 + 나머지는 "기타" 로 표시
   const sortedData = cloneDeep(data);
+  const theme = useTheme();
   sortedData.sort((a, b) => b.amount - a.amount);
   const chartData = sortedData.splice(0, 3).map((data) => ({
     ...data,
@@ -29,7 +30,7 @@ const EmotionChart = ({ data }: EmotionChartProps) => {
   chartData.push({
     emotion: '기타',
     amount: sortedData.reduce((acc, val) => acc + val.amount, 0),
-    color: '#E3E3E3',
+    color: theme.colors.lightGray2,
   });
 
   const chartLabels = chartData.map((data) => data.emotion);
@@ -55,14 +56,14 @@ const EmotionChart = ({ data }: EmotionChartProps) => {
                 fontSize: '13px',
                 fontFamily: 'SUIT',
                 fontWeight: 400,
-                color: '#9F9F9F',
+                color: theme.colors.darkLightGary,
                 offsetY: -5,
               },
               value: {
                 fontSize: '17px',
                 fontFamily: 'SUIT',
                 fontWeight: 600,
-                color: '#575755',
+                color: theme.colors.darkGray,
                 offsetY: 0,
                 formatter: (value) => {
                   const percent = ((parseInt(value) / total) * 100).toFixed(1); // 퍼센트 계산
@@ -147,9 +148,9 @@ const CenterLabel = styled.div`
   position: absolute;
   width: 80px;
   height: 80px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: ${(props) => props.theme.shadows.around};
   font-size: 16px;
   font-weight: bold;
   z-index: 0;

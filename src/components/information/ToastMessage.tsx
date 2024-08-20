@@ -56,9 +56,9 @@ const Message = styled.div<{ $show: boolean }>`
   min-width: 230px;
   height: 52px;
   padding: 0 10px;
-  background: #c3ebe2;
+  background: ${(props) => props.theme.colors.jade};
   border-radius: 40px;
-  color: #575755;
+  color: ${(props) => props.theme.colors.darkGray};
 
   animation: ${(props) => (props.$show ? fadeInUp : fadeOut)} 0.5s linear;
   transition: opacity 0.5s linear;

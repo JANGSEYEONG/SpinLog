@@ -5,17 +5,33 @@ import 'styled-components';
 declare module 'styled-components' {
   export type DefaultTheme = {
     bgImage: string;
-    colors: {
-      main: string;
-      font: string;
-      background: string;
-      mainBackground: string;
-      footerArea: string;
-      button: string;
-      navFont: string;
-      navBackground: string;
+    backgroundColor: {
+      layout: string;
+      navigation: string;
       contentBox: string;
-      minus: string;
+      overlay: string;
+    };
+    navigation: {
+      icon: string;
+      title: string;
+    };
+    colors: {
+      jade: string;
+      lightGreen: string;
+      white: string;
+      black: string;
+      lightBlack: string;
+      transparentBlack: string;
+      lightRed: string;
+      red: string;
+      orange: string;
+      lightGray: string;
+      lightGray2: string;
+      gray: string;
+      gray2: string;
+      darkLightGray: string;
+      darkLightGray2: string;
+      darkGray: string;
     };
     shadows: {
       on: string;

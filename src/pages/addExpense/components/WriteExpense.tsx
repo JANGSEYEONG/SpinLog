@@ -128,7 +128,7 @@ const HiddenRadio = styled.input.attrs({ type: 'radio' })`
   cursor: pointer;
 `;
 const Label = styled.label`
-  color: #333331;
+  color: ${(props) => props.theme.colors.lightBlack};
   font-size: 14px;
   cursor: pointer;
   font-weight: 300;
@@ -148,7 +148,7 @@ const CustomCheckboxContainer = styled.label`
 const StyledCheckmark = styled.span`
   height: 25px;
   width: 25px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 6px;
   margin-left: 10px;
   position: relative;
@@ -156,20 +156,20 @@ const StyledCheckmark = styled.span`
   box-shadow: ${(props) => props.theme.shadows.around};
 
   ${CustomCheckboxContainer}:hover & {
-    background-color: #eee;
+    filter: brightness(97%);
   }
 
   ${HiddenRadio}:checked + & {
-    background-color: #767676;
+    background-color: ${(props) => props.theme.colors.darkLightGray2};
   }
 
   &:after {
     ${borderCheck}
-    border-color: #bbb; // 회색 체크 마크
+    border-color:${(props) => props.theme.colors.gray2}; // 회색 체크 마크
   }
 
   ${HiddenRadio}:checked + &::after {
-    border-color: white; // 선택된 상태에서는 흰색 체크 마크
+    border-color: ${(props) => props.theme.colors.white}; // 선택된 상태에서는 흰색 체크 마크
   }
 `;
 
@@ -189,7 +189,7 @@ const ItemText = styled.div`
   height: 50px;
   flex-shrink: 0;
 
-  color: #767676;
+  color: ${(props) => props.theme.colors.darkLightGray2};
   font-size: 14px;
   font-weight: 400;
 `;
@@ -199,7 +199,7 @@ const DateContainer = styled.div`
   flex-direction: column;
   width: 100%;
 
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   font-size: 12px;
   font-weight: 300;
   gap: 1px;

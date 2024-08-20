@@ -78,9 +78,9 @@ const TextArea = styled.textarea`
 const DeleteAllButton = styled(CloseBtn)`
   opacity: 0; // 기본적으로 숨김처리
   transition: opacity 0.2s ease-in-out; // 페이드 인/아웃 효과
-  background-color: #bcbcbc;
+  background-color: ${(props) => props.theme.colors.gray2};
   border-radius: 50%;
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.white};
   width: 15px;
   height: 15px;
   padding: 3px;

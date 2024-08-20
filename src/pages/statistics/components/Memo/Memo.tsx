@@ -46,6 +46,7 @@ export default Memo;
 
 const Message = styled.div<{ $index: number }>`
   & > span {
-    color: ${(props) => (props.$index === 0 ? '#47CFB0' : '#FC4873')};
+    color: ${(props) =>
+      props.$index === 0 ? props.theme.colors.lightGreen : props.theme.colors.lightRed};
   }
 `;

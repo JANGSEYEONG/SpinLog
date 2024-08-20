@@ -53,7 +53,7 @@ const EmotionIcon = styled.div<{ $size: string }>`
 `;
 
 const EmotionText = styled.div<{ $size: string }>`
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   font-size: ${(props) => props.$size};
   font-weight: 500;
   white-space: nowrap;
@@ -66,7 +66,7 @@ const SelectMark = styled(CheckIcon)<{ $size: string }>`
 
   width: ${(props) => props.$size};
   height: ${(props) => props.$size};
-  background-color: #333331;
+  background-color: ${(props) => props.theme.colors.lightBlack};
   border-radius: 50%;
 
   padding: 3px;

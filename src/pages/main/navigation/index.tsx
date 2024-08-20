@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +29,8 @@ const NavigationLayout = ({
   nextMonth,
 }: MainNavProps) => {
   const navigate = useNavigate();
-  const mainColor = { color: '#ffffff' };
+  const theme = useTheme();
+  const mainColor = { color: theme.colors.white };
   const monthNavProps = { currentDate, previousMonth, nextMonth, ...mainColor };
 
   const [showBackground, setShowBackground] = useState<boolean>(false);
@@ -42,18 +43,12 @@ const NavigationLayout = ({
   }, []);
   return (
     <>
-      <MetaThemeColor color="#47CFB0" />
+      <MetaThemeColor isBackgroundGreen />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar
             leftContent={<TopNavigation.TopBar.LogoWhiteButton />}
-            centerContent={
-              isDemoMode && (
-                <TopNavigation.TopBar.CenterTitle style={{ color: '#ffffffb5' }}>
-                  체험중
-                </TopNavigation.TopBar.CenterTitle>
-              )
-            }
+            centerContent={isDemoMode && <TopNavigation.TopBar.Title title="" isBackgroundGreen />}
             rightContent={
               <TopNavigation.TopBar.SettingGreenButton
                 style={mainColor}
@@ -72,7 +67,7 @@ const NavigationLayout = ({
       />
       {children}
       <BottomNavigation location={PagePath.Main} />
-      {showBackground && <Background height="36%" color="#47CFB0" />}
+      {showBackground && <Background height="36%" />}
     </>
   );
 };

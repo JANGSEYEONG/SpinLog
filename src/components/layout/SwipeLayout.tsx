@@ -52,16 +52,16 @@ const StyledSwiper = styled(Swiper)`
   }
 
   .swiper-pagination-bullet {
-    background-color: #9f9f9f;
+    background-color: ${(props) => props.theme.colors.darkLightGray};
   }
 
   .swiper-pagination-bullet-active {
-    background-color: #9f9f9f;
+    background-color: ${(props) => props.theme.colors.darkLightGray};
   }
 
   .swiper-button-prev,
   .swiper-button-next {
-    background-color: #dddddd;
+    background-color: ${(props) => props.theme.colors.lightGray};
     width: 30px;
     height: 30px;
     opacity: 0.7;
@@ -72,8 +72,8 @@ const StyledSwiper = styled(Swiper)`
       display: block;
       width: 5px;
       height: 5px;
-      border-top: 2px solid #9f9f9f;
-      border-right: 2px solid #9f9f9f;
+      border-top: 2px solid ${(props) => props.theme.colors.darkLightGray};
+      border-right: 2px solid ${(props) => props.theme.colors.darkLightGray};
       transform: translate(-50%, -50%) rotate(-135deg);
       position: absolute;
       top: 50%;

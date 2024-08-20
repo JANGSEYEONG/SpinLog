@@ -26,7 +26,7 @@ const LayoutContainer = styled.div`
 
   width: 390px;
   height: 844px;
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.backgroundColor.layout};
 
   overflow: hidden;
 

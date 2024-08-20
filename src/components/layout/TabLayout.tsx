@@ -1,7 +1,7 @@
 import useWindowWidthResize from '@hooks/useWindowWidthResize';
 import { flexCenter } from '@styles/CommonStyles';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 export type TabProps<T extends string> = {
   id: T;
@@ -13,21 +13,10 @@ type TabsProps<T extends string> = {
   tabs: TabProps<T>[];
   selectedTab: string;
   onTabSelect: (tabId: TabProps<T>['id']) => void;
-  tabHeaderColor?: string;
-  activeTabHeaderColor?: string;
-  indicatorColor?: string;
-  indicatorRailColor?: string;
 };
 
-const TabLayout = <T extends string>({
-  tabs,
-  selectedTab,
-  onTabSelect,
-  tabHeaderColor = '#9F9F9F',
-  activeTabHeaderColor = '#575755',
-  indicatorColor = '#575755',
-  indicatorRailColor = '#DDDDDD',
-}: TabsProps<T>) => {
+const TabLayout = <T extends string>({ tabs, selectedTab, onTabSelect }: TabsProps<T>) => {
+  const theme = useTheme();
   const tabRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const [indicatorWidth, setIndicatorWidth] = useState<number>(0);
   const [indicatorOffset, setIndicatorOffset] = useState<number>(0);
@@ -60,13 +49,17 @@ const TabLayout = <T extends string>({
             onClick={() => onTabSelect(tab.id)}
             ref={(el) => (tabRefs.current[tab.id] = el)}
             $isActive={selectedTab === tab.id}
-            $activeColor={activeTabHeaderColor}
-            $color={tabHeaderColor}>
+            $activeColor={theme.colors.darkGray}
+            $color={theme.colors.darkLightGray}>
             {tab.label}
           </TabHeader>
         ))}
-        <TabIndicatorRail $color={indicatorRailColor} />
-        <TabIndicator $width={indicatorWidth} $offset={indicatorOffset} $color={indicatorColor} />
+        <TabIndicatorRail $color={theme.colors.lightGray} />
+        <TabIndicator
+          $width={indicatorWidth}
+          $offset={indicatorOffset}
+          $color={theme.colors.darkGray}
+        />
       </TabHeaders>
       <ContentContainer>
         {tabs.map(

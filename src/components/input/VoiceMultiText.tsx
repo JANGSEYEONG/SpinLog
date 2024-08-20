@@ -107,10 +107,11 @@ const VoiceButton = styled.div<{ $listening: boolean }>`
   flex-shrink: 0;
   border-radius: 6px;
   border-radius: 6px;
-  background-color: ${(props) => (props.$listening ? '#47CFB0' : '#dddddd')};
+  background-color: ${(props) =>
+    props.$listening ? props.theme.colors.lightGreen : props.theme.colors.lightGray};
   box-shadow: ${(props) => props.theme.shadows.around};
   &:hover {
-    background-color: ${(props) => (props.$listening ? '#3bb095' : '#d1d1d1')};
+    filter: brightness(102%);
   }
 `;
 
@@ -125,7 +126,7 @@ const Bar = styled.div<{ $delay: number }>`
   width: 5px;
   height: 9px;
   border-radius: 100px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.white};
   animation: ${pulse} 1s infinite ease-in-out;
   animation-delay: ${(props) => props.$delay}s;
 `;

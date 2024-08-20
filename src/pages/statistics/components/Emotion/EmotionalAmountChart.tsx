@@ -134,7 +134,7 @@ const Yaxis = styled.div`
   width: 3px;
   height: 100%;
   z-index: 0;
-  background-color: #dddddd;
+  background-color: ${(props) => props.theme.colors.lightGray};
   left: 50%;
   transform: translateX(-50%);
 `;
@@ -156,7 +156,7 @@ const LeftBarContainer = styled.div`
 const LeftBar = styled.div<{ $value: number; $isBold: boolean; $color: string }>`
   width: ${(props) => `${props.$value}%`};
   height: ${(props) => `${props.$isBold ? '15px' : '10px'}`};
-  background-color: ${(props) => `${props.$isBold ? props.$color : '#dddddd'}`};
+  background-color: ${(props) => `${props.$isBold ? props.$color : props.theme.colors.lightGray}`};
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   padding-right: ${(props) => props.$isBold && '5px'};
@@ -173,7 +173,7 @@ const RightBarContainer = styled.div`
 const RightBar = styled.div<{ $value: number; $isBold: boolean; $color: string }>`
   width: ${(props) => `${props.$value}%`};
   height: ${(props) => `${props.$isBold ? '15px' : '10px'}`};
-  background-color: ${(props) => `${props.$isBold ? props.$color : '#dddddd'}`};
+  background-color: ${(props) => `${props.$isBold ? props.$color : props.theme.colors.lightGray}`};
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   padding-left: ${(props) => props.$isBold && '5px'};
@@ -195,7 +195,7 @@ const EmotionText = styled.div`
   width: 90%;
   font-family: 'SUIT';
   font-size: 12px;
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.white};
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -214,19 +214,19 @@ const LabelContainer = styled.div<{ $isLeft: boolean }>`
 
 const Label = styled.div`
   font-weight: 600;
-  color: #575755;
+  color: ${(props) => props.theme.colors.darkGray};
 `;
 
 const Rank = styled.div`
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
 `;
 
 const Message = styled.div`
   & > span.green {
-    color: #47cfb0;
+    color: ${(props) => props.theme.colors.lightGreen};
   }
 
   & > span.red {
-    color: #fc4873;
+    color: ${(props) => props.theme.colors.lightRed};
   }
 `;

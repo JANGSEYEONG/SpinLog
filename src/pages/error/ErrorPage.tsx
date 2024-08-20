@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
 import ErrorBird from '@assets/images/bird/errorBird.svg?react';
 
@@ -14,6 +14,8 @@ type ErrorPageProps = {
 
 const ErrorPage = ({ isRootError = false }: ErrorPageProps) => {
   const navigator = useNavigate();
+  const theme = useTheme();
+
   const { setLogoutState } = useAuthStore((state) => {
     return { setLogoutState: state.setLogoutState };
   });
@@ -27,10 +29,10 @@ const ErrorPage = ({ isRootError = false }: ErrorPageProps) => {
   };
   return (
     <Container>
-      <MetaThemeColor color="#F4F4F4" />
+      <MetaThemeColor />
       <ErrorBird></ErrorBird>
       {isRootError ? (
-        <Text style={{ color: '#F4F4F4' }}>예기치 않은 에러가 발생했어요</Text>
+        <Text style={{ color: theme.backgroundColor.layout }}>예기치 않은 에러가 발생했어요</Text>
       ) : (
         <Text>원하는 페이지를 찾을 수 없어요</Text>
       )}
@@ -54,7 +56,7 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-  color: #767676;
+  color: ${(props) => props.theme.colors.darkLightGray2};
   font-size: 16px;
   font-weight: 700;
 `;
@@ -66,8 +68,8 @@ const Button = styled.div`
   width: 358px;
   height: 60px;
   border-radius: 6px;
-  background-color: #47cfb0;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.lightGreen};
+  color: ${(props) => props.theme.colors.white};
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;

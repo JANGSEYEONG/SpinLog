@@ -130,7 +130,7 @@ const Subject = styled.h1`
 
   & span.required {
     margin-left: 5px;
-    color: #f3905b;
+    color: ${(props) => props.theme.colors.orange};
     font-size: 12px;
     font-weight: 400;
   }
@@ -156,7 +156,7 @@ const EmotionContainer = styled.div`
 
 const EmotionBorder = css`
   border-radius: 50%;
-  border: 1px dashed #bcbcbc;
+  border: 1px dashed ${(props) => props.theme.colors.gray2};
 `;
 
 const Emotion = styled.div`
@@ -167,13 +167,13 @@ const Emotion = styled.div`
   width: 120px;
   height: 120px;
 
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.white};
 
   & span.select {
     margin-top: 10px;
     font-size: 12px;
     font-weight: 300;
-    color: #9f9f9f;
+    color: ${(props) => props.theme.colors.darkLightGray};
   }
 `;
 
@@ -181,10 +181,10 @@ const buttonStyle = css`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #dddddd;
+  background-color: ${(props) => props.theme.colors.lightGray};
   transition: background-color 0.2s ease-out;
   &:hover {
-    background-color: #c9c5c5;
+    filter: brightness(105%);
   }
 `;
 
@@ -206,7 +206,7 @@ const EmotionAddBtn = styled.div`
   &::after {
     content: '';
     position: absolute;
-    background-color: #9f9f9f; // + 기호의 색상
+    background-color: ${(props) => props.theme.colors.darkLightGray}; // + 기호의 색상
     border-radius: 10px;
 
     // 중앙 정렬
@@ -229,7 +229,7 @@ const EmotionAddBtn = styled.div`
 const EmotionText = styled.div`
   ${flexCenter}
   position: absolute;
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.white};
   font-size: 12px;
   font-weight: 700;
   bottom: 10px;

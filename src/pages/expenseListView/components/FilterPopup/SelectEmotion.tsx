@@ -108,14 +108,14 @@ const Title = styled.div`
 
   & > span.select {
     font-size: 14px;
-    color: #767676;
+    color: ${(props) => props.theme.colors.darkLightGray2};
   }
 `;
 
 const arrowStyle = css`
   width: 10px;
   height: 10px;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   stroke-width: 4;
 `;
 
@@ -124,7 +124,7 @@ const Arrow = styled(PrevBtn)<{ deg: string }>`
   transform: rotate(${(props) => props.deg});
   margin-left: 7px;
   &:hover {
-    color: #9f9f9f;
+    color: ${(props) => props.theme.colors.darkLightGray};
     transform: rotate(${(props) => props.deg});
     stroke-width: 4;
   }

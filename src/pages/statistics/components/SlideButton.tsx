@@ -28,7 +28,7 @@ const Slider = styled.label`
   position: relative;
   width: 76px;
   height: 38px;
-  background-color: #47cfb0;
+  background-color: ${(props) => props.theme.colors.lightGreen};
   border-radius: 26.98px;
   cursor: pointer;
   display: flex;
@@ -48,7 +48,7 @@ const Knob = styled.div<{ $checked: boolean }>`
   left: 3.42px;
   width: 30px;
   height: 30px;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 50%;
   transition: transform 0.2s;
   transform: ${(props) => (props.$checked ? 'translateX(40px)' : 'translateX(0)')};
@@ -67,7 +67,7 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
 const UncheckedLabel = styled.div<{ $checked: boolean }>`
   position: absolute;
   z-index: 100;
-  color: ${(props) => (props.$checked ? 'white' : 'black')};
+  color: ${(props) => (props.$checked ? props.theme.colors.white : props.theme.colors.lightBlack)};
   left: 7px;
   top: 14px;
   font-size: 12px;
@@ -77,7 +77,7 @@ const UncheckedLabel = styled.div<{ $checked: boolean }>`
 const CheckedLabel = styled.div<{ $checked: boolean }>`
   position: absolute;
   z-index: 100;
-  color: ${(props) => (props.$checked ? 'black' : 'white')};
+  color: ${(props) => (props.$checked ? props.theme.colors.lightBlack : props.theme.colors.white)};
   right: 6px;
   top: 14px;
   font-size: 12px;

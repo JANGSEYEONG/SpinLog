@@ -66,7 +66,7 @@ const Divider = styled.div`
 const Total = styled.div`
   ${flexBetween}
   width: 100%;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   font-size: 14px;
   font-weight: 400;
   padding: 0 10px 0 10px;
@@ -94,10 +94,10 @@ const EmotionInfo = styled.div`
   ${flexCenter}
   font-size: 14px;
   font-weight: 300;
-  color: #333331;
+  color: ${(props) => props.theme.colors.lightBlack};
 
   & > span.percent {
-    color: #9f9f9f;
+    color: ${(props) => props.theme.colors.darkLightGray};
     margin-left: 8px;
   }
 `;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import Chart from 'react-apexcharts';
 
 import SwipeLayout from '@components/layout/SwipeLayout';
@@ -20,7 +20,8 @@ type DailyAmountProps = {
 const getMaxValue = (data: number[]) => Math.max(...data);
 
 const DailyAmounts = ({ date, dailyAmounts, registerType }: DailyAmountProps) => {
-  const colors = ['#47CFB0', '#FC4873'];
+  const theme = useTheme();
+  const colors = [theme.colors.lightGreen, theme.colors.lightRed];
 
   return (
     <SwipeLayout>
@@ -122,7 +123,7 @@ const DailyAmounts = ({ date, dailyAmounts, registerType }: DailyAmountProps) =>
                       fontSize: '9px',
                       fontFamily: 'SUIT',
                       fontWeight: 500,
-                      colors: '#9F9F9F',
+                      colors: theme.colors.darkLightGray,
                     },
                     // i는 1부터 시작
                     formatter: (_, i) => (i && (i == 1 || i % 5 == 0) ? chartLabels[i - 1] : ''),
@@ -139,7 +140,7 @@ const DailyAmounts = ({ date, dailyAmounts, registerType }: DailyAmountProps) =>
                       fontSize: '12px',
                       fontFamily: 'SUIT',
                       fontWeight: 500,
-                      colors: '#9F9F9F',
+                      colors: theme.colors.darkLightGray,
                     },
                   },
                 },
@@ -179,10 +180,10 @@ export default DailyAmounts;
 
 const Message = styled.div`
   & > span.green {
-    color: #47cfb0;
+    color: ${(props) => props.theme.colors.lightGreen};
   }
 
   & > span.red {
-    color: #fc4873;
+    color: ${(props) => props.theme.colors.lightRed};
   }
 `;

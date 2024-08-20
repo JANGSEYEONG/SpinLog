@@ -137,7 +137,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 20px 20px 0 0;
   padding: 20px;
   transition: height 0.3s ease-out;
@@ -154,7 +154,7 @@ const Header = styled.header`
   & span.title {
     font-size: 20px;
     font-weight: 700;
-    color: ${(props) => props.theme.colors.font};
+    color: ${(props) => props.theme.colors.lightBlack};
   }
 
   margin-bottom: 30px;
@@ -178,7 +178,7 @@ const Content = styled.section`
   & span.sub-title {
     font-size: 16px;
     font-weight: 700;
-    color: ${(props) => props.theme.colors.font};
+    color: ${(props) => props.theme.colors.lightBlack};
   }
   & > div {
     flex-shrink: 0;
@@ -192,9 +192,9 @@ const ApplyButton = styled.button`
   margin-bottom: 10px;
   flex-shrink: 0;
   border-radius: 6px;
-  background-color: ${(props) => props.theme.colors.main};
+  background-color: ${(props) => props.theme.colors.lightGreen};
 
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.white};
   font-size: 20px;
   font-weight: 700;
 `;
@@ -207,6 +207,6 @@ const Draggable = styled.div`
   width: 40px;
   height: 4px;
   border-radius: 6px;
-  background-color: #bcbcbc;
+  background-color: ${(props) => props.theme.colors.gray2};
   margin-bottom: 60px;
 `;

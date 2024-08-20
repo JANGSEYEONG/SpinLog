@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 import ReactApexChart from 'react-apexcharts';
 import type { DailyAmountType } from '@service/dashboard/types';
@@ -21,7 +21,7 @@ type DailyChartProps = {
 const DailyChart = ({ date, data }: DailyChartProps) => {
   // 선택 월의 1일~말일 Date객체 구하기
   const dateInMonthArray: Date[] = getTargetMonthDateObjArray(date);
-
+  const theme = useTheme();
   // 라벨에 담기는 것 : 0~말일의 "일" 숫자 배열
   // 시리즈 데이터에 담기는 것 : 각각에 해당하는 금액 배열
   const chartLabels = dateInMonthArray.map((date: Date) => getDate(date));
@@ -61,13 +61,13 @@ const DailyChart = ({ date, data }: DailyChartProps) => {
             show: true,
           },
         },
-        borderColor: '#DDDDDD', // 옅은 회색
+        borderColor: theme.colors.lightGray, // 옅은 회색
         strokeDashArray: 3, // 점선 스타일
       },
       stroke: {
         width: 1.6,
       },
-      colors: ['#BCBCBC'],
+      colors: [theme.colors.gray2],
       xaxis: {
         categories: chartLabels,
         axisTicks: {
@@ -82,7 +82,7 @@ const DailyChart = ({ date, data }: DailyChartProps) => {
             fontFamily: 'SUIT',
             fontWeight: 500,
             colors: chartLabels.map((_, i) =>
-              i % 5 === 0 || i === lastDayIndex ? '#9F9F9F' : 'transparent',
+              i % 5 === 0 || i === lastDayIndex ? theme.colors.darkLightGray : 'transparent',
             ),
           },
           formatter: (value: string) => {
@@ -103,21 +103,21 @@ const DailyChart = ({ date, data }: DailyChartProps) => {
           },
           style: {
             fontSize: '12px', // 필요에 따라 폰트 크기 조정
-            colors: ['#9F9F9F', '#9F9F9F'],
+            colors: [theme.colors.darkLightGray, theme.colors.darkLightGray],
           },
         },
       },
       markers: {
         // size: 1, // 우선 없애기로 협의 (with 기획자)
-        colors: ['#BCBCBC'],
+        colors: [theme.colors.gray2],
         discrete: chartLabels
           .map((_, i) =>
             i % 5 === 0 || i === lastDayIndex // 5일단위와, 말일에 짙은색 마커 표시
               ? {
                   seriesIndex: 0,
                   dataPointIndex: i,
-                  fillColor: '#575755',
-                  strokeColor: '#575755',
+                  fillColor: theme.colors.darkGray,
+                  strokeColor: theme.colors.darkGray,
                   size: 1, // 1 사이즈 마커로 표시하기로 협의 (with 기획자)
                 }
               : {},

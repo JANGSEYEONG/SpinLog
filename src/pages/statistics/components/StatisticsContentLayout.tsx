@@ -23,7 +23,7 @@ const StatisticsContentLayout = ({ message, children, isEmpty = false }: Content
 export default StatisticsContentLayout;
 
 const ContentContainer = styled.div`
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.white};
   padding: 8px;
   height: 100%;
   border-radius: 6px;
@@ -31,7 +31,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   gap: 5px;
   margin: 0 20px;
-  box-shadow: 0 5px 14.56px 0 #5252521a;
+  box-shadow: ${(props) => props.theme.shadows.around};
 `;
 
 const Message = styled.div`

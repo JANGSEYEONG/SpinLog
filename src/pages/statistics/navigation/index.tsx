@@ -15,13 +15,11 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
 
   return (
     <>
-      <MetaThemeColor color="#F4F4F4" />
+      <MetaThemeColor />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar
-            centerContent={
-              <TopNavigation.TopBar.CenterTitle>둘러보기</TopNavigation.TopBar.CenterTitle>
-            }
+            centerContent={<TopNavigation.TopBar.Title title="둘러보기" />}
             rightContent={
               <TopNavigation.TopBar.SettingGrayButton
                 onClick={() => {

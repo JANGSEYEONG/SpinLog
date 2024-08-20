@@ -27,8 +27,8 @@ const spin = keyframes`
 `;
 
 const Circle = styled.div<{ $size: string }>`
-  border: 8px solid rgba(0, 0, 0, 0.1); // 회색 테두리
-  border-top: 8px solid #47cfb0; // 파란색 상단 테두리
+  border: 8px solid ${(props) => props.theme.colors.transparentBlack}; // 회색 테두리
+  border-top: 8px solid ${(props) => props.theme.colors.lightGreen}; // 파란색 상단 테두리
   border-radius: 50%;
   width: ${(props) => props.$size};
   height: ${(props) => props.$size};

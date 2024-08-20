@@ -73,15 +73,15 @@ const Label = styled.label`
   font-size: 14px;
   font-weight: 700;
 
-  background-color: #dddddd;
-  color: #9f9f9f;
+  background-color: ${(props) => props.theme.colors.lightGray};
+  color: ${(props) => props.theme.colors.darkLightGray};
 
   transition:
     color,
     background-color 0.2s ease-out;
 
   ${HiddenCheckbox}:checked + & {
-    background-color: ${(props) => props.theme.colors.main};
-    color: #ffffff;
+    background-color: ${(props) => props.theme.colors.lightGreen};
+    color: ${(props) => props.theme.colors.white};
   }
 `;

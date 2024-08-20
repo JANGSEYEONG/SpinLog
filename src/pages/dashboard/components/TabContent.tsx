@@ -61,7 +61,7 @@ const Container = styled.div`
 const EmptyMessage = styled.div`
   text-align: center;
   font-size: 16px;
-  color: #767676;
+  color: ${(props) => props.theme.colors.darkLightGray2};
   margin-top: 280px;
 `;
 
@@ -76,17 +76,17 @@ const SatisfactionMessage = styled.div`
 
   font-size: 20px;
   font-weight: 700;
-  color: #333331;
+  color: ${(props) => props.theme.colors.lightBlack};
 
   & span.score {
     font-size: 16px;
-    color: #767676;
+    color: ${(props) => props.theme.colors.darkLightGray2};
   }
 
   & > span.date {
     font-size: 10px;
     font-weight: 400;
-    color: #767676;
+    color: ${(props) => props.theme.colors.darkLightGray2};
   }
 `;
 
@@ -100,18 +100,18 @@ const DailyMessage = styled.div`
 
   font-size: 16px;
   font-weight: 600;
-  color: #575755;
+  color: ${(props) => props.theme.colors.darkGray};
 
   & > span.date {
     font-size: 10px;
     font-weight: 400;
-    color: #767676;
+    color: ${(props) => props.theme.colors.darkLightGray2};
   }
 `;
 
 const Divider = styled.div`
   width: 100%;
   height: 3px;
-  background-color: #e7e7e7;
+  background-color: ${(props) => props.theme.colors.lightGray2};
   margin-bottom: 20px;
 `;

@@ -74,14 +74,7 @@ const StatisticsPage = () => {
         <Period>{`${format(nintyDaysBefore, 'yy.MM.dd')}~${format(yesterday, 'yy.MM.dd')} 기준`}</Period>
       </OptionContainer>
       <StatisticsContainer>
-        <TabLayout
-          tabs={tabData}
-          selectedTab={selectedTab}
-          onTabSelect={handleTabSelect}
-          tabHeaderColor="#9F9F9F"
-          activeTabHeaderColor="#575755"
-          indicatorColor="#575755"
-        />
+        <TabLayout tabs={tabData} selectedTab={selectedTab} onTabSelect={handleTabSelect} />
       </StatisticsContainer>
     </NavigationLayout>
   );
@@ -98,7 +91,7 @@ const OptionContainer = styled.div`
 `;
 
 const Period = styled.div`
-  color: #bcbcbc;
+  color: ${(props) => props.theme.colors.gray2};
   font-size: 12px;
 `;
 const StatisticsContainer = styled.div`

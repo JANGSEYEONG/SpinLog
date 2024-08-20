@@ -106,7 +106,7 @@ const InfoWrapper = styled.div`
 
   font-size: 14px;
   font-weight: 400;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
 `;
 const InfoItem = styled.div`
   display: flex;
@@ -144,9 +144,9 @@ const InfoData = styled.div`
   height: 100%;
   width: 100%;
 
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid ${(props) => props.theme.colors.lightGray};
   font-weight: 700;
-  color: #575755;
+  color: ${(props) => props.theme.colors.darkGray};
 
   // 길어질 경우 '...' 처리
   overflow: hidden;

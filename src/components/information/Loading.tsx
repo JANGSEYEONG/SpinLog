@@ -21,7 +21,7 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-  color: #767676;
+  color: ${(props) => props.theme.colors.darkLightGray2};
   font-size: 16px;
   font-weight: 700;
 `;

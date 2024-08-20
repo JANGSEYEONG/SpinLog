@@ -87,7 +87,7 @@ const ExperienceButton = styled.button`
   margin-top: 10px;
 
   border-radius: 6px;
-  background-color: #47cfb0;
+  background-color: ${(props) => props.theme.colors.lightGreen};
 
   color: white;
   font-size: 18px;

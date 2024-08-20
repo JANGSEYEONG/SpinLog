@@ -16,7 +16,9 @@ import VolumeIcon from '@assets/images/icon/volumeIcon.svg?react';
 
 // SVG 아이콘 스타일
 const buttonStyle = css`
-  color: #767676; // svg 파일에 fill 이 속성으로 정의되어 있는 경우 사용 가능. (fill="currentColor")
+  color: ${(props) =>
+    props.theme.colors
+      .darkLightGray2}; // svg 파일에 fill 이 속성으로 정의되어 있는 경우 사용 가능. (fill="currentColor")
   stroke: currentColor; // 현재 컬러를 stroke 색상으로 사용
   stroke-width: 1.5; // svg 파일에 stroke 이 속성으로 정의되어 있는 경우 사용 가능. (stroke="currentColor")
   transition:
@@ -25,7 +27,7 @@ const buttonStyle = css`
     stroke-width 0.2s; // 트랜지션 추가
   cursor: pointer;
   &:hover {
-    color: #555; // 마우스 호버 시 색상 변경
+    color: ${(props) => props.theme.colors.darkGray}; // 마우스 호버 시 색상 변경
     transform: scale(1.1); // 10% 크기 증가
     stroke-width: 2;
   }
@@ -41,7 +43,7 @@ export const CloseBtn = styled(CloseIcon)`
 // 어떤 이벤트가 발생할지 모르는 버튼, 스타일 컴포넌트로 돌려주기
 export const PrevBtn = styled(PrevIcon)`
   ${buttonStyle}
-  color:#767676;
+  color:${(props) => props.theme.colors.darkLightGray2};
   width: 20px;
   height: 20px;
 `;
@@ -78,7 +80,7 @@ export const LogoWhiteBtn = styled(LogoWhiteIcon)`
 export const SpeechBubbleBtn = styled(SpeechBubbleIcon)`
   width: 46px;
   height: 30px;
-  color: #575755;
+  color: ${(props) => props.theme.colors.darkGray};
 `;
 
 export const MikeBtn = styled(MikeIcon)`
@@ -89,7 +91,7 @@ export const MikeBtn = styled(MikeIcon)`
 export const EditBtn = styled(EditIcon)`
   width: 18px;
   height: 18px;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
 `;
 
 export const TrashBtn = styled(TrashIcon)``;

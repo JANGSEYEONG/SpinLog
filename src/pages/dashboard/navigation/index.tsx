@@ -13,7 +13,6 @@ type DashboardNavProps = {
   currentDate: Date;
   previousMonth: () => void;
   nextMonth: () => void;
-  isDemoMode: boolean;
   children: React.ReactNode;
 };
 
@@ -22,25 +21,17 @@ const NavigationLayout = ({
   currentDate,
   previousMonth,
   nextMonth,
-  isDemoMode,
 }: DashboardNavProps) => {
   const navigate = useNavigate();
   const monthNavProps = { currentDate, previousMonth, nextMonth };
 
   return (
     <>
-      <MetaThemeColor color="#F4F4F4" />
+      <MetaThemeColor />
       <TopNavigation
         _TopBar={
           <TopNavigation.TopBar
-            centerContent={
-              <TopNavigation.TopBar.CenterTitle>
-                대시보드
-                {isDemoMode && (
-                  <span style={{ fontSize: '12px', color: '#47cfb0' }}> (체험중)</span>
-                )}
-              </TopNavigation.TopBar.CenterTitle>
-            }
+            centerContent={<TopNavigation.TopBar.Title title="대시보드" />}
             rightContent={
               <TopNavigation.TopBar.SettingGrayButton
                 onClick={() => {

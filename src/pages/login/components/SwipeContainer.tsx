@@ -77,10 +77,10 @@ const IntroWrapper = styled.div`
 `;
 
 const IntroText = styled.div`
-  color: #333331;
+  color: ${(props) => props.theme.colors.lightBlack};
   font-size: 20px;
   font-weight: 700;
   & > span {
-    color: #47cfb0;
+    color: ${(props) => props.theme.colors.lightGreen};
   }
 `;

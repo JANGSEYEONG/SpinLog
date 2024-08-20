@@ -81,7 +81,7 @@ export default SearchCondition;
 const Container = styled.div`
   ${flexColumnCenter}
   justify-content: flex-start;
-  background-color: ${(props) => props.theme.colors.main};
+  background-color: ${(props) => props.theme.colors.lightGreen};
   width: 100%;
   height: 130px;
   flex-shrink: 0;
@@ -101,7 +101,7 @@ const FilterWrapper = styled.div`
     cursor: pointer;
     flex-shrink: 0;
     width: 40px;
-    color: #ffffff;
+    color: ${(props) => props.theme.colors.white};
     font-size: 16px;
     font-weight: 600;
   }
@@ -121,9 +121,9 @@ const Select = styled.span`
   /* width: 70px; */
   height: 30px;
   border-radius: 6px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.white};
   flex-shrink: 0;
-  color: #767676;
+  color: ${(props) => props.theme.colors.darkLightGray2};
   font-size: 10px;
   font-weight: 600;
   padding: 12.5px;
@@ -134,7 +134,7 @@ const SearchBoxWrapper = styled.div`
   justify-content: flex-start;
   width: 100%;
   height: 50px;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 6px;
   padding-left: 15px;
   padding-right: 15px;
@@ -148,6 +148,6 @@ const SearchInput = styled.input.attrs({ type: 'text' })`
   margin-left: 10px;
 
   &::placeholder {
-    color: #bcbcbc;
+    color: ${(props) => props.theme.colors.gray2};
   }
 `;

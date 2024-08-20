@@ -129,7 +129,7 @@ const ExpenseListPopup = styled.div`
 
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.backgroundColor.layout};
 
   // 헤더 높이만큼 패딩 넣기
   padding-top: 50px;
@@ -139,7 +139,7 @@ const ExpenseListPopup = styled.div`
 `;
 
 const PopupHeader = styled.div`
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.backgroundColor.layout};
   position: fixed;
   top: 0;
   left: 0;
@@ -158,7 +158,7 @@ const Title = styled.div`
   align-items: flex-end;
   width: 100%;
 
-  color: ${(props) => props.theme.font};
+  color: ${(props) => props.theme.colors.lightBlack};
   font-size: 20px;
   font-weight: 700;
   gap: 8px;

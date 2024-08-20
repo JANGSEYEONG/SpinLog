@@ -71,7 +71,7 @@ const Container = styled.div`
   border-radius: 20px;
   box-shadow: ${(props) => props.theme.shadows.around};
 
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.white};
   overflow: hidden;
 `;
 
@@ -92,7 +92,7 @@ const Header = styled.div`
   font-size: 20px;
   font-weight: 700;
 
-  color: ${(props) => props.theme.colors.font};
+  color: ${(props) => props.theme.colors.lightBlack};
 
   margin-bottom: 30px;
 `;
@@ -100,10 +100,10 @@ const Header = styled.div`
 const PopupCloseBtn = styled(CloseBtn)`
   width: 14px;
   height: 14px;
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   stroke-width: 2.5;
   &:hover {
-    color: #9f9f9f; // 마우스 호버 시 색상 변경
+    color: ${(props) => props.theme.colors.darkLightGray}; // 마우스 호버 시 색상 변경
     transform: scale(1.1); // 10% 크기 증가
     stroke-width: 2.5;
   }
@@ -111,17 +111,22 @@ const PopupCloseBtn = styled(CloseBtn)`
 
 const SelectBtn = styled.div`
   ${flexCenter}
-  background-color: #47cfb0;
+  background-color:${(props) => props.theme.colors.lightGreen};
   width: 100%;
   height: 60px;
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.white};
   font-size: 20px;
   font-weight: 700;
   border-radius: 6px;
   cursor: pointer;
 
+  &:hover:not(.disabled) {
+    filter: brightness(105%);
+  }
+
   &.disabled {
-    background-color: #ccc;
-    color: #666;
+    background-color: ${(props) => props.theme.colors.gray};
+    color: ${(props) => props.theme.colors.darkGray};
+    cursor: not-allowed;
   }
 `;

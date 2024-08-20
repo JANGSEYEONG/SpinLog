@@ -207,7 +207,7 @@ const LabelItem = styled.div`
     display: inline-block; // 인라인 블록 요소로 설정
   }
   &.minus::before {
-    background-color: #fc4873;
+    background-color: ${(props) => props.theme.colors.lightRed};
   }
 `;
 
@@ -274,7 +274,7 @@ const CalendarDay = styled.div`
     bottom: 0px; // 날짜 아래로 위치 조정
     width: 5px;
     height: 5px;
-    background-color: #fc4873;
+    background-color: ${(props) => props.theme.colors.lightRed};
     border-radius: 50%;
   }
 
@@ -285,14 +285,14 @@ const CalendarDay = styled.div`
     bottom: 0px; // 날짜 아래로 위치 조정
     width: 5px;
     height: 5px;
-    background-color: #333331;
+    background-color: ${(props) => props.theme.colors.lightBlack};
     border-radius: 50%;
   }
 
   &.save.spend::after {
     left: 50%;
     transform: translateX(-50%) translateX(-5px); // 가운데 정렬 조정
-    background-color: #fc4873;
+    background-color: ${(props) => props.theme.colors.lightRed};
     border-radius: 50%;
     box-shadow: 9.5px 0 0 #333331; // 옆으로 작은 원 하나 더 추가
   }
@@ -371,7 +371,7 @@ const Detail = styled.div`
   font-weight: 300;
   color: #575755;
   &.spend {
-    color: #fc4873;
+    color: ${(props) => props.theme.colors.lightRed};
   }
 
   & > span {

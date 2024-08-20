@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 import type { Register } from '@models/index';
 
@@ -17,6 +17,9 @@ type SatisfactionProps = {
 };
 
 const Satisfaction = ({ satisfactions, registerType }: SatisfactionProps) => {
+  const theme = useTheme();
+  const colors = [theme.colors.lightGreen, theme.colors.lightRed];
+
   return (
     <SwipeLayout>
       {satisfactions.map(({ data, name }, index) => {
@@ -58,7 +61,7 @@ const Satisfaction = ({ satisfactions, registerType }: SatisfactionProps) => {
                   categories: name,
                   labels: {
                     style: {
-                      colors: '#9F9F9F',
+                      colors: theme.colors.darkLightGray,
                       fontSize: '14px',
                     },
                   },
@@ -73,7 +76,7 @@ const Satisfaction = ({ satisfactions, registerType }: SatisfactionProps) => {
 
                   labels: {
                     style: {
-                      colors: '#BCBCBC',
+                      colors: theme.colors.gray2,
                       fontSize: '14px',
                     },
                     formatter(val) {
@@ -105,14 +108,14 @@ const Satisfaction = ({ satisfactions, registerType }: SatisfactionProps) => {
                     },
                   },
                 },
-                colors: ['#47CFB0', '#FC4873'],
+                colors: colors,
                 dataLabels: {
                   enabled: true,
                   offsetY: -25,
                   style: {
                     fontSize: '14px',
                     fontWeight: 400,
-                    colors: ['#575755'],
+                    colors: [theme.colors.darkGray],
                   },
                 },
               }}
@@ -128,9 +131,9 @@ export default Satisfaction;
 
 const Message = styled.div`
   & > span.green {
-    color: #47cfb0;
+    color: ${(props) => props.theme.colors.lightGreen};
   }
   & > span.red {
-    color: #fc4873;
+    color: ${(props) => props.theme.colors.lightRed};
   }
 `;

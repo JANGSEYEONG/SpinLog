@@ -10,6 +10,7 @@ import {
   TrashBtn,
   EditBtn,
 } from '@components/button';
+import DemoText from '@components/information/DemoText';
 
 // top bar은 왼/중/오 세가지를 가진다.
 type TopBarProps = {
@@ -43,10 +44,27 @@ const Item = styled.div<{ $type: string }>`
   margin: 10px;
 `;
 
-const CenterTitle = styled.div`
-  ${flexColumnCenter}
+// 제목 영역
+const Title = ({
+  title,
+  isBackgroundGreen = false,
+}: {
+  title: string;
+  isBackgroundGreen?: boolean;
+}) => {
+  return (
+    <CenterTitle $isBackgroundGreen={isBackgroundGreen}>
+      {title}
+      <DemoText isBackgroundGreen={isBackgroundGreen} />
+    </CenterTitle>
+  );
+};
+
+const CenterTitle = styled.div<{ $isBackgroundGreen: boolean }>`
+  ${flexColumnCenter};
   gap: 4px;
-  color: #333331;
+  color: ${(props) =>
+    props.$isBackgroundGreen ? props.theme.colors.white : props.theme.colors.lightBlack};
   font-size: 16px;
   font-weight: 600;
 `;
@@ -58,7 +76,7 @@ TopBar.SettingGrayButton = SettingGrayBtn;
 TopBar.CloseButton = CloseBtn;
 TopBar.LogoButton = LogoBtn;
 TopBar.LogoWhiteButton = LogoWhiteBtn;
-TopBar.CenterTitle = CenterTitle;
+TopBar.Title = Title;
 TopBar.DeleteButton = TrashBtn;
 TopBar.EditButton = EditBtn;
 

@@ -165,7 +165,7 @@ const SatisfactionRadioButton = styled.input.attrs({ type: 'radio' })`
   ${radioButtonStyle}
 
   &:checked + label {
-    color: #333331;
+    color: ${(props) => props.theme.colors.lightBlack};
     font-weight: 700;
   }
 `;
@@ -193,7 +193,7 @@ const CheckLabel = styled.label`
   position: relative;
   width: 24px;
   height: 24px;
-  background-color: #dddddd;
+  background-color: ${(props) => props.theme.colors.lightGray};
   border-radius: 6px;
   cursor: pointer;
   margin-top: 8px;
@@ -210,14 +210,14 @@ const HiddenRadio = styled.input.attrs({ type: 'radio' })`
   position: absolute;
   opacity: 0;
   &:checked + label {
-    background-color: #767676;
+    background-color: ${(props) => props.theme.colors.darkLightGray2};
     &::after {
-      border-color: #ffffff;
+      border-color: ${(props) => props.theme.colors.white};
     }
   }
 `;
 const SpendDateInput = styled.input`
-  color: #9f9f9f;
+  color: ${(props) => props.theme.colors.darkLightGray};
   font-size: 14px;
   font-weight: 400;
   border-radius: 6px;
@@ -262,7 +262,7 @@ const AmountText = styled.div`
   height: 50px;
   flex-shrink: 0;
 
-  color: #767676;
+  color: ${(props) => props.theme.colors.darkLightGray2};
   font-size: 14px;
   font-weight: 400;
 `;

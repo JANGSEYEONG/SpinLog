@@ -71,7 +71,7 @@ const Message = styled.div`
 
 const Text = styled.div`
   ${flexColumnCenter}
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.white};
   font-size: 16px;
   font-weight: 700;
   margin-right: 40px;
@@ -84,15 +84,15 @@ const Button = styled.div<{ $bottom: string }>`
   width: 358px;
   height: 60px;
   border-radius: 6px;
-  background-color: #47cfb0;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.lightGreen};
+  color: ${(props) => props.theme.colors.white};
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
 
   &.later {
-    background-color: #dddddd;
-    color: #767676;
+    background-color: ${(props) => props.theme.colors.lightGray};
+    color: ${(props) => props.theme.colors.darkLightGray2};
   }
 `;
 
