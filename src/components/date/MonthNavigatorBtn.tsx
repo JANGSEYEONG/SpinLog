@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { flexBetween, flexCenter } from '@styles/CommonStyles';
 
-import { PrevBtn } from '@components/button';
-
 import { formatYMD } from '@utils/dateUtils';
 import { startOfMonth, endOfMonth } from 'date-fns';
+import { PrevIcon } from '@components/icon';
 
 type MonthNavigatorBtnProps = {
   currentDate: Date;
@@ -23,13 +22,9 @@ const MonthNavigatorBtn = ({
 
   return (
     <Wrapper $color={color}>
-      <BtnWrapper>
-        <NavBtn color={color} onClick={previousMonth} />
-      </BtnWrapper>
+      <NavBtn color={color} onClick={previousMonth} />
       <Text>{`${formatYMD(startDate)} - ${formatYMD(endDate)}`}</Text>
-      <BtnWrapper>
-        <NavBtn className="rotate-180" color={color} onClick={nextMonth} />
-      </BtnWrapper>
+      <NavBtn className="rotate-180" color={color} onClick={nextMonth} />
     </Wrapper>
   );
 };
@@ -40,35 +35,14 @@ const Wrapper = styled.div<{ $color: string }>`
   ${flexBetween}
   font-size: 16px;
   font-weight: 600;
-  width: 240px;
-
+  width: 230px;
+  margin-left: 8px;
   color: ${(props) => props.$color};
 `;
-const BtnWrapper = styled.div`
-  ${flexCenter}
-  height: 100%;
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-bottom: 3px;
-`;
-const NavBtn = styled(PrevBtn)<{ color: string }>`
-  width: 10px;
-  height: 10px;
+const NavBtn = styled(PrevIcon)<{ color: string }>`
+  width: 15px;
+  height: 15px;
   color: ${(props) => props.color};
-  stroke-width: 3;
-
-  &:hover {
-    color: ${(props) => props.color};
-    transform: scale(1.2);
-    stroke-width: 4;
-  }
-
-  &.rotate-180 {
-    transform: rotate(180deg);
-  }
-  &.rotate-180:hover {
-    transform: scale(1.2) rotate(180deg);
-  }
 `;
 
 const Text = styled.span`

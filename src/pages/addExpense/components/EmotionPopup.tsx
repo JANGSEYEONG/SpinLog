@@ -1,12 +1,12 @@
 import { flexBetween, flexCenter, overflowWithoutScroll } from '@styles/CommonStyles';
 import styled from 'styled-components';
-import { CloseBtn } from '@components/button';
 
 import { type EmotionKey, type EmotionKeyWithNone, EmotionKeys } from '@models/index';
 
 import { useState } from 'react';
 
 import Emotion from '@components/emotion';
+import { XIcon } from '@components/icon';
 
 type EmotionPopupProps = {
   defaultEmotion: EmotionKeyWithNone; // 빈값 허용 (감정 선택 안된 경우)
@@ -97,16 +97,10 @@ const Header = styled.div`
   margin-bottom: 30px;
 `;
 
-const PopupCloseBtn = styled(CloseBtn)`
-  width: 14px;
-  height: 14px;
+const PopupCloseBtn = styled(XIcon)`
+  width: 25px;
+  height: 25px;
   color: ${(props) => props.theme.colors.darkLightGray};
-  stroke-width: 2.5;
-  &:hover {
-    color: ${(props) => props.theme.colors.darkLightGray}; // 마우스 호버 시 색상 변경
-    transform: scale(1.1); // 10% 크기 증가
-    stroke-width: 2.5;
-  }
 `;
 
 const SelectBtn = styled.div`

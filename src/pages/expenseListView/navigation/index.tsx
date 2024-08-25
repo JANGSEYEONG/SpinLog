@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import TopNavigation from '@layout/TopNavigation';
 import BottomNavigation from '@layout/BottomNavigation';
@@ -14,8 +13,6 @@ type NavLayoutProps = {
 };
 
 const NavigationLayout = ({ children }: NavLayoutProps) => {
-  const navigate = useNavigate();
-
   const [showBackground, setShowBackground] = useState<boolean>(false);
   useEffect(() => {
     setShowBackground(true);
@@ -31,13 +28,7 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
         _TopBar={
           <TopNavigation.TopBar
             centerContent={<TopNavigation.TopBar.Title title="내역 조회" isBackgroundGreen />}
-            rightContent={
-              <TopNavigation.TopBar.SettingGreenButton
-                onClick={() => {
-                  navigate(PagePath.Setting);
-                }}
-              />
-            }
+            rightContent={<TopNavigation.TopBar.Setting isWhite />}
           />
         }
       />

@@ -46,7 +46,7 @@ const Overlay = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background: ${(props) => props.theme.backGroundColor.overlay};
+  background: ${(props) => props.theme.backgroundColor.overlay};
   z-index: 9999;
 `;
 

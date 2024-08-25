@@ -1,11 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { flexBetween, flexCenter, flexColumnCenter } from '@styles/CommonStyles';
 
 import { useEffect, useReducer, useState } from 'react';
 
 import type { MainMonthSpendType } from '@service/main/types';
-
-import { PrevBtn } from '@components/button';
 
 import { getRegisterTypeText } from '@models/expense';
 import { formatYM, compareYMDString } from '@utils/dateUtils';
@@ -21,6 +19,7 @@ import {
   isSameMonth,
   isToday,
 } from 'date-fns';
+import { PrevIcon } from '@components/icon';
 
 // 현재 날짜를 넘겨받는다.
 type CalendarProps = {
@@ -155,7 +154,7 @@ const Calendar = ({ currentDate, setCurrentDate, data }: CalendarProps) => {
         </ExpenseDetailWrapper>
       )}
       <ToggleButton onClick={toggleWeekView}>
-        {showWeekOnly ? <ArrowDown /> : <ArrowUp />}
+        <Arrow className={showWeekOnly ? 'rotate-270' : 'rotate-90'} />
       </ToggleButton>
     </Container>
   );
@@ -177,7 +176,7 @@ const TitleWrapper = styled.div`
   ${flexBetween}
   font-size: 14px;
   font-weight: 400;
-  color: #575755;
+  color: ${(props) => props.theme.colors.darkGray};
   width: 100%;
 
   margin-top: 10px;
@@ -202,7 +201,7 @@ const LabelItem = styled.div`
     transform: translateY(-50%); // Y축으로 50% 이동하여 정중앙에 배치
     width: 6px; // 원의 너비
     height: 6px; // 원의 높이
-    background-color: #333331;
+    background-color: ${(props) => props.theme.colors.lightBlack};
     border-radius: 50%; // 원형으로 만들기
     display: inline-block; // 인라인 블록 요소로 설정
   }
@@ -235,33 +234,33 @@ const DayHeader = styled.div`
   text-align: center;
   height: 20px; // 고정 높이 설정
 
-  color: #bcbcbc;
+  color: ${(props) => props.theme.colors.gray2};
   font-weight: 300;
   font-size: 13px;
 `;
 
 const CalendarDay = styled.div`
   ${flexCenter}
-  background-color: white;
+  background-color:${(props) => props.theme.colors.white};
   position: relative; // 작은 원들을 위한 포지셔닝
 
   height: 40px;
   font-size: 14px;
   font-weight: 500;
-  color: #767676;
+  color: ${(props) => props.theme.colors.darkLightGray2};
 
   &.faded {
-    color: #cccccc;
+    color: ${(props) => props.theme.colors.gray};
   }
 
   &.bold {
-    color: #000;
+    color: ${(props) => props.theme.colors.black};
     font-weight: 800;
   }
 
   &.selected {
-    background-color: #575755; // 선택된 날짜 배경색
-    color: #fff; // 선택된 날짜 글씨색
+    background-color: ${(props) => props.theme.colors.darkGray}; // 선택된 날짜 배경색
+    color: ${(props) => props.theme.colors.white}; // 선택된 날짜 글씨색
     border-radius: 50%; // 동그란 형태
     font-size: 16px;
     font-weight: 700;
@@ -294,7 +293,7 @@ const CalendarDay = styled.div`
     transform: translateX(-50%) translateX(-5px); // 가운데 정렬 조정
     background-color: ${(props) => props.theme.colors.lightRed};
     border-radius: 50%;
-    box-shadow: 9.5px 0 0 #333331; // 옆으로 작은 원 하나 더 추가
+    box-shadow: 9.5px 0 0 ${(props) => props.theme.colors.lightBlack}; // 옆으로 작은 원 하나 더 추가
   }
 
   // 선택된 날짜일 경우 좀 더 아래에 뜸
@@ -316,37 +315,14 @@ const ToggleButton = styled.button`
   width: 30px;
   height: 30px;
   background-color: #f3f3f3;
-  /* border: 0.5px solid #dddddd; */
   border-radius: 50%;
-  box-shadow: 0 5px 14.56px 0 #5252521a;
+  box-shadow: ${(props) => props.theme.shadows.around};
 `;
 
-const arrowStyle = css`
-  width: 12px;
-  height: 12px;
-  color: #9f9f9f;
-  stroke-width: 2;
-`;
-const ArrowUp = styled(PrevBtn)`
-  ${arrowStyle}
-  transform: rotate(90deg);
-
-  &:hover {
-    color: #4b4949;
-    stroke-width: 3;
-    transform: rotate(90deg);
-  }
-`;
-
-const ArrowDown = styled(PrevBtn)`
-  ${arrowStyle}
-  transform: rotate(270deg);
-
-  &:hover {
-    color: #4b4949;
-    stroke-width: 3;
-    transform: rotate(270deg);
-  }
+const Arrow = styled(PrevIcon)`
+  width: 15px;
+  height: 15px;
+  color: ${(props) => props.theme.colors.darkLightGray};
 `;
 
 const ExpenseDetailWrapper = styled.div`
@@ -369,7 +345,7 @@ const ExpenseDetail = styled.div`
 const Detail = styled.div`
   font-size: 11px;
   font-weight: 300;
-  color: #575755;
+  color: ${(props) => props.theme.colors.darkGray};
   &.spend {
     color: ${(props) => props.theme.colors.lightRed};
   }

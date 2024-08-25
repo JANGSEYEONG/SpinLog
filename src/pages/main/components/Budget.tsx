@@ -1,6 +1,5 @@
 import { flexCenter, flexColumnCenter, absoluteCenter, flexBetween } from '@styles/CommonStyles';
 import styled, { keyframes } from 'styled-components';
-import { PrevBtn } from '@components/button';
 import { useNavigate } from 'react-router-dom';
 
 import type { MainBudgetType } from '@service/main/types';
@@ -8,6 +7,7 @@ import { PagePath } from '@models/navigation';
 
 import { addCommasToNumber } from '@utils/numberUtils';
 import { getRegisterTypeText } from '@models/expense';
+import { PrevIcon } from '@components/icon';
 
 type BudgetProps = MainBudgetType;
 
@@ -38,14 +38,15 @@ const Budget = ({ monthBudget, monthSpend, monthSave }: BudgetProps) => {
     <>
       <Remain>
         <RemainDetail>
-          <span className="remain-month">한 달 예산</span>
+          <span className="remain-title">한 달 예산</span>
           <span className="remain-price">{remainPriceText}</span>
           <span className="remain-recommend">
             목표 달성을 위한 하루 권장 지출 : {addCommasToNumber(recommendSpend)}원
           </span>
         </RemainDetail>
         <GoSettingWrapper>
-          <SettingBtn
+          <GoSetting
+            className="rotate-180"
             onClick={() => {
               navigate(PagePath.Setting);
             }}
@@ -93,18 +94,18 @@ const RemainDetail = styled.div`
   height: 100%;
   gap: 8px;
 
-  & span.remain-month {
-    color: #575755;
+  & span.remain-title {
+    color: ${(props) => props.theme.colors.darkGray};
     font-size: 14px;
     font-weight: 400;
   }
   & span.remain-price {
-    color: #333331;
+    color: ${(props) => props.theme.colors.lightBlack};
     font-size: 24px;
     font-weight: 700;
   }
   & span.remain-recommend {
-    color: #9f9f9f;
+    color: ${(props) => props.theme.colors.darkLightGray};
     font-size: 12px;
     font-weight: 400;
   }
@@ -116,19 +117,10 @@ const GoSettingWrapper = styled.div`
   right: -5px;
 `;
 
-const SettingBtn = styled(PrevBtn)`
-  width: 20px;
-  height: 20px;
-  color: #bcbcbc;
-  stroke-width: 1.5;
-
-  transform: rotate(180deg);
-
-  &:hover {
-    color: #bcbcbc;
-    stroke-width: 2;
-    transform: rotate(180deg);
-  }
+const GoSetting = styled(PrevIcon)`
+  width: 25px;
+  height: 25px;
+  color: ${(props) => props.theme.colors.gray2};
 `;
 
 // 막대 그래프 영역
@@ -140,7 +132,7 @@ const Bar = styled.div`
   padding: 5px;
 
   font-size: 14px;
-  color: #333331;
+  color: ${(props) => props.theme.colors.lightBlack};
 `;
 
 // @keyframes를 사용하여 애니메이션 정의
@@ -154,7 +146,7 @@ const fillAnimation = keyframes`
 `;
 
 const BarDetail = styled.div<{ $percent: string }>`
-  background-color: #e7e7e7;
+  background-color: ${(props) => props.theme.colors.lightGray3};
   height: 25px;
   width: 100%;
   border-radius: 6px;
@@ -164,7 +156,7 @@ const BarDetail = styled.div<{ $percent: string }>`
   & span.bar-mark {
     ${absoluteCenter}
     border-radius: 50%;
-    background-color: white;
+    background-color: ${(props) => props.theme.colors.white};
     width: 10px;
     height: 10px;
     z-index: 1;
@@ -193,7 +185,7 @@ const BarDetail = styled.div<{ $percent: string }>`
     right: 10px;
     font-size: 12px;
     font-weight: 400;
-    color: #767676;
+    color: ${(props) => props.theme.colors.darkLightGray2};
   }
 `;
 
@@ -214,12 +206,12 @@ const InfoItem = styled.div`
 
   & span.info-text {
     font-size: 14px;
-    color: #9f9f9f;
+    color: ${(props) => props.theme.colors.darkLightGray};
     font-weight: 300;
   }
 
   & span.info-price {
-    color: #333331;
+    color: ${(props) => props.theme.colors.lightBlack};
     font-size: 16px;
     font-weight: 700;
   }

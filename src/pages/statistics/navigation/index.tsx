@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-
 import TopNavigation from '@layout/TopNavigation';
 import BottomNavigation from '@layout/BottomNavigation';
 
@@ -11,8 +9,6 @@ type NavLayoutProps = {
 };
 
 const NavigationLayout = ({ children }: NavLayoutProps) => {
-  const navigate = useNavigate();
-
   return (
     <>
       <MetaThemeColor />
@@ -20,13 +16,7 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
         _TopBar={
           <TopNavigation.TopBar
             centerContent={<TopNavigation.TopBar.Title title="둘러보기" />}
-            rightContent={
-              <TopNavigation.TopBar.SettingGrayButton
-                onClick={() => {
-                  navigate(PagePath.Setting);
-                }}
-              />
-            }
+            rightContent={<TopNavigation.TopBar.Setting />}
           />
         }
       />

@@ -6,7 +6,6 @@ import {
   overflowWithoutScroll,
 } from '@styles/CommonStyles';
 import styled from 'styled-components';
-import { CloseBtn } from '@components/button';
 
 import React, { useState, useRef, useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -18,6 +17,7 @@ import SelectEmotion from './SelectEmotion';
 import SelectPeriod from './SelectPeriod';
 import SelectRegister from './SelectRegister';
 import SelectSatisfaction from './SelectSatisfaction';
+import { XIcon } from '@components/icon';
 
 type FilterPopupProps = {
   onClose: () => void;
@@ -110,7 +110,7 @@ const FilterPopup = ({ onClose, prevCondition, updateCondition }: FilterPopupPro
         onTouchStart={startResize as unknown as React.TouchEventHandler<HTMLDivElement>}>
         <span className="title">필터</span>
         <Draggable />
-        <CloseBtn style={{ width: '15px', height: '15px' }} onClick={onClose} />
+        <CloseButton onClick={onClose} />
       </Header>
       <FormProvider {...methods}>
         <Form onSubmit={methods.handleSubmit(handleSubmit)}>
@@ -209,4 +209,10 @@ const Draggable = styled.div`
   border-radius: 6px;
   background-color: ${(props) => props.theme.colors.gray2};
   margin-bottom: 60px;
+`;
+
+const CloseButton = styled(XIcon)`
+  width: 25px;
+  height: 25px;
+  color: ${(props) => props.theme.colors.darkLightGray2};
 `;

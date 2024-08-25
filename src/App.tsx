@@ -3,11 +3,13 @@ import { Outlet } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 
-import { lightTheme } from './styles/Theme';
+import { lightTheme, darkTheme } from './styles/Theme';
 import GlobalStyles from './styles/GlobalStyles';
 import GlobalFonts from './styles/GlobalFonts';
+import { useThemeStore } from '@stores/themeStore';
 
 const App = () => {
+  const isDarkMode = useThemeStore((state) => state.isDarkMode);
   const [isStandalone, setIsStandalone] = useState<boolean>(false);
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -21,7 +23,7 @@ const App = () => {
     }
   }, []);
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyles isStandalone={isStandalone} />
       <GlobalFonts />
       <Outlet />

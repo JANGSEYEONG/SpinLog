@@ -11,7 +11,13 @@ declare module 'styled-components' {
       contentBox: string;
       overlay: string;
     };
-    navigation: {
+    topNavigation: {
+      iconGray: string;
+      iconWhite: string;
+      titleWhite: string;
+      titleBlack: string;
+    };
+    bottomNavigation: {
       icon: string;
       title: string;
     };
@@ -27,6 +33,7 @@ declare module 'styled-components' {
       orange: string;
       lightGray: string;
       lightGray2: string;
+      lightGray3: string;
       gray: string;
       gray2: string;
       darkLightGray: string;

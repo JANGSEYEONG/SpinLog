@@ -6,7 +6,6 @@ import {
   overflowWithoutScroll,
 } from '@styles/CommonStyles';
 import styled from 'styled-components';
-import { PrevBtn } from '@components/button';
 
 import { useReducer } from 'react';
 
@@ -17,6 +16,7 @@ import ExpenseSummary from '@components/expense/ExpenseSummary';
 import { getCombineRegisterTypeText, type ExpenseSummaryType } from '@models/expense';
 
 import { formatMD } from '@utils/dateUtils';
+import { PrevIcon } from '@components/icon';
 
 type DayExpenseListTop2Props = {
   data: ExpenseSummaryType[];
@@ -37,7 +37,7 @@ const DayExpenseListTop2 = ({ data, currentDate }: DayExpenseListTop2Props) => {
             <span className="sub">{`총 ${data.length}건`}</span>
           </Title>
           {/* 2건 이하인 경우, 더보기 버튼을 보이지 않는다. */}
-          {data.length > 2 && <ShowMoreBtn onClick={toggleModal} />}
+          {data.length > 2 && <ShowMoreBtn onClick={toggleModal} className="rotate-180" />}
         </DateInfo>
         <Summary>
           {dataTop2.length === 0 ? (
@@ -108,19 +108,10 @@ const Summary = styled.div`
   width: 100%;
 `;
 
-const ShowMoreBtn = styled(PrevBtn)`
-  width: 20px;
-  height: 20px;
-  color: #bcbcbc;
-  stroke-width: 1.5;
-
-  transform: rotate(180deg);
-
-  &:hover {
-    color: #bcbcbc;
-    stroke-width: 2;
-    transform: rotate(180deg);
-  }
+const ShowMoreBtn = styled(PrevIcon)`
+  width: 25px;
+  height: 25px;
+  color: ${(props) => props.theme.colors.gray2};
 `;
 
 const ExpenseListPopup = styled.div`

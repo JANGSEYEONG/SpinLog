@@ -1,9 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import SettingGreenIcon from '@assets/images/icon/settingGreen.svg?react';
-import SettingGrayIcon from '@assets/images/icon/settingGray.svg?react';
 import PrevIcon from '@assets/images/icon/prevButton.svg?react';
-import CloseIcon from '@assets/images/icon/closeButton.svg?react';
 import LogoIcon from '@assets/images/icon/logoGreen.svg?react';
 import LogoWhiteIcon from '@assets/images/icon/logoWhite.svg?react';
 import SpeechBubbleIcon from '@assets/images/icon/speechBubble.svg?react';
@@ -33,37 +30,12 @@ const buttonStyle = css`
   }
 `;
 
-export const CloseBtn = styled(CloseIcon)`
-  ${buttonStyle}
-  width: 20px;
-  height: 20px;
-  justify-content: flex-end;
-`;
-
 // 어떤 이벤트가 발생할지 모르는 버튼, 스타일 컴포넌트로 돌려주기
 export const PrevBtn = styled(PrevIcon)`
   ${buttonStyle}
   color:${(props) => props.theme.colors.darkLightGray2};
   width: 20px;
   height: 20px;
-`;
-
-export const SettingGreenBtn = styled(SettingGreenIcon)`
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s;
-  &:hover {
-    transform: scale(1.1); // 10% 크기 증가
-  }
-`;
-
-export const SettingGrayBtn = styled(SettingGrayIcon)`
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s;
-  &:hover {
-    transform: scale(1.1); // 10% 크기 증가
-  }
 `;
 
 export const LogoBtn = styled(LogoIcon)`

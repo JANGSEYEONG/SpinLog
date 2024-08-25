@@ -1,7 +1,6 @@
 import styled, { useTheme } from 'styled-components';
 
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import TopNavigation from '@layout/TopNavigation';
 import BottomNavigation from '@layout/BottomNavigation';
@@ -12,6 +11,7 @@ import Background from '@components/background';
 import MetaThemeColor from '@components/background/MetaThemeColor';
 
 import { PagePath } from '@models/navigation';
+import DarkModeButton from '@components/button/DarkModeButton';
 
 type MainNavProps = {
   currentDate: Date;
@@ -28,7 +28,6 @@ const NavigationLayout = ({
   previousMonth,
   nextMonth,
 }: MainNavProps) => {
-  const navigate = useNavigate();
   const theme = useTheme();
   const mainColor = { color: theme.colors.white };
   const monthNavProps = { currentDate, previousMonth, nextMonth, ...mainColor };
@@ -50,12 +49,10 @@ const NavigationLayout = ({
             leftContent={<TopNavigation.TopBar.LogoWhiteButton />}
             centerContent={isDemoMode && <TopNavigation.TopBar.Title title="" isBackgroundGreen />}
             rightContent={
-              <TopNavigation.TopBar.SettingGreenButton
-                style={mainColor}
-                onClick={() => {
-                  navigate(PagePath.Setting);
-                }}
-              />
+              <>
+                <DarkModeButton></DarkModeButton>
+                <TopNavigation.TopBar.Setting isWhite />
+              </>
             }
           />
         }

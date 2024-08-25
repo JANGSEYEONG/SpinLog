@@ -4,7 +4,7 @@ import { textArea, textAreaWrapper } from '@styles/CommonStyles';
 import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { CloseBtn } from '@components/button';
+import { XIcon } from '@components/icon';
 
 type MultiTextProps = {
   hookFormFieldName: string;
@@ -75,13 +75,17 @@ const TextArea = styled.textarea`
   ${textArea};
 `;
 
-const DeleteAllButton = styled(CloseBtn)`
-  opacity: 0; // 기본적으로 숨김처리
-  transition: opacity 0.2s ease-in-out; // 페이드 인/아웃 효과
-  background-color: ${(props) => props.theme.colors.gray2};
-  border-radius: 50%;
-  color: ${(props) => props.theme.colors.white};
+const DeleteAllButton = styled(XIcon)`
   width: 15px;
   height: 15px;
   padding: 3px;
+
+  border-radius: 50%;
+
+  opacity: 0; // 기본적으로 숨김처리
+  transition: opacity 0.2s ease-in-out; // 페이드 인/아웃 효과
+
+  color: ${(props) => props.theme.colors.white};
+
+  background-color: ${(props) => props.theme.colors.gray2};
 `;

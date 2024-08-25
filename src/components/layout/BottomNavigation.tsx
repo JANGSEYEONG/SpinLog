@@ -106,10 +106,10 @@ const NavItem = styled.div`
 const NavIcon = styled.a`
   width: 24px;
   height: 24px;
-  color: ${(props) => props.theme.navigation.icon};
+  color: ${(props) => props.theme.bottomNavigation.icon};
 `;
 const NavTitle = styled.div`
-  color: ${(props) => props.theme.navigation.title};
+  color: ${(props) => props.theme.bottomNavigation.title};
   font-size: 12px;
   font-weight: 500;
 `;
