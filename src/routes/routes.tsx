@@ -1,8 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom';
 import { Suspense } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
 
 // dynamic import 오류 시 fetch 재시도
-import { lazyWithRetries } from './lazyWithRetries';
+// import { lazyWithRetries } from './lazyWithRetries';
 
 import App from '../App';
 import Layout from '../components/layout/Layout';
@@ -16,16 +16,12 @@ import Loading from '@components/information/Loading';
 import { PagePath } from '@models/navigation';
 
 // 바로 로딩되지 않아도 되는 컴포넌트 lazy loading 추가
-const ExpenseListViewPage = lazyWithRetries(
-  () => import('../pages/expenseListView/ExpenseListViewPage'),
-);
-const DashboardPage = lazyWithRetries(() => import('../pages/dashboard/DashboardPage'));
-const AddExpensePage = lazyWithRetries(() => import('../pages/addExpense/AddExpensePage'));
-const ExpenseDetailViewPage = lazyWithRetries(
-  () => import('../pages/expenseDetailView/ExpenseDetailViewPage'),
-);
-const StatisticsPage = lazyWithRetries(() => import('../pages/statistics/StatisticsPage'));
-const SettingPage = lazyWithRetries(() => import('../pages/setting/SettingPage'));
+import ExpenseListViewPage from '../pages/expenseListView/ExpenseListViewPage';
+import DashboardPage from '../pages/dashboard/DashboardPage';
+import AddExpensePage from '../pages/addExpense/AddExpensePage';
+import ExpenseDetailViewPage from '../pages/expenseDetailView/ExpenseDetailViewPage';
+import StatisticsPage from '../pages/statistics/StatisticsPage';
+import SettingPage from '../pages/setting/SettingPage';
 
 export const router = createBrowserRouter([
   {

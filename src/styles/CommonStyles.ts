@@ -118,11 +118,11 @@ export const textArea = css`
   outline: none;
 
   &::placeholder {
-    color: #bcbcbc;
+    color: ${(props) => props.theme.colors.gray2};
   }
 
   &:disabled {
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.colors.white};
     font-size: 14px;
     font-weight: 500;
   }
@@ -136,8 +136,8 @@ export const summaryArea = css`
 
   padding: 15px 29px 15px 29px;
 
-  color: #ffffff;
-  background-color: #767676;
+  color: ${(props) => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.darkLightGray2};
 
   font-weight: 600;
   font-size: 14px;
@@ -147,7 +147,7 @@ export const divider = css`
   border: none;
   width: 100%;
   height: 1px;
-  background-color: #dddddd;
+  background-color: ${(props) => props.theme.colors.lightGray};
   margin-top: 24px;
   margin-bottom: 24px;
 `;
@@ -166,29 +166,29 @@ export const radioButtonStyle = css`
   cursor: pointer;
 
   position: relative;
-  background: #e3e3e3;
+  background: ${(props) => props.theme.colors.lightGray2};
   border: none;
 
   &:checked {
-    background-color: #767676;
+    background-color: ${(props) => props.theme.colors.darkLightGray2};
     border: none;
   }
   &::after {
     ${borderCheck}
     left: 8px;
     top: 4px;
-    border-color: #fff;
+    border-color: ${(props) => props.theme.colors.white};
   }
 `;
 
 export const radioButtonLabelStyle = css`
   font-size: 14px;
   font-weight: 500;
-  color: #bcbcbc;
+  color: ${(props) => props.theme.colors.gray2};
   cursor: pointer;
 
   &.selected {
-    color: #333331;
+    color: ${(props) => props.theme.colors.lightBlack};
     font-weight: 700;
   }
 `;

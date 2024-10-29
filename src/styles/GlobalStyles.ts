@@ -84,7 +84,7 @@ const GlobalStyles = createGlobalStyle<{ isStandalone: boolean }>`
   // body-background image 여기서 지정
   body {
     ${flexCenter}
-    background-image: url('./assets/background/background.svg');
+    background-image: url('/assets/background/background.webp');
     background-size: cover;
     background-repeat: no-repeat;
     color: black;

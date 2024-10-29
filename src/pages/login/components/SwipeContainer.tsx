@@ -4,10 +4,6 @@ import { flexColumnCenter } from '@styles/CommonStyles';
 import SwipeLayout from '@components/layout/SwipeLayout';
 
 import LogoContainer from './LogoContainer';
-import Intro1SVG from '@assets/images/login/intro/intro1.svg?react';
-import Intro2SVG from '@assets/images/login/intro/intro2.svg?react';
-import Intro3SVG from '@assets/images/login/intro/intro3.svg?react';
-import Intro4SVG from '@assets/images/login/intro/intro4.svg?react';
 
 const SwipeContainer = () => {
   const introData = [
@@ -17,7 +13,7 @@ const SwipeContainer = () => {
           <span>감정일기</span>와 <span>소비내역</span>을 적어요!
         </>
       ),
-      ImageComponent: Intro1SVG,
+      imageSrc: '/src/assets/images/login/intro/intro1.webp',
     },
     {
       text: (
@@ -25,7 +21,7 @@ const SwipeContainer = () => {
           <span>AI</span>에게 소비내역의 <span>피드백</span>을 받아요
         </>
       ),
-      ImageComponent: Intro2SVG,
+      imageSrc: '/src/assets/images/login/intro/intro2.webp',
     },
     {
       text: (
@@ -33,8 +29,7 @@ const SwipeContainer = () => {
           이번 달 <span>소비내역을 한눈에</span> 봐요
         </>
       ),
-      highlights: ['소비내역을 한눈에'],
-      ImageComponent: Intro3SVG,
+      imageSrc: '/src/assets/images/login/intro/intro3.webp',
     },
     {
       text: (
@@ -42,7 +37,7 @@ const SwipeContainer = () => {
           <span>MBTI별</span>로 사람들의 <span>소비내역</span>을 구경해요!
         </>
       ),
-      ImageComponent: Intro4SVG,
+      imageSrc: '/src/assets/images/login/intro/intro4.webp',
     },
   ];
 
@@ -50,10 +45,10 @@ const SwipeContainer = () => {
     <Container>
       <SwipeLayout>
         <LogoContainer />
-        {introData.map((intro, index) => (
+        {introData.map(({ text, imageSrc }, index) => (
           <IntroWrapper key={index}>
-            <IntroText>{intro.text}</IntroText>
-            <intro.ImageComponent />
+            <IntroText>{text}</IntroText>
+            <IntroImage src={imageSrc} alt={`intro ${index + 1}`} />
           </IntroWrapper>
         ))}
       </SwipeLayout>
@@ -76,11 +71,16 @@ const IntroWrapper = styled.div`
   height: 100%;
 `;
 
-const IntroText = styled.div`
+const IntroText = styled.p`
   color: ${(props) => props.theme.colors.lightBlack};
   font-size: 20px;
   font-weight: 700;
   & > span {
     color: ${(props) => props.theme.colors.lightGreen};
   }
+`;
+
+const IntroImage = styled.img`
+  width: 355px !important;
+  height: 355px !important;
 `;

@@ -11,7 +11,7 @@ import Background from '@components/background';
 import MetaThemeColor from '@components/background/MetaThemeColor';
 
 import { PagePath } from '@models/navigation';
-import DarkModeButton from '@components/button/DarkModeButton';
+// import DarkModeButton from '@components/button/DarkModeButton';
 
 type MainNavProps = {
   currentDate: Date;
@@ -50,7 +50,7 @@ const NavigationLayout = ({
             centerContent={isDemoMode && <TopNavigation.TopBar.Title title="" isBackgroundGreen />}
             rightContent={
               <>
-                <DarkModeButton></DarkModeButton>
+                {/* <DarkModeButton/> */}
                 <TopNavigation.TopBar.Setting isWhite />
               </>
             }
