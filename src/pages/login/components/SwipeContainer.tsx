@@ -5,6 +5,11 @@ import SwipeLayout from '@components/layout/SwipeLayout';
 
 import LogoContainer from './LogoContainer';
 
+import intro1 from '@assets/images/login/intro/intro1.webp';
+import intro2 from '@assets/images/login/intro/intro2.webp';
+import intro3 from '@assets/images/login/intro/intro3.webp';
+import intro4 from '@assets/images/login/intro/intro4.webp';
+
 const SwipeContainer = () => {
   const introData = [
     {
@@ -13,7 +18,7 @@ const SwipeContainer = () => {
           <span>감정일기</span>와 <span>소비내역</span>을 적어요!
         </>
       ),
-      imageSrc: '/src/assets/images/login/intro/intro1.webp',
+      imageSrc: intro1,
     },
     {
       text: (
@@ -21,7 +26,7 @@ const SwipeContainer = () => {
           <span>AI</span>에게 소비내역의 <span>피드백</span>을 받아요
         </>
       ),
-      imageSrc: '/src/assets/images/login/intro/intro2.webp',
+      imageSrc: intro2,
     },
     {
       text: (
@@ -29,7 +34,7 @@ const SwipeContainer = () => {
           이번 달 <span>소비내역을 한눈에</span> 봐요
         </>
       ),
-      imageSrc: '/src/assets/images/login/intro/intro3.webp',
+      imageSrc: intro3,
     },
     {
       text: (
@@ -37,7 +42,7 @@ const SwipeContainer = () => {
           <span>MBTI별</span>로 사람들의 <span>소비내역</span>을 구경해요!
         </>
       ),
-      imageSrc: '/src/assets/images/login/intro/intro4.webp',
+      imageSrc: intro4,
     },
   ];
 
