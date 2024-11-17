@@ -62,17 +62,20 @@ export const useAuthStore = create(
 
 // 로컬스토리지에 이전에 저장한 토큰이 존재한다면, login state
 const initializeUser = () => {
+  //#20241117.syjang, 무조건 데모 모드로 넘어가게 세팅
+  useAuthStore.getState().setDemoState();
+
   if (import.meta.env.MODE === 'development') {
     // demo mode 개발로 주석처리
     //useAuthStore.getState().setLoginState();
   } else {
-    const accessToken = window.localStorage.getItem(ACCESS_TOKEN_NAME);
-    if (accessToken) {
-      useAuthStore.getState().setLoginState();
-    } else {
-      // 토큰 없으면 서비스 오픈 시 무조건 로그아웃 스테이트가 맞음
-      useAuthStore.getState().setLogoutState();
-    }
+    // const accessToken = window.localStorage.getItem(ACCESS_TOKEN_NAME);
+    // if (accessToken) {
+    //   useAuthStore.getState().setLoginState();
+    // } else {
+    //   // 토큰 없으면 서비스 오픈 시 무조건 로그아웃 스테이트가 맞음
+    //   useAuthStore.getState().setLogoutState();
+    // }
   }
 };
 initializeUser();
