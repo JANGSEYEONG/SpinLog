@@ -1,22 +1,17 @@
-import {
-  divider,
-  flexBetween,
-  flexColumnCenter,
-  mainSection,
-  overflowWithoutScroll,
-} from '@styles/CommonStyles';
 import styled from 'styled-components';
+import { divider, flexBetween } from '@styles/CommonStyles';
 
-import { useReducer } from 'react';
+import { Suspense, useReducer } from 'react';
 
-import Modal from '@components/modal';
-import TopBar from '@components/layout/TopBar';
-import ExpenseSummary from '@components/expense/ExpenseSummary';
-
-import { getCombineRegisterTypeText, type ExpenseSummaryType } from '@models/expense';
+import { type ExpenseSummaryType } from '@models/expense';
 
 import { formatMD } from '@utils/dateUtils';
 import { PrevIcon } from '@components/icon';
+
+import ExpenseSummary from '@components/expense/ExpenseSummary';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
+import Spinner from '@components/information/Spinner';
+const ExpensesModal = lazyWithRetries(() => import('./ExpensesModal'));
 
 type DayExpenseListTop2Props = {
   data: ExpenseSummaryType[];
@@ -55,31 +50,9 @@ const DayExpenseListTop2 = ({ data, currentDate }: DayExpenseListTop2Props) => {
         </Summary>
       </Container>
       {showModal && (
-        <Modal isFullScreen={true} onClose={toggleModal}>
-          <ExpenseListPopup>
-            <PopupHeader>
-              <TopBar
-                leftContent={<TopBar.PrevButton onClick={toggleModal} />}
-                centerContent={<div>{`${getCombineRegisterTypeText('/')} 내역`}</div>}
-              />
-            </PopupHeader>
-            <PopupContent>
-              <Title>
-                <span>{formatMD(currentDate, 'word')}</span>
-                <span className="sub">{`총 ${data.length}건`}</span>
-              </Title>
-              <ListWrapper>
-                {data.map((summary) => {
-                  return (
-                    <ExpenseBox key={summary.articleId}>
-                      <ExpenseSummary {...summary} />
-                    </ExpenseBox>
-                  );
-                })}
-              </ListWrapper>
-            </PopupContent>
-          </ExpenseListPopup>
-        </Modal>
+        <Suspense fallback={<Spinner />}>
+          <ExpensesModal {...{ data, toggleModal, currentDate }} />
+        </Suspense>
       )}
     </>
   );
@@ -114,36 +87,6 @@ const ShowMoreBtn = styled(PrevIcon)`
   color: ${(props) => props.theme.colors.gray2};
 `;
 
-const ExpenseListPopup = styled.div`
-  ${overflowWithoutScroll}
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-  background-color: ${(props) => props.theme.backgroundColor.layout};
-
-  // 헤더 높이만큼 패딩 넣기
-  padding-top: 50px;
-
-  padding-left: 15px;
-  padding-right: 15px;
-`;
-
-const PopupHeader = styled.div`
-  background-color: ${(props) => props.theme.backgroundColor.layout};
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 50px;
-  width: 100%;
-  z-index: 10;
-`;
-
-const PopupContent = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
 const Title = styled.div`
   display: flex;
   align-items: flex-end;
@@ -162,18 +105,6 @@ const Title = styled.div`
     font-size: 14px;
     font-weight: 400;
   }
-`;
-
-const ListWrapper = styled.div`
-  ${flexColumnCenter}
-  justify-content: flex-start;
-  width: 100%;
-  height: 100%;
-  gap: 12px;
-`;
-const ExpenseBox = styled.div`
-  ${mainSection}
-  width: 100%;
 `;
 
 const Divider = styled.div`

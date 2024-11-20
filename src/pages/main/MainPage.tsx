@@ -1,16 +1,22 @@
 import styled from 'styled-components';
 import { flexColumnBetween, mainSection, overflowWithoutScroll } from '@styles/CommonStyles';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
 
 import Spinner from '@components/information/Spinner';
 
+import NavigationLayout from './navigation';
+// import Budget from './components/Budget';
+// import DayExpenseListTop2 from './components/DayExpenseTop2';
+// import Calendar from './components/Calendar';
+
 import useMainData from './hooks/useMainData';
 import useMonthNavigator from '@hooks/useMonthNavigator';
-
-import NavigationLayout from './navigation';
-import Budget from './components/Budget';
-import DayExpenseListTop2 from './components/DayExpenseTop2';
-import Calendar from './components/Calendar';
 import useIsDemoMode from '@hooks/useIsDemo';
+import { Suspense } from 'react';
+
+const Budget = lazyWithRetries(() => import('./components/Budget'));
+const Calendar = lazyWithRetries(() => import('./components/Calendar'));
+const DayExpenseListTop2 = lazyWithRetries(() => import('./components/DayExpenseTop2'));
 
 const MainPage = () => {
   const isDemoMode = useIsDemoMode();
@@ -31,7 +37,9 @@ const MainPage = () => {
           ) : !mainData.budget ? (
             <div>예산 데이터 없음</div>
           ) : (
-            <Budget {...mainData.budget} />
+            <Suspense fallback={<Spinner />}>
+              <Budget {...mainData.budget} />
+            </Suspense>
           )}
         </BudgetContainer>
         <CalendarWrapper>
@@ -42,7 +50,9 @@ const MainPage = () => {
           ) : !mainData.monthSpendList ? (
             <div>소비 데이터 없음</div>
           ) : (
-            <Calendar {...monthNav} data={mainData.monthSpendList} />
+            <Suspense fallback={<Spinner />}>
+              <Calendar {...monthNav} data={mainData.monthSpendList} />
+            </Suspense>
           )}
         </CalendarWrapper>
         <DayListContainer>
@@ -53,7 +63,9 @@ const MainPage = () => {
           ) : !subData.daySpendList ? (
             <div>리스트 데이터 없음</div>
           ) : (
-            <DayExpenseListTop2 data={subData.daySpendList} currentDate={monthNav.currentDate} />
+            <Suspense fallback={<Spinner />}>
+              <DayExpenseListTop2 data={subData.daySpendList} currentDate={monthNav.currentDate} />
+            </Suspense>
           )}
         </DayListContainer>
       </MainContainer>

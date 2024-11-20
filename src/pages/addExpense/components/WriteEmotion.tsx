@@ -9,16 +9,20 @@ import {
 import styled, { css } from 'styled-components';
 import { getSpendSumamryText } from '@utils/textsUtils';
 
-import { useEffect, useReducer, useState } from 'react';
+import { Suspense, useEffect, useReducer, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import VoiceMultiText from '@components/input/VoiceMultiText';
 import Modal from '@components/modal';
-import EmotionPopup from './EmotionPopup';
+// import EmotionPopup from './EmotionPopup';
+const EmotionPopup = lazyWithRetries(() => import('./EmotionPopup'));
+
 import { EditBtn } from '@components/button';
 
 import type { EmotionKey } from '@models/index';
 import { getEmotionIcon, getEmotionText } from '@models/emotion';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
+import Spinner from '@components/information/Spinner';
 
 // 사건, 생각, 감정
 const WriteEmotion = () => {
@@ -105,12 +109,15 @@ const WriteEmotion = () => {
         </EmotionContainer>
       </Container>
       {showModal && (
-        <Modal onClose={toggleModal}>
-          <EmotionPopup
-            defaultEmotion={emotionKey}
-            selectEmotion={selectEmotion}
-            onClose={toggleModal}></EmotionPopup>
-        </Modal>
+        <Suspense fallback={<Spinner />}>
+          <Modal onClose={toggleModal}>
+            <EmotionPopup
+              defaultEmotion={emotionKey}
+              selectEmotion={selectEmotion}
+              onClose={toggleModal}
+            />
+          </Modal>
+        </Suspense>
       )}
     </>
   );

@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { FormProvider } from 'react-hook-form';
 
 import useIsDemoMode from '@hooks/useIsDemo';
@@ -12,8 +12,12 @@ import { useDemoStore } from '@stores/demoStore';
 
 import NavigationLayout from './navigation';
 import WriteExpense from './components/WriteExpense';
-import WriteEmotion from './components/WriteEmotion';
-import WriteSatisfaction from './components/WriteSatisfaction';
+
+const WriteEmotion = lazyWithRetries(() => import('./components/WriteEmotion'));
+const WriteSatisfaction = lazyWithRetries(() => import('./components/WriteSatisfaction'));
+
+// import WriteEmotion from './components/WriteEmotion';
+// import WriteSatisfaction from './components/WriteSatisfaction';
 
 import GoLogin from '@components/information/GoLogin';
 import LoadingModal from '@components/modal/LoadingModal';
@@ -22,6 +26,8 @@ import { MAX_EXPENSE_SIZE } from '@stores/storeConfig';
 import type { ExpenseDetailDataType } from '@service/expense/types';
 
 import { getCombineRegisterTypeText } from '@models/expense';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
+import Spinner from '@components/information/Spinner';
 
 const AddExpensePage = () => {
   const isDemoMode = useIsDemoMode();
@@ -94,8 +100,16 @@ const AddExpensePage = () => {
           <Form onSubmit={methods.handleSubmit(handleSaveSubmit)}>
             {/* 폼 영역 (멀티 스탭) */}
             {currStep === 0 && <WriteExpense />}
-            {currStep === 1 && <WriteEmotion />}
-            {currStep === 2 && <WriteSatisfaction />}
+            {currStep === 1 && (
+              <Suspense fallback={<Spinner />}>
+                <WriteEmotion />
+              </Suspense>
+            )}
+            {currStep === 2 && (
+              <Suspense fallback={<Spinner />}>
+                <WriteSatisfaction />
+              </Suspense>
+            )}
             {/* 버튼 영역 */}
             <NextButtonWrapper>
               {currStep < 2 && (
