@@ -1,6 +1,5 @@
-import styled, { useTheme } from 'styled-components';
-
 import { useEffect, useState } from 'react';
+import styled, { useTheme } from 'styled-components';
 
 import TopNavigation from '@layout/TopNavigation';
 import BottomNavigation from '@layout/BottomNavigation';

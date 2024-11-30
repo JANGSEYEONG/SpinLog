@@ -1,16 +1,16 @@
 import styled from 'styled-components';
+import Spinner from '@components/information/Spinner';
 import { divider, flexBetween } from '@styles/CommonStyles';
 
 import { Suspense, useReducer } from 'react';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
 
 import { type ExpenseSummaryType } from '@models/expense';
 
 import { formatMD } from '@utils/dateUtils';
 import { PrevIcon } from '@components/icon';
 
-import ExpenseSummary from '@components/expense/ExpenseSummary';
-import { lazyWithRetries } from 'src/routes/lazyWithRetries';
-import Spinner from '@components/information/Spinner';
+const ExpenseSummary = lazyWithRetries(() => import('@components/expense/ExpenseSummary'));
 const ExpensesModal = lazyWithRetries(() => import('./ExpensesModal'));
 
 type DayExpenseListTop2Props = {
@@ -34,20 +34,22 @@ const DayExpenseListTop2 = ({ data, currentDate }: DayExpenseListTop2Props) => {
           {/* 2건 이하인 경우, 더보기 버튼을 보이지 않는다. */}
           {data.length > 2 && <ShowMoreBtn onClick={toggleModal} className="rotate-180" />}
         </DateInfo>
-        <Summary>
-          {dataTop2.length === 0 ? (
-            <Info>작성 내역이 없습니다.</Info>
-          ) : (
-            dataTop2.map((x, i) => {
-              return (
-                <div key={i}>
-                  <ExpenseSummary {...x} />
-                  {i != dataTop2.length - 1 && <Divider />}
-                </div>
-              );
-            })
-          )}
-        </Summary>
+        <Suspense fallback={<Spinner />}>
+          <Summary>
+            {dataTop2.length === 0 ? (
+              <Info>작성 내역이 없습니다.</Info>
+            ) : (
+              dataTop2.map((x, i) => {
+                return (
+                  <div key={i}>
+                    <ExpenseSummary {...x} />
+                    {i != dataTop2.length - 1 && <Divider />}
+                  </div>
+                );
+              })
+            )}
+          </Summary>
+        </Suspense>
       </Container>
       {showModal && (
         <Suspense fallback={<Spinner />}>
