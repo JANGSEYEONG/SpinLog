@@ -5,9 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@stores/authStore';
 
 import LoginBird from '@assets/images/bird/loginBird.svg?react';
-import kakaoImg from '@assets/images/login/kakao.avif';
-import naverImg from '@assets/images/login/naver.avif';
-import googleImg from '@assets/images/login/google.avif';
 
 import { PagePath } from '@models/navigation';
 import FixedWidthImage from '@components/image/FixedWidthImage';
@@ -32,13 +29,28 @@ const LoginButtonContainer = () => {
     <Container>
       <Button href={`${AUTH_URL}/kakao`}>
         <Bird />
-        <FixedWidthImage src={kakaoImg} width={358} height={60} alt="카카오 로그인" />
+        <FixedWidthImage
+          src="/assets/login/kakao.avif"
+          width={358}
+          height={60}
+          alt="카카오 로그인"
+        />
       </Button>
       <Button href={`${AUTH_URL}/naver`}>
-        <FixedWidthImage src={naverImg} width={358} height={60} alt="네이버 로그인" />
+        <FixedWidthImage
+          src="/assets/login/naver.avif"
+          width={358}
+          height={60}
+          alt="네이버 로그인"
+        />
       </Button>
       <Button href={`${AUTH_URL}/google`}>
-        <FixedWidthImage src={googleImg} width={358} height={60} alt="구글 로그인" />
+        <FixedWidthImage
+          src="/assets/login/google.avif"
+          width={358}
+          height={60}
+          alt="구글 로그인"
+        />
       </Button>
       <ExperienceButton onClick={handleClickDemo}>체험하기</ExperienceButton>
     </Container>
@@ -50,7 +62,6 @@ export default LoginButtonContainer;
 const Container = styled.div`
   ${flexColumnCenter}
   position: relative;
-  background-color: '#000000';
   width: 100%;
   height: 40%;
   gap: 12px;

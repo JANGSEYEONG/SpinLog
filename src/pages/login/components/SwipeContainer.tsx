@@ -4,11 +4,7 @@ import { flexColumnCenter } from '@styles/CommonStyles';
 import SwipeLayout from '@components/layout/SwipeLayout';
 
 import LogoContainer from './LogoContainer';
-
-import intro1 from '@assets/images/login/intro/intro1.webp';
-import intro2 from '@assets/images/login/intro/intro2.webp';
-import intro3 from '@assets/images/login/intro/intro3.webp';
-import intro4 from '@assets/images/login/intro/intro4.webp';
+import FixedWidthImage from '@components/image/FixedWidthImage';
 
 const SwipeContainer = () => {
   const introData = [
@@ -18,7 +14,7 @@ const SwipeContainer = () => {
           <span>감정일기</span>와 <span>소비내역</span>을 적어요!
         </>
       ),
-      imageSrc: intro1,
+      imageSrc: '/assets/login/intro/intro1.avif',
     },
     {
       text: (
@@ -26,7 +22,7 @@ const SwipeContainer = () => {
           <span>AI</span>에게 소비내역의 <span>피드백</span>을 받아요
         </>
       ),
-      imageSrc: intro2,
+      imageSrc: '/assets/login/intro/intro2.avif',
     },
     {
       text: (
@@ -34,7 +30,7 @@ const SwipeContainer = () => {
           이번 달 <span>소비내역을 한눈에</span> 봐요
         </>
       ),
-      imageSrc: intro3,
+      imageSrc: '/assets/login/intro/intro3.avif',
     },
     {
       text: (
@@ -42,7 +38,7 @@ const SwipeContainer = () => {
           <span>MBTI별</span>로 사람들의 <span>소비내역</span>을 구경해요!
         </>
       ),
-      imageSrc: intro4,
+      imageSrc: '/assets/login/intro/intro4.avif',
     },
   ];
 
@@ -53,7 +49,13 @@ const SwipeContainer = () => {
         {introData.map(({ text, imageSrc }, index) => (
           <IntroWrapper key={index}>
             <IntroText>{text}</IntroText>
-            <IntroImage src={imageSrc} alt={`intro ${index + 1}`} />
+            <FixedWidthImage
+              src={imageSrc}
+              width={355}
+              height={355}
+              alt={`intro ${index + 1}`}
+              loading="lazy"
+            />
           </IntroWrapper>
         ))}
       </SwipeLayout>
@@ -83,9 +85,4 @@ const IntroText = styled.p`
   & > span {
     color: ${(props) => props.theme.colors.lightGreen};
   }
-`;
-
-const IntroImage = styled.img`
-  width: 355px !important;
-  height: 355px !important;
 `;
