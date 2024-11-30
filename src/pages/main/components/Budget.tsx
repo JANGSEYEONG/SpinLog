@@ -1,6 +1,8 @@
-import { flexCenter, flexColumnCenter, absoluteCenter, flexBetween } from '@styles/CommonStyles';
-import styled, { keyframes } from 'styled-components';
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import styled, { keyframes } from 'styled-components';
+import { flexCenter, flexColumnCenter, absoluteCenter, flexBetween } from '@styles/CommonStyles';
 
 import type { MainBudgetType } from '@service/main/types';
 import { PagePath } from '@models/navigation';
@@ -13,26 +15,39 @@ type BudgetProps = MainBudgetType;
 
 const Budget = ({ monthBudget, monthSpend, monthSave }: BudgetProps) => {
   const navigate = useNavigate();
-
-  const isBudgetZero = !monthBudget || monthBudget === 0; // budget이 없거나 0인 케이스 둘 다 예산 없는 것으로 처리.
-  const remainPrice = Math.floor(monthBudget - monthSpend); // 남은 예산 (음수일 수 있음)
+  const { isBudgetZero, remainPrice } = useMemo(() => {
+    return {
+      isBudgetZero: !monthBudget || monthBudget === 0, // budget이 없거나 0인 케이스 둘 다 예산 없는 것으로 처리.
+      remainPrice: Math.floor(monthBudget - monthSpend), // 남은 예산 (음수일 수 있음)
+    };
+  }, [monthBudget, monthSpend]);
 
   // 1. 남은 예산 텍스트 : 예산이 없을 경우(= 0일 경우), 초과일 경우, 남은 경우 구분
-  const remainPriceText: string = isBudgetZero
-    ? '예산을 설정해주세요.'
-    : remainPrice < 0
-      ? `${addCommasToNumber(Math.abs(remainPrice))} 원 초과`
-      : `${addCommasToNumber(remainPrice)} 원 남음`;
+  const remainPriceText: string = useMemo(() => {
+    if (isBudgetZero) return '예산을 설정해주세요.';
+    if (remainPrice < 0) {
+      return `${addCommasToNumber(Math.abs(remainPrice))} 원 초과`;
+    } else {
+      return `${addCommasToNumber(remainPrice)} 원 남음`;
+    }
+  }, [isBudgetZero, remainPrice]);
 
   // 2. 권장 지출 텍스트 : 예산이 없거나 초과일 경우, 남은 경우 구분
   // 예산 0원일 때, 초과했을 때 권장지출 다 0원
-  const recommendSpend: number = isBudgetZero || remainPrice < 0 ? 0 : Math.floor(monthBudget / 30);
+  const recommendSpend: number = useMemo(() => {
+    return isBudgetZero || remainPrice < 0 ? 0 : Math.floor(monthBudget / 30);
+  }, [isBudgetZero, monthBudget, remainPrice]);
 
   // 3. 막대 그래프 퍼센트 비율 및 텍스트
-  // 예산 0원일 때 그래프 : 0%, 초과일 때 100+%;
-  let percent: number = 0;
-  if (!isBudgetZero) percent = Math.ceil((monthSpend / monthBudget) * 100); // budget이 0원이 아닌 경우에만 계산 진행
-  const percentText: string = percent > 100 ? '100+%' : `${percent}%`; // 100% 초과 시 '100+%' 로 표시
+  const percent = useMemo(() => {
+    // budget이 0원이 아닌 경우에만 계산 진행
+    return !isBudgetZero ? Math.ceil((monthSpend / monthBudget) * 100) : 0;
+  }, [isBudgetZero, monthSpend, monthBudget]);
+
+  const percentText: string = useMemo(() => {
+    // 예산 0원일 때 그래프 : 0%, 초과일 때 100+%;
+    return percent > 100 ? '100+%' : `${percent}%`; // 100% 초과 시 '100+%' 로 표시
+  }, [percent]);
 
   return (
     <>
