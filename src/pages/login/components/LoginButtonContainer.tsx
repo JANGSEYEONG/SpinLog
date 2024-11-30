@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@stores/authStore';
 
 import LoginBird from '@assets/images/bird/loginBird.svg?react';
-import kakaoImg from '@assets/images/login/kakao.png';
-import naverImg from '@assets/images/login/naver.png';
-import googleImg from '@assets/images/login/google.png';
+import kakaoImg from '@assets/images/login/kakao.avif';
+import naverImg from '@assets/images/login/naver.avif';
+import googleImg from '@assets/images/login/google.avif';
 
 import { PagePath } from '@models/navigation';
+import FixedWidthImage from '@components/image/FixedWidthImage';
 
 const LoginButtonContainer = () => {
   const AUTH_URL = `https://www.api-spinlog.shop/api/users/login`;
@@ -31,13 +32,13 @@ const LoginButtonContainer = () => {
     <Container>
       <Button href={`${AUTH_URL}/kakao`}>
         <Bird />
-        <Img src={kakaoImg} />
+        <FixedWidthImage src={kakaoImg} width={358} height={60} alt="카카오 로그인" />
       </Button>
       <Button href={`${AUTH_URL}/naver`}>
-        <Img src={naverImg} />
+        <FixedWidthImage src={naverImg} width={358} height={60} alt="네이버 로그인" />
       </Button>
       <Button href={`${AUTH_URL}/google`}>
-        <Img src={googleImg} />
+        <FixedWidthImage src={googleImg} width={358} height={60} alt="구글 로그인" />
       </Button>
       <ExperienceButton onClick={handleClickDemo}>체험하기</ExperienceButton>
     </Container>
@@ -48,7 +49,8 @@ export default LoginButtonContainer;
 
 const Container = styled.div`
   ${flexColumnCenter}
-  background-color:transparent;
+  position: relative;
+  background-color: '#000000';
   width: 100%;
   height: 40%;
   gap: 12px;
@@ -57,27 +59,17 @@ const Container = styled.div`
 const Button = styled.a`
   width: 358px;
   height: 60px;
-
-  position: relative;
-  overflow: visible;
+  overflow: hidden;
   z-index: 1;
-
   cursor: pointer;
-
   border-radius: 6px;
   box-shadow: ${(props) => props.theme.shadows.around};
 `;
 
-const Img = styled.img`
-  border-radius: 6px;
-  width: 100%;
-  height: 100%;
-`;
-
 const Bird = styled(LoginBird)`
   position: absolute;
-  top: -77px;
-  right: -20px;
+  top: -55px;
+  right: 0px;
   z-index: -1;
 `;
 
