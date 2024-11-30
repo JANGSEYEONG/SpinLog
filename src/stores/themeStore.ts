@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import { THEME_STORE_NAME } from './storeConfig';
 
 type ThemeStoreType = {
@@ -18,7 +18,7 @@ export const useThemeStore = create(
     }),
     {
       name: THEME_STORE_NAME,
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     },
   ),
 );

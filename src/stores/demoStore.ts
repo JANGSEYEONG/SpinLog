@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
-import { devtools, persist } from 'zustand/middleware';
+import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 import * as Service from './services/demoService';
 
@@ -41,7 +41,7 @@ export const useDemoStore = create<DemoStoreType>()(
         }),
         {
           name: DEMO_STORE_NAME,
-          getStorage: () => localStorage,
+          storage: createJSONStorage(() => localStorage),
           version: CURRENT_VERSION,
           migrate: Service.migrateDemoStore,
         },

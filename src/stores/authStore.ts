@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import { UserStatus, type UserStatusType } from '@models/user';
 import {
   ACCESS_TOKEN_NAME,
@@ -47,7 +47,7 @@ export const useAuthStore = create(
     }),
     {
       name: AUTH_STORE_NAME,
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
       version: CURRENT_VERSION,
       migrate: (persistedState, version) => {
         if (version === undefined || version < CURRENT_VERSION) {
