@@ -230,8 +230,4 @@ const InfoItem = styled.div`
     font-size: 16px;
     font-weight: 700;
   }
-
-  & span.minus {
-    color: ${(props) => props.theme.colors.lightRed};
-  }
 `;

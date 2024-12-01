@@ -45,11 +45,14 @@ const LoginPage = () => {
   if (userStatus === UserStatus.Demo) return <Navigate to={PagePath.Main} />;
 
   return (
-    <LoginContainer>
-      <MetaThemeColor />
-      <SwipeContainer />
-      <LoginButtonContainer />
-    </LoginContainer>
+    <>
+      <Preloader />
+      <LoginContainer>
+        <MetaThemeColor />
+        <SwipeContainer />
+        <LoginButtonContainer />
+      </LoginContainer>
+    </>
   );
 };
 
@@ -62,4 +65,17 @@ const LoginContainer = styled.div`
 
   color: ${(props) => props.theme.colors.gray2};
   background-color: ${(props) => props.theme.backgroundColor.layout};
+`;
+
+const Preloader = styled.div`
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+
+  &::after {
+    content: url('/assets/login/kakao.avif') url('/assets/login/naver.avif')
+      url('/assets/login/google.avif');
+  }
 `;
