@@ -7,7 +7,7 @@ import { lazyWithRetries } from './lazyWithRetries';
 import App from '../App';
 import Layout from '../components/layout/Layout';
 import ProtectedRoute from './protectedRoute/ProtectedRoute';
-import MainPage from '../pages/main/MainPage';
+// import MainPage from '../pages/main/MainPage';
 import LoginPage from '../pages/login/LoginPage';
 // import ErrorPage from '../pages/error/ErrorPage';
 // import AuthPage from '../pages/auth/AuthPage';
@@ -16,6 +16,9 @@ import Loading from '@components/information/Loading';
 import { PagePath } from '@models/navigation';
 
 // 바로 로딩되지 않아도 되는 컴포넌트 lazy loading 추가
+const MainPage = lazyWithRetries(() => import('../pages/main/MainPage'));
+// import MainPage from '../pages/main/MainPage';
+
 const AuthPage = lazyWithRetries(() => import('../pages/auth/AuthPage'));
 const ErrorPage = lazyWithRetries(() => import('../pages/error/ErrorPage'));
 
@@ -41,9 +44,11 @@ export const router = createBrowserRouter([
           {
             index: true, // 하위에 다른 경로가 안붙을 때 보여줄 컴포넌트
             element: (
-              <ProtectedRoute allowDemoMode={true}>
-                <MainPage />
-              </ProtectedRoute>
+              <Suspense fallback={<Loading />}>
+                <ProtectedRoute allowDemoMode={true}>
+                  <MainPage />
+                </ProtectedRoute>
+              </Suspense>
             ),
           },
           {
