@@ -62,8 +62,8 @@ export const useAuthStore = create(
 
 // 로컬스토리지에 이전에 저장한 토큰이 존재한다면, login state
 const initializeUser = () => {
-  //#20241117.syjang, 무조건 데모 모드로 넘어가게 세팅
-  // useAuthStore.getState().setDemoState();
+  //#20241117.syjang, 무조건 데모 모드로 넘어가게 세팅 (최적화 측정용)
+  useAuthStore.getState().setDemoState();
 
   if (import.meta.env.MODE === 'development') {
     // demo mode 개발로 주석처리
