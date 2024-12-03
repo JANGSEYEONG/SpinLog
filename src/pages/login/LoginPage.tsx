@@ -46,7 +46,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <Preloader />
+      {/* <Preloader /> */}
       <LoginContainer>
         <MetaThemeColor />
         <SwipeContainer />
@@ -67,15 +67,15 @@ const LoginContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundColor.layout};
 `;
 
-const Preloader = styled.div`
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  z-index: -1;
+// const Preloader = styled.div`
+//   position: absolute;
+//   width: 0;
+//   height: 0;
+//   overflow: hidden;
+//   z-index: -1;
 
-  &::after {
-    content: url('/assets/login/kakao.avif') url('/assets/login/naver.avif')
-      url('/assets/login/google.avif');
-  }
-`;
+//   &::after {
+//     content: url('/assets/login/kakao.avif') url('/assets/login/naver.avif')
+//       url('/assets/login/google.avif');
+//   }
+// `;
