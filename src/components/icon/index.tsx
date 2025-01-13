@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { IoIosArrowBack } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
+import { LuChevronLeft } from 'react-icons/lu';
 import { RiSettings4Fill } from 'react-icons/ri';
 
 const commonButtonStyle = css`
@@ -43,7 +43,7 @@ export const SettingIcon = styled(RiSettings4Fill)`
   ${commonButtonStyle}
 `;
 
-export const PrevIcon = styled(IoIosArrowBack)`
+export const ChevronIcon = styled(LuChevronLeft)`
   ${commonButtonStyle}
   ${commonButtonRotate}
 `;

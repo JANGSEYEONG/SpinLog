@@ -1,5 +1,5 @@
-import Background from '@components/background';
 import MetaThemeColor from '@components/background/MetaThemeColor';
+import PartialBackground from '@components/background/PartialBackground';
 import BottomNavigation from '@layout/BottomNavigation';
 import TopNavigation from '@layout/TopNavigation';
 import { PagePath } from '@models/navigation';
@@ -32,7 +32,7 @@ const NavigationLayout = ({ children }: NavLayoutProps) => {
       />
       {children}
       <BottomNavigation location={PagePath.ExpenseListView} />
-      {showBackground && <Background height="60px" />}
+      {showBackground && <PartialBackground height="60px" />}
     </>
   );
 };

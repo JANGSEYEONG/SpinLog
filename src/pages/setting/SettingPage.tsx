@@ -1,4 +1,4 @@
-import { PrevBtn } from '@components/button';
+import { ChevronIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
 import useIsDemoMode from '@hooks/useIsDemo';
 import type { EI, NS, PJ, TF } from '@models/index';
@@ -158,7 +158,7 @@ const SettingPage = () => {
               alert('문의하기 기능 준비중!');
             }}>
             <span>문의하기</span>
-            <InquiryArrow />
+            <InquiryArrow className="rotate-180" />
           </InquiryButton>
         </Form>
         <Button onClick={handleClickLogout}>로그아웃</Button>
@@ -338,16 +338,7 @@ const InquiryButton = styled.div`
   box-shadow: ${(props) => props.theme.shadows.around};
 `;
 
-const InquiryArrow = styled(PrevBtn)`
-  width: 10px;
-  height: 10px;
+const InquiryArrow = styled(ChevronIcon)`
   color: ${(props) => props.theme.colors.darkLightGray};
   stroke-width: 4;
-  transform: rotate(180deg);
-
-  &:hover {
-    color: ${(props) => props.theme.colors.darkGray};
-    stroke-width: 5;
-    transform: rotate(180deg);
-  }
 `;

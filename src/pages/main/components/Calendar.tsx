@@ -1,4 +1,4 @@
-import { PrevIcon } from '@components/icon';
+import { ChevronIcon } from '@components/icon';
 import { getRegisterTypeText } from '@models/expense';
 import type { MainMonthSpendType } from '@service/main/types';
 import { flexBetween, flexCenter, flexColumnCenter } from '@styles/CommonStyles';
@@ -316,9 +316,9 @@ const ToggleButton = styled.button`
   box-shadow: ${(props) => props.theme.shadows.around};
 `;
 
-const Arrow = styled(PrevIcon)`
-  width: 15px;
-  height: 15px;
+const Arrow = styled(ChevronIcon)`
+  width: 16px;
+  height: 16px;
   color: ${(props) => props.theme.colors.darkLightGray};
 `;
 

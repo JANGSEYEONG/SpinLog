@@ -1,5 +1,5 @@
-import Background from '@components/background';
 import MetaThemeColor from '@components/background/MetaThemeColor';
+import PartialBackground from '@components/background/PartialBackground';
 import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
 import BottomNavigation from '@layout/BottomNavigation';
 import TopNavigation from '@layout/TopNavigation';
@@ -61,7 +61,7 @@ const NavigationLayout = ({
       />
       {children}
       <BottomNavigation location={PagePath.Main} />
-      {showBackground && <Background height="36%" />}
+      {showBackground && <PartialBackground height="36%" />}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { PrevIcon } from '@components/icon';
+import { ChevronIcon } from '@components/icon';
 import { flexBetween, flexCenter } from '@styles/CommonStyles';
 import { formatYMD } from '@utils/dateUtils';
 import { endOfMonth, startOfMonth } from 'date-fns';
@@ -38,9 +38,9 @@ const Wrapper = styled.div<{ $color: string }>`
   margin-left: 8px;
   color: ${(props) => props.$color};
 `;
-const NavBtn = styled(PrevIcon)<{ color: string }>`
-  width: 15px;
-  height: 15px;
+const NavBtn = styled(ChevronIcon)<{ color: string }>`
+  width: 20px;
+  height: 20px;
   color: ${(props) => props.color};
 `;
 

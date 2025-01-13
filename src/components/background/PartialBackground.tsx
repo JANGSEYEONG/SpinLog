@@ -1,11 +1,11 @@
 import BackgroundPortal from '@utils/ui/BackgroundPortal';
 import styled from 'styled-components';
 
-type BackgroundProps = {
+type PartialBackgroundProps = {
   height: string;
 };
 
-const Background = ({ height = '100%' }: BackgroundProps) => {
+const PartialBackground = ({ height = '100%' }: PartialBackgroundProps) => {
   return (
     <BackgroundPortal>
       <Overlay $height={height} />
@@ -13,7 +13,7 @@ const Background = ({ height = '100%' }: BackgroundProps) => {
   );
 };
 
-export default Background;
+export default PartialBackground;
 
 const Overlay = styled.div<{ $height: string }>`
   position: absolute;

@@ -1,5 +1,5 @@
-import { PrevBtn } from '@components/button';
 import ExpenseSummary from '@components/expense/ExpenseSummary';
+import { ChevronIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
 import useIsDemoMode from '@hooks/useIsDemo';
 import type { ExpenseFilterType, ExpenseSummaryType } from '@models/expense';
@@ -13,7 +13,7 @@ import {
 } from '@styles/CommonStyles';
 import { endOfMonth, startOfMonth } from 'date-fns';
 import { cloneDeep } from 'lodash';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 
@@ -124,11 +124,11 @@ const ExpenseListViewPage = () => {
             <span className="sort" onClick={toggleDesc}>
               {isDesc ? (
                 <>
-                  최신순 <Arrow deg={'270deg'} />
+                  최신순 <Arrow className="rotate-270" />
                 </>
               ) : (
                 <>
-                  오래된순 <Arrow deg={'90deg'} />
+                  오래된순 <Arrow className="rotate-90" />
                 </>
               )}
             </span>
@@ -217,22 +217,9 @@ const ExpenseBox = styled.div`
   width: 100%;
 `;
 
-const arrowStyle = css`
-  width: 10px;
-  height: 10px;
+const Arrow = styled(ChevronIcon)`
   color: ${(props) => props.theme.colors.darkLightGray2};
   stroke-width: 4;
-`;
-
-const Arrow = styled(PrevBtn)<{ deg: string }>`
-  ${arrowStyle}
-  transform: rotate(${(props) => props.deg});
-
-  &:hover {
-    color: ${(props) => props.theme.colors.darkLightGray2};
-    transform: rotate(${(props) => props.deg});
-    stroke-width: 4;
-  }
 `;
 
 const EmptyMessage = styled.div`

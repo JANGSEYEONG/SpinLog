@@ -1,4 +1,4 @@
-import { PrevIcon } from '@components/icon';
+import { ChevronIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
 import { type ExpenseSummaryType } from '@models/expense';
 import { divider, flexBetween } from '@styles/CommonStyles';
@@ -81,7 +81,7 @@ const Summary = styled.div`
   width: 100%;
 `;
 
-const ShowMoreBtn = styled(PrevIcon)`
+const ShowMoreBtn = styled(ChevronIcon)`
   width: 25px;
   height: 25px;
   color: ${(props) => props.theme.colors.gray2};

@@ -1,4 +1,4 @@
-import { PrevIcon } from '@components/icon';
+import { ChevronIcon } from '@components/icon';
 import { getRegisterTypeText } from '@models/expense';
 import { PagePath } from '@models/navigation';
 import type { MainBudgetType } from '@service/main/types';
@@ -130,7 +130,7 @@ const GoSettingWrapper = styled.div`
   right: -5px;
 `;
 
-const GoSetting = styled(PrevIcon)`
+const GoSetting = styled(ChevronIcon)`
   width: 25px;
   height: 25px;
   color: ${(props) => props.theme.colors.gray2};

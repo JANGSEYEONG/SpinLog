@@ -1,9 +1,9 @@
-import { PrevBtn } from '@components/button';
 import Emotion from '@components/emotion';
+import { ChevronIcon } from '@components/icon';
 import { getEmotionText } from '@models/emotion';
 import { EmotionKey, EmotionKeys } from '@models/index';
 import { flexBetween, flexCenter } from '@styles/CommonStyles';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -46,13 +46,13 @@ const SelectEmotion = () => {
 
   return (
     <Container>
-      <Title style={{ display: 'flex' }}>
-        <span className="sub-title">
+      <TitleWrapper>
+        <Title onClick={handleFold} className="sub-title">
           감정 다수 선택
-          <Arrow onClick={handleFold} deg={`${isFold ? '90deg' : '270deg'}`} />
-        </span>
+          <Arrow className={`${isFold ? 'rotate-90' : 'rotate-270'}`} />
+        </Title>
         <span className="select">{getChekedItemMessage()}</span>
-      </Title>
+      </TitleWrapper>
       {isFold && (
         <EmotionContainer>
           {EmotionKeys.map((x) => (
@@ -103,7 +103,7 @@ const EmotionWrapper = styled.div`
   height: 70px;
 `;
 
-const Title = styled.div`
+const TitleWrapper = styled.div`
   ${flexBetween}
 
   & > span.select {
@@ -112,20 +112,18 @@ const Title = styled.div`
   }
 `;
 
-const arrowStyle = css`
-  width: 10px;
-  height: 10px;
-  color: ${(props) => props.theme.colors.darkLightGray};
-  stroke-width: 4;
+const Title = styled.span`
+  ${flexCenter}
+  cursor: pointer;
 `;
 
-const Arrow = styled(PrevBtn)<{ deg: string }>`
-  ${arrowStyle}
-  transform: rotate(${(props) => props.deg});
+const Arrow = styled(ChevronIcon)`
+  color: ${(props) => props.theme.colors.darkLightGray};
+  stroke-width: 4;
+
   margin-left: 7px;
   &:hover {
     color: ${(props) => props.theme.colors.darkLightGray};
-    transform: rotate(${(props) => props.deg});
     stroke-width: 4;
   }
 `;

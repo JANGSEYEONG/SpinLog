@@ -1,6 +1,6 @@
 import { EditBtn, LogoBtn, LogoWhiteBtn, TrashBtn } from '@components/button';
 import GoSettingButton from '@components/button/GoSettingButton';
-import { PrevIcon, XIcon } from '@components/icon';
+import { ChevronIcon, XIcon } from '@components/icon';
 import DemoText from '@components/information/DemoText';
 import { flexBetween, flexColumnCenter } from '@styles/CommonStyles';
 import styled from 'styled-components';
@@ -69,7 +69,7 @@ const CloseButton = styled(XIcon)`
   height: 25px;
   color: ${(props) => props.theme.colors.darkLightGray2};
 `;
-const PrevButton = styled(PrevIcon)`
+const PrevButton = styled(ChevronIcon)`
   width: 25px;
   height: 25px;
   color: ${(props) => props.theme.colors.darkLightGray2};
