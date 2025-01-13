@@ -1,4 +1,4 @@
-import type { Register } from '@models/index';
+import type { Register } from '@models/common';
 import { fetchDashboardData } from '@service/dashboard/dashboardService';
 import type { DashboardDataType } from '@service/dashboard/types';
 import { useDemoStore } from '@stores/demoStore';

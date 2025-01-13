@@ -1,5 +1,5 @@
 import Spinner from '@components/information/Spinner';
-import type { Register } from '@models/index';
+import type { Register } from '@models/common';
 import styled from 'styled-components';
 
 import { STATISTICS_TAB, type StatisticsTabOption } from '../../type';

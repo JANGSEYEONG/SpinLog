@@ -1,5 +1,5 @@
+import type { EmotionKeyWithNone, Register } from '@models/common';
 import type { ExpenseSummaryType } from '@models/expense';
-import type { EmotionKeyWithNone, Register } from '@models/index';
 
 // 입력, 조회, 수정 폼 + 상세 조회 타입
 export type ExpenseDetailDataType = {

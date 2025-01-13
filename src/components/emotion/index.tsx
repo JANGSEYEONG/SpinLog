@@ -1,6 +1,6 @@
 import { CheckIcon } from '@components/icon';
+import type { EmotionKey } from '@models/common';
 import { getEmotionIcon, getEmotionText } from '@models/emotion';
-import type { EmotionKey } from '@models/index';
 import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
 import styled from 'styled-components';
 

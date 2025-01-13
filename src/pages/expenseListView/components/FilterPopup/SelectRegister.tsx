@@ -1,5 +1,5 @@
+import { Register, Registers } from '@models/common';
 import { getCombineRegisterTypeText, getRegisterTypeText } from '@models/expense';
-import { Register, Registers } from '@models/index';
 import { flexBetween, flexCenter } from '@styles/CommonStyles';
 import styled from 'styled-components';
 

@@ -1,3 +1,4 @@
+import { DEFAULT_EMOTION } from '@models/common';
 import type { ExpenseFilterType, ExpenseSummaryType } from '@models/expense';
 import type { ExpenseDetailDataType, ExpenseListDataType } from '@service/expense/types';
 import { MAX_EXPENSE_SIZE } from '@stores/storeConfig';
@@ -74,7 +75,7 @@ export const getDemoExpensesByCondition = (
   const demoSummaryExpenses: ExpenseSummaryType[] = sortedExpenses.map((expense) => {
     return {
       articleId: expense.articleId,
-      emotion: expense.emotion || 'EVADED', // emotion 빈 경우 default값 설정
+      emotion: expense.emotion || DEFAULT_EMOTION, // emotion 빈 경우 default값 설정
       satisfaction: expense.satisfaction,
       content: expense.content,
       amount: expense.amount,

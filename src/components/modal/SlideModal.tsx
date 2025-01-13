@@ -5,12 +5,12 @@ import styled, { keyframes } from 'styled-components';
 
 import React, { useRef } from 'react';
 
-type ModalProps = {
+type SlideModalProps = {
   onClose: () => void;
   children: React.ReactNode;
 };
 
-const SlideModal = ({ onClose, children }: ModalProps) => {
+const SlideModal = ({ onClose, children }: SlideModalProps) => {
   const modalRef = useRef(null);
 
   const handleClose = () => {

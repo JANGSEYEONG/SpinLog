@@ -1,32 +1,27 @@
-export const Registers = ['SPEND', 'SAVE'] as const;
+/* 인증 */
+// 로그인 유형
+export const UserStatus = {
+  LoggedIn: 'LoggedIn',
+  LoggedOut: 'LoggedOut',
+  Demo: 'Demo',
+} as const;
+export type UserStatusType = (typeof UserStatus)[keyof typeof UserStatus];
 
-export type Register = (typeof Registers)[number];
-
-export const EmotionKeys = [
-  'ANNOYED',
-  'NERVOUS',
-  'LONELY',
-  'TIRED',
-  'DEPRESSED',
-  'SAD',
-  'SORRY',
-  'EXCITED',
-  'FLUTTER',
-  'PROUD',
-  'SHY',
-  'EVADED',
-] as const; // 'as const'를 사용하여 리터럴 타입으로 배열을 고정
-
-// 타입을 배열에서 추출
-export type EmotionKey = (typeof EmotionKeys)[number];
-
-// 입력 초기 시, 감정 미선택으로 빈 문자 허용
-export type EmotionKeyWithNone = EmotionKey | '';
-
+/* 정보 */
 // 환경설정 (내정보) 데이터
 export const Genders = ['MALE', 'FEMALE'] as const;
 export type Gender = (typeof Genders)[number];
 
+// 환경설정(내정보)에서의 사용자 정보 form 타입
+// 이를 사용하여 동적으로 UserFormType 정의
+export type UserFormType = {
+  budget: string;
+  gender: Gender;
+} & {
+  [K in keyof typeof mbtiTypes]: (typeof mbtiTypes)[K];
+};
+
+/* MBTI */
 // 각 MBTI 차원을 위한 타입 정의
 type Extroversion = 'E';
 type Introversion = 'I';
@@ -55,3 +50,15 @@ export type MbitFactor =
   | Feeling
   | Perceiving
   | Judging;
+
+// MBTI 치수에 해당하는 유형들을 연결
+const mbtiTypes = {
+  EI: {} as EI,
+  NS: {} as NS,
+  TF: {} as TF,
+  PJ: {} as PJ,
+};
+
+export const mbtiKeys: (keyof typeof mbtiTypes)[] = Object.keys(
+  mbtiTypes,
+) as (keyof typeof mbtiTypes)[];

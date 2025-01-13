@@ -4,18 +4,18 @@ import { formatYMD } from '@utils/dateUtils';
 import { endOfMonth, startOfMonth } from 'date-fns';
 import styled from 'styled-components';
 
-type MonthNavigatorBtnProps = {
+type MonthNavigatorButtonProps = {
   currentDate: Date;
   previousMonth: () => void;
   nextMonth: () => void;
   color?: string;
 };
-const MonthNavigatorBtn = ({
+const MonthNavigatorButton = ({
   currentDate,
   previousMonth,
   nextMonth,
   color = 'black',
-}: MonthNavigatorBtnProps) => {
+}: MonthNavigatorButtonProps) => {
   const startDate: Date = startOfMonth(currentDate);
   const endDate: Date = endOfMonth(currentDate);
 
@@ -28,7 +28,7 @@ const MonthNavigatorBtn = ({
   );
 };
 
-export default MonthNavigatorBtn;
+export default MonthNavigatorButton;
 
 const Wrapper = styled.div<{ $color: string }>`
   ${flexBetween}

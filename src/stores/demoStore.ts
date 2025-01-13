@@ -1,5 +1,5 @@
+import type { Register } from '@models/common';
 import type { ExpenseFilterType } from '@models/expense';
-import type { Register } from '@models/index';
 import type { ExpenseDetailDataType } from '@service/expense/types';
 import { create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';

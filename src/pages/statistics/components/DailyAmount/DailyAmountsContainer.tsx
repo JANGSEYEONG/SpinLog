@@ -1,5 +1,6 @@
 import Spinner from '@components/information/Spinner';
-import type { Gender, Register } from '@models/index';
+import type { Register } from '@models/common';
+import type { Gender } from '@models/user';
 import { subDays } from 'date-fns';
 import styled from 'styled-components';
 

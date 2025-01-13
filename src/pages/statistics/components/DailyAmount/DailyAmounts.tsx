@@ -1,6 +1,6 @@
 import SwipeLayout from '@components/layout/SwipeLayout';
+import type { Register } from '@models/common';
 import { getRegisterTypeText } from '@models/expense';
-import type { Register } from '@models/index';
 import { getThirtyDaysDateObjArray } from '@utils/dateUtils';
 import { addCommasToNumber } from '@utils/numberUtils';
 import { format } from 'date-fns';

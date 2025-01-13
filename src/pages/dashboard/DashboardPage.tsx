@@ -2,6 +2,7 @@ import Spinner from '@components/information/Spinner';
 import TabLayout, { TabProps } from '@components/layout/TabLayout';
 import useIsDemoMode from '@hooks/useIsDemo';
 import useMonthNavigator from '@hooks/useMonthNavigator';
+import { REGISTER } from '@models/common';
 import { getRegisterTypeText } from '@models/expense';
 import styled from 'styled-components';
 
@@ -18,7 +19,7 @@ const DashboardPage = () => {
   const navigationProps = { ...monthNav, isDemoMode };
 
   const [selectedTab, setSelectedTab] = useState<DashboardTabOption>(DASHBOARD_TAB.SPEND); // 지출 탭 기본 선택
-  const registerType = selectedTab === DASHBOARD_TAB.SPEND ? 'SPEND' : 'SAVE';
+  const registerType = selectedTab === DASHBOARD_TAB.SPEND ? REGISTER.SPEND : REGISTER.SAVE;
 
   // react-query가 반응해야 하는 것 : slelectedTab 변경, monthNav.currentDate.getMonth()
   const { data, isLoading, error } = useDashboardData(
@@ -35,22 +36,26 @@ const DashboardPage = () => {
   const tabData: TabProps<DashboardTabOption>[] = [
     {
       id: DASHBOARD_TAB.SPEND,
-      label: getRegisterTypeText('SPEND'),
+      label: getRegisterTypeText(REGISTER.SPEND),
       content:
         !data || isLoading || error ? (
           <InfoWrapper>{error ? <div>An error occurred</div> : <Spinner />}</InfoWrapper>
         ) : (
-          <TabContent currentDate={monthNav.currentDate} registerType={'SPEND'} data={data} />
+          <TabContent
+            currentDate={monthNav.currentDate}
+            registerType={REGISTER.SPEND}
+            data={data}
+          />
         ),
     },
     {
       id: DASHBOARD_TAB.SAVE,
-      label: getRegisterTypeText('SAVE'),
+      label: getRegisterTypeText(REGISTER.SAVE),
       content:
         !data || isLoading || error ? (
           <InfoWrapper>{error ? <div>An error occurred</div> : <Spinner />}</InfoWrapper>
         ) : (
-          <TabContent currentDate={monthNav.currentDate} registerType={'SAVE'} data={data} />
+          <TabContent currentDate={monthNav.currentDate} registerType={REGISTER.SAVE} data={data} />
         ),
     },
   ];

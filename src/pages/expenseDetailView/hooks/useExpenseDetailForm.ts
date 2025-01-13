@@ -1,3 +1,4 @@
+import { DEFAULT_EMOTION, REGISTER } from '@models/common';
 import type { ExpenseDetailDataType } from '@service/expense/types';
 
 import { useForm } from 'react-hook-form';
@@ -13,11 +14,11 @@ const useExpenseDetailForm = () => {
       spendDate: '',
       event: '',
       thought: '',
-      emotion: 'EVADED',
+      emotion: DEFAULT_EMOTION,
       satisfaction: 1,
       reason: '',
       improvements: '',
-      registerType: 'SPEND',
+      registerType: REGISTER.SPEND,
       aiComment: '',
     },
   });

@@ -1,5 +1,5 @@
+import { type EmotionKey, REGISTER } from '@models/common';
 import type { ExpenseFilterType } from '@models/expense';
-import type { EmotionKey } from '@models/index';
 import { compareYMDString, compareYMString, formatFromServer } from '@utils/dateUtils';
 
 import type { DemoExpenseDataType } from './types';
@@ -54,9 +54,9 @@ export const getGroupSumAmountsByDate = (
     if (!acc[date]) {
       acc[date] = { date, daySpend: 0, daySave: 0 };
     }
-    if (expense.registerType === 'SPEND') {
+    if (expense.registerType === REGISTER.SPEND) {
       acc[date].daySpend += parseFloat(expense.amount);
-    } else if (expense.registerType === 'SAVE') {
+    } else if (expense.registerType === REGISTER.SAVE) {
       acc[date].daySave += parseFloat(expense.amount);
     }
     return acc;
@@ -78,9 +78,9 @@ export const getGroupSumAmountsByEmotion = (
     if (!acc[emotion]) {
       acc[emotion] = { emotion, daySpend: 0, daySave: 0 };
     }
-    if (expense.registerType === 'SPEND') {
+    if (expense.registerType === REGISTER.SPEND) {
       acc[emotion].daySpend += parseFloat(expense.amount);
-    } else if (expense.registerType === 'SAVE') {
+    } else if (expense.registerType === REGISTER.SAVE) {
       acc[emotion].daySave += parseFloat(expense.amount);
     }
     return acc;

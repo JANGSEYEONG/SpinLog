@@ -1,5 +1,6 @@
 import Spinner from '@components/information/Spinner';
-import type { EmotionKey, Gender, MbitFactor, Register } from '@models/index';
+import type { EmotionKey, Register } from '@models/common';
+import type { Gender, MbitFactor } from '@models/user';
 import type {
   EmotionAmountsByGenderDto,
   EmotionAmountsByMbtiDto,

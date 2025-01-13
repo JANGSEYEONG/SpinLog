@@ -2,8 +2,8 @@ import ExpenseSummary from '@components/expense/ExpenseSummary';
 import { ChevronIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
 import useIsDemoMode from '@hooks/useIsDemo';
+import { EmotionKeys, Registers } from '@models/common';
 import type { ExpenseFilterType, ExpenseSummaryType } from '@models/expense';
-import { EmotionKeys, Registers } from '@models/index';
 import {
   flexBetween,
   flexCenter,

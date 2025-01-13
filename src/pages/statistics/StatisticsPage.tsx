@@ -1,5 +1,5 @@
 import TabLayout, { TabProps } from '@components/layout/TabLayout';
-import type { Register } from '@models/index';
+import { REGISTER, type Register } from '@models/common';
 import { format, subDays } from 'date-fns';
 import styled from 'styled-components';
 
@@ -15,14 +15,14 @@ import NavigationLayout from './navigation';
 import { STATISTICS_TAB, type StatisticsTabOption } from './type';
 
 const StatisticsPage = () => {
-  const [registerType, setRegisterType] = useState<Register>('SPEND');
+  const [registerType, setRegisterType] = useState<Register>(REGISTER.SPEND);
   const [selectedTab, setSelectedTab] = useState<StatisticsTabOption>(STATISTICS_TAB.MBTI);
 
   const yesterday = subDays(new Date(), 1);
   const nintyDaysBefore = subDays(yesterday, 29);
 
   const handleRegisterTypeClick = () => {
-    setRegisterType(registerType === 'SPEND' ? 'SAVE' : 'SPEND');
+    setRegisterType(registerType === REGISTER.SPEND ? REGISTER.SAVE : REGISTER.SPEND);
   };
   const handleTabSelect = (tabId: string) => {
     setSelectedTab(tabId as StatisticsTabOption);
@@ -67,7 +67,10 @@ const StatisticsPage = () => {
   return (
     <NavigationLayout>
       <OptionContainer>
-        <SlideButton isChecked={registerType === 'SAVE'} onChange={handleRegisterTypeClick} />
+        <SlideButton
+          isChecked={registerType === REGISTER.SAVE}
+          onChange={handleRegisterTypeClick}
+        />
         <Period>{`${format(nintyDaysBefore, 'yy.MM.dd')}~${format(yesterday, 'yy.MM.dd')} 기준`}</Period>
       </OptionContainer>
       <StatisticsContainer>

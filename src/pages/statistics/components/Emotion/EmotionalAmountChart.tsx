@@ -1,7 +1,7 @@
 import SwipeLayout from '@components/layout/SwipeLayout';
+import type { EmotionKey, Register } from '@models/common';
 import { Emotions, getEmotionText } from '@models/emotion';
 import { getRegisterTypeText } from '@models/expense';
-import type { EmotionKey, Register } from '@models/index';
 import { addCommasToNumber } from '@utils/numberUtils';
 import styled from 'styled-components';
 

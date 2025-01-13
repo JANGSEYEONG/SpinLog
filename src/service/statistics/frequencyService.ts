@@ -1,4 +1,4 @@
-import type { Register } from '@models/index';
+import type { Register } from '@models/common';
 import axiosInstance from '@service/axios';
 
 /* mbti 단어별 빈도수 (wordcloud용) 데이터 */

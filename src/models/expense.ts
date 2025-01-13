@@ -1,4 +1,4 @@
-import type { EmotionKey, Register } from '..';
+import type { EmotionKey, Register } from './common';
 
 // 요약 타입
 export type ExpenseSummaryType = {

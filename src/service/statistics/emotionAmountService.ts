@@ -1,4 +1,5 @@
-import type { EmotionKey, Gender, MBTI, MbitFactor, Register } from '@models/index';
+import type { EmotionKey, Register } from '@models/common';
+import type { Gender, MBTI, MbitFactor } from '@models/user';
 import axiosInstance from '@service/axios';
 
 /* MBTI별 감정별 금액 평균 */

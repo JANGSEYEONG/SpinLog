@@ -1,4 +1,5 @@
 import { ChevronIcon } from '@components/icon';
+import { REGISTER } from '@models/common';
 import { getRegisterTypeText } from '@models/expense';
 import { PagePath } from '@models/navigation';
 import type { MainBudgetType } from '@service/main/types';
@@ -79,11 +80,11 @@ const Budget = ({ monthBudget, monthSpend, monthSave }: BudgetProps) => {
           <span className="info-price">{addCommasToNumber(monthBudget)}원</span>
         </InfoItem>
         <InfoItem>
-          <span className="info-text">{getRegisterTypeText('SPEND')}</span>
+          <span className="info-text">{getRegisterTypeText(REGISTER.SPEND)}</span>
           <span className="info-price">-{addCommasToNumber(monthSpend)}원</span>
         </InfoItem>
         <InfoItem>
-          <span className="info-text">{getRegisterTypeText('SAVE')}</span>
+          <span className="info-text">{getRegisterTypeText(REGISTER.SAVE)}</span>
           <span className="info-price">{addCommasToNumber(monthSave)}원</span>
         </InfoItem>
       </Info>

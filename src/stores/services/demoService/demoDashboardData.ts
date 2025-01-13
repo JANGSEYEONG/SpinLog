@@ -1,4 +1,4 @@
-import type { Register } from '@models/index';
+import { REGISTER, type Register } from '@models/common';
 import type {
   DailyAmountType,
   DashboardDataType,
@@ -42,7 +42,7 @@ const getDemoDailyAmount = (
   return Object.values(groupedData).map((expense) => {
     return {
       date: expense.date,
-      amount: registerType === 'SPEND' ? expense.daySpend : expense.daySave,
+      amount: registerType === REGISTER.SPEND ? expense.daySpend : expense.daySave,
     };
   });
 };
@@ -57,7 +57,7 @@ const getDemoEmotionAmountTotal = (
   return Object.values(groupedData).map((expense) => {
     return {
       emotion: expense.emotion,
-      amount: registerType === 'SPEND' ? expense.daySpend : expense.daySave,
+      amount: registerType === REGISTER.SPEND ? expense.daySpend : expense.daySave,
     };
   });
 };

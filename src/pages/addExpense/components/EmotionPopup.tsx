@@ -1,6 +1,6 @@
 import Emotion from '@components/emotion';
 import { XIcon } from '@components/icon';
-import { type EmotionKey, type EmotionKeyWithNone, EmotionKeys } from '@models/index';
+import { type EmotionKey, type EmotionKeyWithNone, EmotionKeys } from '@models/common';
 import { flexBetween, flexCenter, overflowWithoutScroll } from '@styles/CommonStyles';
 import styled from 'styled-components';
 

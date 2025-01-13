@@ -1,5 +1,5 @@
+import type { Register } from '@models/common';
 import { getRegisterTypeText } from '@models/expense';
-import type { Register } from '@models/index';
 import type { DashboardDataType } from '@service/dashboard/types';
 import { flexColumnCenter } from '@styles/CommonStyles';
 import { formatYM } from '@utils/dateUtils';

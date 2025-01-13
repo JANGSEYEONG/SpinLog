@@ -2,8 +2,8 @@ import { EditIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
 import VoiceMultiText from '@components/input/VoiceMultiText';
 import Modal from '@components/modal';
+import type { EmotionKey } from '@models/common';
 import { getEmotionIcon, getEmotionText } from '@models/emotion';
-import type { EmotionKey } from '@models/index';
 import {
   addPageContainer,
   addPageSubject,

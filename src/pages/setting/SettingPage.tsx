@@ -1,7 +1,7 @@
 import { ChevronIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
 import useIsDemoMode from '@hooks/useIsDemo';
-import type { EI, NS, PJ, TF } from '@models/index';
+import type { EI, NS, PJ, TF } from '@models/user';
 import { type UserFormType, mbtiKeys } from '@models/user';
 import { flexBetween, flexCenter, flexColumnCenter, mainSection } from '@styles/CommonStyles';
 import { formatAmountNumber } from '@utils/numberUtils';

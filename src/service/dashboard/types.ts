@@ -1,4 +1,4 @@
-import type { EmotionKey } from '@models/index';
+import type { EmotionKey } from '@models/common';
 
 export type DailyAmountType = {
   date: string;

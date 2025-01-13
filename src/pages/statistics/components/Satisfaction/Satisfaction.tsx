@@ -1,6 +1,6 @@
 import SwipeLayout from '@components/layout/SwipeLayout';
+import type { Register } from '@models/common';
 import { getRegisterTypeText } from '@models/expense';
-import type { Register } from '@models/index';
 import styled, { useTheme } from 'styled-components';
 
 import Chart from 'react-apexcharts';

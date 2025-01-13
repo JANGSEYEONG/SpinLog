@@ -1,4 +1,5 @@
 import { ChevronIcon } from '@components/icon';
+import { REGISTER } from '@models/common';
 import { getRegisterTypeText } from '@models/expense';
 import type { MainMonthSpendType } from '@service/main/types';
 import { flexBetween, flexCenter, flexColumnCenter } from '@styles/CommonStyles';
@@ -103,7 +104,7 @@ const Calendar = ({ currentDate, setCurrentDate, data }: CalendarProps) => {
       <TitleWrapper>
         소비 달력
         <Label>
-          <LabelItem className="minus">{getRegisterTypeText('SPEND')}</LabelItem>
+          <LabelItem className="minus">{getRegisterTypeText(REGISTER.SPEND)}</LabelItem>
           <LabelItem>{getRegisterTypeText('SAVE')}</LabelItem>
         </Label>
       </TitleWrapper>
@@ -138,12 +139,14 @@ const Calendar = ({ currentDate, setCurrentDate, data }: CalendarProps) => {
             <ExpenseDetail>
               {daySpend > 0 && (
                 <Detail className="spend">
-                  {getRegisterTypeText('SPEND')}:<span>{`-${addCommasToNumber(daySpend)}원`}</span>
+                  {getRegisterTypeText(REGISTER.SPEND)}:
+                  <span>{`-${addCommasToNumber(daySpend)}원`}</span>
                 </Detail>
               )}
               {daySave > 0 && (
                 <Detail>
-                  {getRegisterTypeText('SAVE')}:<span>{`+${addCommasToNumber(daySave)}원`}</span>
+                  {getRegisterTypeText(REGISTER.SAVE)}:
+                  <span>{`+${addCommasToNumber(daySave)}원`}</span>
                 </Detail>
               )}
             </ExpenseDetail>

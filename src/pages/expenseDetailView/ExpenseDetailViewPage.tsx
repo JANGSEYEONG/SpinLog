@@ -5,7 +5,7 @@ import MultiText from '@components/input/MultiText';
 import LoadingModal from '@components/modal/LoadingModal';
 import useIsDemoMode from '@hooks/useIsDemo';
 import useToast from '@hooks/useToast';
-import type { EmotionKey } from '@models/index';
+import type { EmotionKey } from '@models/common';
 import { PagePath } from '@models/navigation';
 import type { ExpenseDetailDataType } from '@service/expense/types';
 import {

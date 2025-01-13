@@ -1,4 +1,4 @@
-import type { Register } from '@models/index';
+import type { Register } from '@models/common';
 import {
   fetchDailyAmountsByGender,
   fetchDailyAmountsByMbti,

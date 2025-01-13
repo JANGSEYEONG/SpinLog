@@ -1,7 +1,7 @@
 import Emotion from '@components/emotion';
 import MultiText from '@components/input/MultiText';
+import { EmotionKey, EmotionKeys, Registers } from '@models/common';
 import { getRegisterTypeText } from '@models/expense';
-import { EmotionKey, EmotionKeys, Registers } from '@models/index';
 import {
   borderCheck,
   flexBetween,

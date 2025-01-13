@@ -1,5 +1,5 @@
+import type { Register } from '@models/common';
 import type { ExpenseFilterType } from '@models/expense';
-import type { Register } from '@models/index';
 import type { DashboardDataType } from '@service/dashboard/types';
 import type { ExpenseDetailDataType, ExpenseListDataType } from '@service/expense/types';
 import type { MainDataType, MainSubDataType } from '@service/main/types';

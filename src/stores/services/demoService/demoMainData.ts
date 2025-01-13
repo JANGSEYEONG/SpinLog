@@ -1,5 +1,5 @@
+import { DEFAULT_EMOTION, type EmotionKey, REGISTER, type Register } from '@models/common';
 import type { ExpenseSummaryType } from '@models/expense';
-import type { EmotionKey, Register } from '@models/index';
 import type { MainDataType, MainSubDataType } from '@service/main/types';
 import type { MainMonthSpendType } from '@service/main/types';
 
@@ -13,8 +13,14 @@ export const getDemoMainData = (get: () => DemoStoreType, selectDate: string): M
   const selectSameMonthExpenses = getSameYMSpendList(selectDate, get().demoExpenses);
   const selectSameDayExpenses = getSameYMDSpendList(selectDate, get().demoExpenses);
 
-  const totalSpendAmount = calculateTotalAmountByRegisterType('SPEND', selectSameMonthExpenses);
-  const totalSaveAmount = calculateTotalAmountByRegisterType('SAVE', selectSameMonthExpenses);
+  const totalSpendAmount = calculateTotalAmountByRegisterType(
+    REGISTER.SPEND,
+    selectSameMonthExpenses,
+  );
+  const totalSaveAmount = calculateTotalAmountByRegisterType(
+    REGISTER.SAVE,
+    selectSameMonthExpenses,
+  );
 
   const demoMonthSpendList = getDemoMonthSpendList(selectSameMonthExpenses);
   const demoDaySpendList: ExpenseSummaryType[] = getDemoDaySpendList(selectSameDayExpenses);
@@ -66,7 +72,7 @@ const getDemoMonthSpendList = (demoExpenses: DemoExpenseDataType[]): MainMonthSp
 
 const getDemoDaySpendList = (demoExpenses: DemoExpenseDataType[]): ExpenseSummaryType[] => {
   return demoExpenses.map((expense) => {
-    const emotion: EmotionKey = expense.emotion || 'EVADED';
+    const emotion: EmotionKey = expense.emotion || DEFAULT_EMOTION;
     return {
       articleId: expense.articleId,
       emotion,

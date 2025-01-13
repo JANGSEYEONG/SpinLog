@@ -1,3 +1,4 @@
+import { DEFAULT_EMOTION, REGISTER } from '@models/common';
 import { fetchExpenseById } from '@service/expense/expenseService';
 import type { ExpenseDetailDataType } from '@service/expense/types';
 import { useDemoStore } from '@stores/demoStore';
@@ -21,10 +22,10 @@ const useExpenseData = (id: string | undefined, isDemoMode: boolean) => {
   const tempExpenseData: ExpenseDetailDataType = useMemo(
     () => ({
       content: 'temp',
-      emotion: 'EVADED',
+      emotion: DEFAULT_EMOTION,
       amount: '',
       satisfaction: 3,
-      registerType: 'SPEND',
+      registerType: REGISTER.SPEND,
       spendDate: '',
       event: '',
       thought: '',

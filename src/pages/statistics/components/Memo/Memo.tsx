@@ -1,6 +1,6 @@
 import SwipeLayout from '@components/layout/SwipeLayout';
+import type { Register } from '@models/common';
 import { getRegisterTypeText } from '@models/expense';
-import type { Register } from '@models/index';
 import styled from 'styled-components';
 import 'tippy.js/animations/scale.css';
 import 'tippy.js/dist/tippy.css';

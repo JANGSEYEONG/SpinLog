@@ -1,7 +1,7 @@
 import Emotion from '@components/emotion';
 import { ChevronIcon } from '@components/icon';
+import { EmotionKey, EmotionKeys } from '@models/common';
 import { getEmotionText } from '@models/emotion';
-import { EmotionKey, EmotionKeys } from '@models/index';
 import { flexBetween, flexCenter } from '@styles/CommonStyles';
 import styled from 'styled-components';
 

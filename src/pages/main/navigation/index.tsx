@@ -1,6 +1,6 @@
 import MetaThemeColor from '@components/background/MetaThemeColor';
 import PartialBackground from '@components/background/PartialBackground';
-import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
+import MonthNavigatorButton from '@components/button/MonthNavigatorButton';
 import BottomNavigation from '@layout/BottomNavigation';
 import TopNavigation from '@layout/TopNavigation';
 import { PagePath } from '@models/navigation';
@@ -55,7 +55,7 @@ const NavigationLayout = ({
         }
         _Extension={
           <MonthNavWrapper>
-            <MonthNavigatorBtn {...monthNavProps} />
+            <MonthNavigatorButton {...monthNavProps} />
           </MonthNavWrapper>
         }
       />

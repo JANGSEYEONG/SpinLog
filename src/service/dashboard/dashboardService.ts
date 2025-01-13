@@ -1,4 +1,4 @@
-import type { Register } from '@models/index';
+import type { Register } from '@models/common';
 
 import axiosInstance from '../axios';
 import type { DashboardDataType } from './types';

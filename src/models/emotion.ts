@@ -12,7 +12,7 @@ import Sorry from '@assets/images/icon/emotion/sorry.svg?react';
 import Tired from '@assets/images/icon/emotion/tired.svg?react';
 import styled from 'styled-components';
 
-import { EmotionKey } from '..';
+import { EmotionKey } from './common';
 
 type EmotionDetail = {
   text: string;

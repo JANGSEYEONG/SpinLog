@@ -1,6 +1,6 @@
 import VoiceMultiText from '@components/input/VoiceMultiText';
+import { Registers } from '@models/common';
 import { getCombineRegisterTypeText, getRegisterTypeText } from '@models/expense';
-import { Registers } from '@models/index';
 import {
   addPageContainer,
   addPageSubject,
