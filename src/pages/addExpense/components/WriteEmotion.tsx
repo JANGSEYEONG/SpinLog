@@ -1,4 +1,4 @@
-import { EditBtn } from '@components/button';
+import { EditIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
 import VoiceMultiText from '@components/input/VoiceMultiText';
 import Modal from '@components/modal';
@@ -97,7 +97,7 @@ const WriteEmotion = () => {
             ) : (
               <>
                 <EmotionEditBtn onClick={toggleModal}>
-                  <EditBtn />
+                  <EditIcon />
                 </EmotionEditBtn>
                 {EmotionSVG && <EmotionSVG />}
                 <EmotionText>{emotionText}</EmotionText>

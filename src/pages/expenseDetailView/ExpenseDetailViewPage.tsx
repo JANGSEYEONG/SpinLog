@@ -1,5 +1,5 @@
-import { VolumeBtn } from '@components/button';
 import ExpenseSummary from '@components/expense/ExpenseSummary';
+import { VolumeIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
 import MultiText from '@components/input/MultiText';
 import LoadingModal from '@components/modal/LoadingModal';
@@ -213,7 +213,7 @@ const ExpenseDetailViewPage = () => {
                   <AICommentButton
                     onClick={handleAIComment}
                     className={`${isDemoMode || isEditMode || formState.aiComment || commentMutation.isLoading ? '' : 'able'}`}>
-                    {commentMutation.isLoading ? <Spinner size={35} /> : <VolumeBtn />}
+                    {commentMutation.isLoading ? <Spinner size={35} /> : <VolumeIcon />}
                   </AICommentButton>
                 </Content>
               </ContentContainer>

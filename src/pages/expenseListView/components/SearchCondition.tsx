@@ -1,4 +1,4 @@
-import { FilterBtn, SearchBtn } from '@components/button';
+import { FilterIcon, SearchIcon } from '@components/icon';
 import SlideModal from '@components/modal/SlideModal';
 import { getEmotionText } from '@models/emotion';
 import { type ExpenseFilterType, getRegisterTypeText } from '@models/expense';
@@ -30,7 +30,7 @@ const SearchCondition = ({
     <Container>
       <FilterWrapper>
         <span className="filter-btn" onClick={toggleModal}>
-          <FilterBtn />
+          <FilterIcon />
         </span>
         <SelectList onClick={toggleModal}>
           <Select>{`${formatYMD(condition.from)}-${formatYMD(condition.to)}`}</Select>
@@ -53,7 +53,7 @@ const SearchCondition = ({
         </SelectList>
       </FilterWrapper>
       <SearchBoxWrapper>
-        <SearchBtn />
+        <SearchIcon />
         <SearchInput
           type="search"
           placeholder="감정 메모,소비 내역 등의 키워드를 검색하세요"

@@ -59,25 +59,6 @@ const ExpenseSummary = ({
           <span className="info-text">점</span>
         </InfoItem>
       </InfoWrapper>
-      {/* 이전 UI (만족도 range 사용) */}
-      {/* {!hideHeader && (
-        <EmotionText>
-          {getEmotionText(emotion)} {satisfaction}점
-        </EmotionText>
-      )}
-      <RangeWrapper>
-        <SatisfactionRange satisfaction={satisfaction} emotion={emotion} />
-      </RangeWrapper>
-      <Info>
-        <InfoItem>
-          <span className="info-text">내용</span>
-          <span className="info-price">{content}</span>
-        </InfoItem>
-        <InfoItem>
-          <span className="info-text">{registerType === 'SPEND' ? '지출' : '절약'}</span>
-          <span className="info-price">{addCommasToNumber(amount)}원</span>
-        </InfoItem>
-      </Info> */}
     </Container>
   );
 };
@@ -151,40 +132,3 @@ const InfoData = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
-
-/* 이전 UI (만족도 range 사용) */
-// const EmotionText = styled.div`
-//   width: 100%;
-//   font-weight: 700;
-//   color: #333331;
-//   font-size: 16px;
-//   margin-bottom: 10px;
-// `;
-
-// const RangeWrapper = styled.div`
-//   width: 100%;
-// `;
-
-// const Info = styled.div`
-//   ${flexColumnCenter}
-//   width: 100%;
-//   gap: 5px;
-// `;
-
-// const InfoItem = styled.div`
-//   ${flexBetween}
-//   width: 100%;
-//   flex: 1;
-
-//   & span.info-text {
-//     font-size: 14px;
-//     color: #9f9f9f;
-//     font-weight: 300;
-//   }
-
-//   & span.info-price {
-//     color: #333331;
-//     font-size: 16px;
-//     font-weight: 700;
-//   }
-// `;

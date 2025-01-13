@@ -74,7 +74,7 @@ const EditButton = styled(TopNavigation.TopBar.EditButton)`
   ${toolbarStyle}
 `;
 
-const DeleteButton = styled(TopNavigation.TopBar.DeleteButton)`
+const DeleteButton = styled(TopNavigation.TopBar.TrashButton)`
   ${toolbarStyle}
 `;
 

@@ -1,4 +1,4 @@
-import CheckIcon from '@assets/images/icon/checkIcon.svg?react';
+import { CheckIcon } from '@components/icon';
 import { getEmotionIcon, getEmotionText } from '@models/emotion';
 import type { EmotionKey } from '@models/index';
 import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';

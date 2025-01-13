@@ -1,4 +1,4 @@
-import { MikeBtn } from '@components/button';
+import { MicIcon } from '@components/icon';
 import useVoiceMultiText from '@hooks/useVoiceMutlText';
 import { flexCenter } from '@styles/CommonStyles';
 import styled, { keyframes } from 'styled-components';
@@ -84,7 +84,7 @@ const VoiceMultiText = ({
             <Bar $delay={0.8} />
           </>
         ) : (
-          <MikeBtn />
+          <MicIcon />
         )}
       </VoiceButton>
     </Container>

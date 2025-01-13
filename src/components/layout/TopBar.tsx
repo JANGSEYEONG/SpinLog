@@ -1,6 +1,12 @@
-import { EditBtn, LogoBtn, LogoWhiteBtn, TrashBtn } from '@components/button';
 import GoSettingButton from '@components/button/GoSettingButton';
-import { ChevronIcon, XIcon } from '@components/icon';
+import {
+  ChevronIcon,
+  EditIcon,
+  SpinLogIcon,
+  SpinLogWhiteIcon,
+  TrashIcon,
+  XIcon,
+} from '@components/icon';
 import DemoText from '@components/information/DemoText';
 import { flexBetween, flexColumnCenter } from '@styles/CommonStyles';
 import styled from 'styled-components';
@@ -77,11 +83,11 @@ const PrevButton = styled(ChevronIcon)`
 
 // 이것 역시 가져다 쓰는 곳에서 topnavigation->topbar->closebutton으로 접근 가능해 import 구문이 필요 없다.
 TopBar.PrevButton = PrevButton;
-TopBar.LogoButton = LogoBtn;
-TopBar.LogoWhiteButton = LogoWhiteBtn;
+TopBar.LogoButton = SpinLogIcon;
+TopBar.LogoWhiteButton = SpinLogWhiteIcon;
 
-TopBar.DeleteButton = TrashBtn;
-TopBar.EditButton = EditBtn;
+TopBar.TrashButton = TrashIcon;
+TopBar.EditButton = EditIcon;
 
 /// #20240822 수정 후
 TopBar.Title = Title;
