@@ -12,9 +12,10 @@ import {
   textAreaWrapper,
 } from '@styles/CommonStyles';
 import { formatAmountNumber } from '@utils/numberUtils';
-import { useEffect, useState } from 'react';
-import { useFormContext, Controller } from 'react-hook-form';
 import styled from 'styled-components';
+
+import { useEffect, useState } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
 
 // 지출 타입, 내용, 금액, 날짜
 const WriteExpense = () => {

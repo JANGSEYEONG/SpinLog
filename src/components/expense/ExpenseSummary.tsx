@@ -1,13 +1,11 @@
-import styled from 'styled-components';
+import Emotion from '@components/emotion';
+import { type ExpenseSummaryType, getRegisterTypeText } from '@models/expense';
+import { getExpenseDetailViewPath } from '@models/navigation';
 import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import { addCommasToNumber } from '@utils/numberUtils';
+import styled from 'styled-components';
 
 import { useNavigate } from 'react-router-dom';
-
-import { getRegisterTypeText, type ExpenseSummaryType } from '@models/expense';
-import { getExpenseDetailViewPath } from '@models/navigation';
-
-import Emotion from '@components/emotion';
-import { addCommasToNumber } from '@utils/numberUtils';
 
 type ExpenseSummaryProps = ExpenseSummaryType & {
   hideHeader?: boolean;

@@ -1,11 +1,12 @@
-import type { DemoExpenseDataType, DemoStoreType } from './types';
 import type { Register } from '@models/index';
 import type {
   DailyAmountType,
   DashboardDataType,
   EmotionAmountTotalType,
 } from '@service/dashboard/types';
-import { getGroupSumAmountsByDate, getSameYMSpendList, getGroupSumAmountsByEmotion } from './util';
+
+import type { DemoExpenseDataType, DemoStoreType } from './types';
+import { getGroupSumAmountsByDate, getGroupSumAmountsByEmotion, getSameYMSpendList } from './util';
 
 export const getDemoDashboardData = (
   get: () => DemoStoreType,

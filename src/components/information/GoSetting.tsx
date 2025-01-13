@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
-
 import SettingBird from '@assets/images/bird/settingBird.svg?react';
-import { useNavigate } from 'react-router-dom';
 import { PagePath } from '@models/navigation';
+import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
+
+import { useNavigate } from 'react-router-dom';
 
 const GoSetting = () => {
   const navigate = useNavigate();

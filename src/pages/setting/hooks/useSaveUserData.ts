@@ -1,8 +1,9 @@
-import { useMutation } from 'react-query';
-import { saveUserData } from '@service/user/userService';
 import useToast from '@hooks/useToast';
 import type { UserFormType } from '@models/user';
+import { saveUserData } from '@service/user/userService';
 import { useDemoStore } from '@stores/demoStore';
+
+import { useMutation } from 'react-query';
 
 const useSaveUserData = (isDemoMode: boolean) => {
   const { showToast } = useToast();

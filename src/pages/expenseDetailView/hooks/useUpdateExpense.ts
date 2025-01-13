@@ -1,9 +1,9 @@
-import { useMutation } from 'react-query';
-import { updateExpenseData } from '@service/expense/expenseService';
-
 import useToast from '@hooks/useToast';
+import { updateExpenseData } from '@service/expense/expenseService';
 import type { ExpenseDetailDataType } from '@service/expense/types';
 import { useDemoStore } from '@stores/demoStore';
+
+import { useMutation } from 'react-query';
 
 const useUpdateExpense = (id: string | undefined, isDemoMode: boolean) => {
   const { showToast } = useToast();

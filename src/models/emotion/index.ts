@@ -1,19 +1,18 @@
-import { EmotionKey } from '..';
-
 import Annoyed from '@assets/images/icon/emotion/annoyed.svg?react';
-import Flutter from '@assets/images/icon/emotion/flutter.svg?react';
-import Sorry from '@assets/images/icon/emotion/sorry.svg?react';
-import Evaded from '@assets/images/icon/emotion/evaded.svg?react';
-import Proud from '@assets/images/icon/emotion/proud.svg?react';
 import Depressed from '@assets/images/icon/emotion/depressed.svg?react';
-import Nervous from '@assets/images/icon/emotion/nervous.svg?react';
+import Evaded from '@assets/images/icon/emotion/evaded.svg?react';
 import Excited from '@assets/images/icon/emotion/excited.svg?react';
-import Tired from '@assets/images/icon/emotion/tired.svg?react';
+import Flutter from '@assets/images/icon/emotion/flutter.svg?react';
+import Lonely from '@assets/images/icon/emotion/lonely.svg?react';
+import Nervous from '@assets/images/icon/emotion/nervous.svg?react';
+import Proud from '@assets/images/icon/emotion/proud.svg?react';
 import Sad from '@assets/images/icon/emotion/sad.svg?react';
 import Shy from '@assets/images/icon/emotion/shy.svg?react';
-import Lonely from '@assets/images/icon/emotion/lonely.svg?react';
-
+import Sorry from '@assets/images/icon/emotion/sorry.svg?react';
+import Tired from '@assets/images/icon/emotion/tired.svg?react';
 import styled from 'styled-components';
+
+import { EmotionKey } from '..';
 
 type EmotionDetail = {
   text: string;

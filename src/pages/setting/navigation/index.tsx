@@ -1,10 +1,9 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
-
+import MetaThemeColor from '@components/background/MetaThemeColor';
 import TopBar from '@components/layout/TopBar';
 import TopNavigation from '@layout/TopNavigation';
-
-import MetaThemeColor from '@components/background/MetaThemeColor';
 import { PagePath } from '@models/navigation';
+
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 type NavLayoutProps = {
   children: React.ReactNode;

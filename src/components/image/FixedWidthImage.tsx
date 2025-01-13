@@ -1,4 +1,4 @@
-import { forwardRef, type ImgHTMLAttributes, type ForwardedRef } from 'react';
+import { type ForwardedRef, type ImgHTMLAttributes, forwardRef } from 'react';
 
 type FixedWidthImageProps = {
   src: string;

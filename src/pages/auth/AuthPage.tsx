@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-
-import { useAuthStore } from '@stores/authStore';
-import { Navigate, useSearchParams } from 'react-router-dom';
-
 import GoSetting from '@components/information/GoSetting';
 import { PagePath } from '@models/navigation';
+import { useAuthStore } from '@stores/authStore';
 import { ACCESS_TOKEN_NAME } from '@stores/storeConfig';
+
+import { useEffect } from 'react';
+import { Navigate, useSearchParams } from 'react-router-dom';
 
 // 서버에서 인증 받아서 돌아오는 페이지.
 const AuthPage = () => {

@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components';
-import { flexCenter } from '@styles/CommonStyles';
-
-import TopNavigation from '@layout/TopNavigation';
 import MetaThemeColor from '@components/background/MetaThemeColor';
+import TopNavigation from '@layout/TopNavigation';
+import { flexCenter } from '@styles/CommonStyles';
+import styled, { css } from 'styled-components';
 
 type NavLayoutProps = {
   children: React.ReactNode;

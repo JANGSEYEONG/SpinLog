@@ -1,15 +1,14 @@
-import { Suspense } from 'react';
-import { lazyWithRetries } from 'src/routes/lazyWithRetries';
-
-import styled from 'styled-components';
 import Spinner from '@components/information/Spinner';
+import useIsDemoMode from '@hooks/useIsDemo';
+import useMonthNavigator from '@hooks/useMonthNavigator';
 import { flexColumnBetween, mainSection, overflowWithoutScroll } from '@styles/CommonStyles';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
+import styled from 'styled-components';
 
-import NavigationLayout from './navigation';
+import { Suspense } from 'react';
 
 import useMainData from './hooks/useMainData';
-import useMonthNavigator from '@hooks/useMonthNavigator';
-import useIsDemoMode from '@hooks/useIsDemo';
+import NavigationLayout from './navigation';
 
 const Budget = lazyWithRetries(() => import('./components/Budget'));
 const Calendar = lazyWithRetries(() => import('./components/Calendar'));

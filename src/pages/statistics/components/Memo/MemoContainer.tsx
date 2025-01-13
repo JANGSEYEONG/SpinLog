@@ -1,11 +1,9 @@
+import Spinner from '@components/information/Spinner';
+import type { Register } from '@models/index';
 import styled from 'styled-components';
 
-import type { TabOption } from '../../type';
-import type { Register } from '@models/index';
-
+import { STATISTICS_TAB, type StatisticsTabOption } from '../../type';
 import Memo from './Memo';
-import Spinner from '@components/information/Spinner';
-
 import useMemoData from './hooks/useMemoData';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -109,7 +107,7 @@ const getFrequencyContentsForGender = (data: any) => {
 };
 
 type MemoContainerProps = {
-  tabOption: TabOption;
+  tabOption: StatisticsTabOption;
   register: Register;
 };
 
@@ -124,7 +122,7 @@ const MemoContainer = ({ tabOption, register }: MemoContainerProps) => {
   }
 
   const contents =
-    tabOption === 'TAB_GENDER'
+    tabOption === STATISTICS_TAB.GENDER
       ? getFrequencyContentsForGender(genderData)
       : getFrequencyContentsForMbti(mbtiData);
 

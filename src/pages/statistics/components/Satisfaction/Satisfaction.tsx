@@ -1,12 +1,11 @@
-import styled, { useTheme } from 'styled-components';
-
+import SwipeLayout from '@components/layout/SwipeLayout';
+import { getRegisterTypeText } from '@models/expense';
 import type { Register } from '@models/index';
+import styled, { useTheme } from 'styled-components';
 
 import Chart from 'react-apexcharts';
 
-import SwipeLayout from '@components/layout/SwipeLayout';
 import StatisticsContentLayout from '../StatisticsContentLayout';
-import { getRegisterTypeText } from '@models/expense';
 
 type SatisfactionProps = {
   satisfactions: {

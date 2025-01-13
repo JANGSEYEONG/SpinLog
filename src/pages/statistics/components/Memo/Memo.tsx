@@ -1,14 +1,13 @@
+import SwipeLayout from '@components/layout/SwipeLayout';
+import { getRegisterTypeText } from '@models/expense';
+import type { Register } from '@models/index';
 import styled from 'styled-components';
-import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
+import 'tippy.js/dist/tippy.css';
 
 import ReactWordcloud from 'react-wordcloud';
 
-import SwipeLayout from '@components/layout/SwipeLayout';
 import StatisticsContentLayout from '../StatisticsContentLayout';
-
-import type { Register } from '@models/index';
-import { getRegisterTypeText } from '@models/expense';
 
 type MemoProps = {
   contents: {

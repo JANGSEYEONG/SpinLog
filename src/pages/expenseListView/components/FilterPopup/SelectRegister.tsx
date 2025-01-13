@@ -1,9 +1,9 @@
+import { getCombineRegisterTypeText, getRegisterTypeText } from '@models/expense';
+import { Register, Registers } from '@models/index';
 import { flexBetween, flexCenter } from '@styles/CommonStyles';
 import styled from 'styled-components';
 
 import { useFormContext } from 'react-hook-form';
-import { Register, Registers } from '@models/index';
-import { getCombineRegisterTypeText, getRegisterTypeText } from '@models/expense';
 
 const SelectRegister = () => {
   const { setValue, watch, getValues } = useFormContext();

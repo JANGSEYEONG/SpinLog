@@ -1,3 +1,9 @@
+import { EditBtn } from '@components/button';
+import Spinner from '@components/information/Spinner';
+import VoiceMultiText from '@components/input/VoiceMultiText';
+import Modal from '@components/modal';
+import { getEmotionIcon, getEmotionText } from '@models/emotion';
+import type { EmotionKey } from '@models/index';
 import {
   addPageContainer,
   addPageSubject,
@@ -6,23 +12,15 @@ import {
   overflowWithoutScroll,
   summaryArea,
 } from '@styles/CommonStyles';
-import styled, { css } from 'styled-components';
 import { getSpendSumamryText } from '@utils/textsUtils';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
+import styled, { css } from 'styled-components';
 
 import { Suspense, useEffect, useReducer, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import VoiceMultiText from '@components/input/VoiceMultiText';
-import Modal from '@components/modal';
 // import EmotionPopup from './EmotionPopup';
 const EmotionPopup = lazyWithRetries(() => import('./EmotionPopup'));
-
-import { EditBtn } from '@components/button';
-
-import type { EmotionKey } from '@models/index';
-import { getEmotionIcon, getEmotionText } from '@models/emotion';
-import { lazyWithRetries } from 'src/routes/lazyWithRetries';
-import Spinner from '@components/information/Spinner';
 
 // 사건, 생각, 감정
 const WriteEmotion = () => {

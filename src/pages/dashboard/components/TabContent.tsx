@@ -1,15 +1,13 @@
-import styled from 'styled-components';
-import { flexColumnCenter } from '@styles/CommonStyles';
-
-import EmotionChart from './EmotionChart';
-import EmotionList from './EmotionList';
-
-import type { DashboardDataType } from '@service/dashboard/types';
+import { getRegisterTypeText } from '@models/expense';
 import type { Register } from '@models/index';
+import type { DashboardDataType } from '@service/dashboard/types';
+import { flexColumnCenter } from '@styles/CommonStyles';
+import { formatYM } from '@utils/dateUtils';
+import styled from 'styled-components';
 
 import DailyChart from './DailyChart';
-import { getRegisterTypeText } from '@models/expense';
-import { formatYM } from '@utils/dateUtils';
+import EmotionChart from './EmotionChart';
+import EmotionList from './EmotionList';
 
 type EmotionContentProps = {
   currentDate: Date;

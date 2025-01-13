@@ -1,13 +1,11 @@
-import styled from 'styled-components';
+import LoginBird from '@assets/images/bird/loginBird.svg?react';
+import FixedWidthImage from '@components/image/FixedWidthImage';
+import { PagePath } from '@models/navigation';
+import { useAuthStore } from '@stores/authStore';
 import { flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
 
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '@stores/authStore';
-
-import LoginBird from '@assets/images/bird/loginBird.svg?react';
-
-import { PagePath } from '@models/navigation';
-import FixedWidthImage from '@components/image/FixedWidthImage';
 
 const LoginButtonContainer = () => {
   const AUTH_URL = `https://www.api-spinlog.shop/api/users/login`;

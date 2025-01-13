@@ -1,7 +1,6 @@
-import axios from 'axios';
-
 import { useAuthStore } from '@stores/authStore';
 import { ACCESS_TOKEN_NAME } from '@stores/storeConfig';
+import axios from 'axios';
 
 const axiosInstance = axios.create({
   baseURL: 'https://www.api-spinlog.shop/api',

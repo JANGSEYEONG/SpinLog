@@ -1,25 +1,22 @@
-import styled from 'styled-components';
-import { flexBetween, flexCenter, flexColumnCenter } from '@styles/CommonStyles';
-
-import { useEffect, useReducer, useState } from 'react';
-
-import type { MainMonthSpendType } from '@service/main/types';
-
+import { PrevIcon } from '@components/icon';
 import { getRegisterTypeText } from '@models/expense';
-import { formatYM, compareYMDString } from '@utils/dateUtils';
+import type { MainMonthSpendType } from '@service/main/types';
+import { flexBetween, flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import { compareYMDString, formatYM } from '@utils/dateUtils';
 import { addCommasToNumber } from '@utils/numberUtils';
-
 import {
-  format,
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
-  endOfWeek,
   addDays,
+  endOfMonth,
+  endOfWeek,
+  format,
   isSameMonth,
   isToday,
+  startOfMonth,
+  startOfWeek,
 } from 'date-fns';
-import { PrevIcon } from '@components/icon';
+import styled from 'styled-components';
+
+import { useEffect, useReducer, useState } from 'react';
 
 // 현재 날짜를 넘겨받는다.
 type CalendarProps = {

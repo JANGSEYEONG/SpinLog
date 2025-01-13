@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-import { flexBetween, flexCenter } from '@styles/CommonStyles';
-
-import { formatYMD } from '@utils/dateUtils';
-import { startOfMonth, endOfMonth } from 'date-fns';
 import { PrevIcon } from '@components/icon';
+import { flexBetween, flexCenter } from '@styles/CommonStyles';
+import { formatYMD } from '@utils/dateUtils';
+import { endOfMonth, startOfMonth } from 'date-fns';
+import styled from 'styled-components';
 
 type MonthNavigatorBtnProps = {
   currentDate: Date;

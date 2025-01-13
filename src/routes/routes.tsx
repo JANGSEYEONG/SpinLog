@@ -1,19 +1,18 @@
-import { Suspense } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
-
-// dynamic import 오류 시 fetch 재시도
-import { lazyWithRetries } from './lazyWithRetries';
-
-import App from '../App';
-import Layout from '../components/layout/Layout';
-import ProtectedRoute from './protectedRoute/ProtectedRoute';
-// import MainPage from '../pages/main/MainPage';
-import LoginPage from '../pages/login/LoginPage';
 // import ErrorPage from '../pages/error/ErrorPage';
 // import AuthPage from '../pages/auth/AuthPage';
 import Loading from '@components/information/Loading';
-
 import { PagePath } from '@models/navigation';
+
+import { Suspense } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+
+import App from '../App';
+import Layout from '../components/layout/Layout';
+// import MainPage from '../pages/main/MainPage';
+import LoginPage from '../pages/login/LoginPage';
+// dynamic import 오류 시 fetch 재시도
+import { lazyWithRetries } from './lazyWithRetries';
+import ProtectedRoute from './protectedRoute/ProtectedRoute';
 
 // 바로 로딩되지 않아도 되는 컴포넌트 lazy loading 추가
 const MainPage = lazyWithRetries(() => import('../pages/main/MainPage'));

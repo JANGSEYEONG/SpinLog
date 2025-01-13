@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-
-import TopNavigation from '@layout/TopNavigation';
 import MetaThemeColor from '@components/background/MetaThemeColor';
+import TopNavigation from '@layout/TopNavigation';
+
+import { useNavigate } from 'react-router-dom';
 
 type AddNavProps = {
   children: React.ReactNode;

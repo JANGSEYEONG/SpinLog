@@ -1,11 +1,10 @@
-import styled, { useTheme } from 'styled-components';
+import { getEmotionColor, getEmotionText } from '@models/emotion';
+import type { EmotionAmountTotalType } from '@service/dashboard/types';
 import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import { cloneDeep } from 'lodash';
+import styled, { useTheme } from 'styled-components';
 
 import ReactApexChart from 'react-apexcharts';
-
-import type { EmotionAmountTotalType } from '@service/dashboard/types';
-import { getEmotionColor, getEmotionText } from '@models/emotion';
-import { cloneDeep } from 'lodash';
 
 // 차트 옵션과 시리즈 데이터 타입 정의
 type ChartOptions = {

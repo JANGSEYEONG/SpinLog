@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import { XIcon } from '@components/icon';
 import { textArea, textAreaWrapper } from '@styles/CommonStyles';
+import styled from 'styled-components';
 
 import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
-
-import { XIcon } from '@components/icon';
 
 type MultiTextProps = {
   hookFormFieldName: string;

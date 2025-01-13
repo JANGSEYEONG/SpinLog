@@ -1,8 +1,8 @@
-import { useMutation } from 'react-query';
 import { fetchAIComment } from '@service/expense/expenseService';
+import type { ExpenseDetailDataType } from '@service/expense/types';
 
 import type { UseFormSetValue } from 'react-hook-form';
-import type { ExpenseDetailDataType } from '@service/expense/types';
+import { useMutation } from 'react-query';
 
 const useAICommentData = (setValue: UseFormSetValue<ExpenseDetailDataType>) => {
   return useMutation(fetchAIComment, {

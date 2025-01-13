@@ -1,14 +1,15 @@
+import { UserStatus, type UserStatusType } from '@models/user';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { UserStatus, type UserStatusType } from '@models/user';
+
+import { useDemoStore } from './demoStore';
+import { initDemoState } from './services/demoService';
 import {
   ACCESS_TOKEN_NAME,
   AUTH_STORE_NAME,
   CURRENT_VERSION,
   DEMO_STORE_NAME,
 } from './storeConfig';
-import { initDemoState } from './services/demoService';
-import { useDemoStore } from './demoStore';
 
 type AuthStoreType = {
   userStatus: UserStatusType;

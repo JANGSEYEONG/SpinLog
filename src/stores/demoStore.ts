@@ -1,14 +1,12 @@
+import type { ExpenseFilterType } from '@models/expense';
+import type { Register } from '@models/index';
+import type { ExpenseDetailDataType } from '@service/expense/types';
 import { create } from 'zustand';
-import { immer } from 'zustand/middleware/immer';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
+import { immer } from 'zustand/middleware/immer';
 
 import * as Service from './services/demoService';
-
 import type { DemoStoreType } from './services/demoService/types';
-import type { ExpenseFilterType } from '@models/expense';
-import type { ExpenseDetailDataType } from '@service/expense/types';
-import type { Register } from '@models/index';
-
 import { CURRENT_VERSION, DEMO_STORE_NAME } from './storeConfig';
 
 export const useDemoStore = create<DemoStoreType>()(

@@ -1,9 +1,9 @@
-import type { UserSettingDataType } from '@service/user/types';
-import type { ExpenseDetailDataType, ExpenseListDataType } from '@service/expense/types';
 import type { ExpenseFilterType } from '@models/expense';
-import type { MainDataType, MainSubDataType } from '@service/main/types';
-import type { DashboardDataType } from '@service/dashboard/types';
 import type { Register } from '@models/index';
+import type { DashboardDataType } from '@service/dashboard/types';
+import type { ExpenseDetailDataType, ExpenseListDataType } from '@service/expense/types';
+import type { MainDataType, MainSubDataType } from '@service/main/types';
+import type { UserSettingDataType } from '@service/user/types';
 
 export type DemoExpenseDataType = ExpenseDetailDataType & { articleId: number };
 

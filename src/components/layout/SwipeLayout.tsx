@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import React from 'react';
 
 type SwipeLayoutProps = {
   children: React.ReactNode;

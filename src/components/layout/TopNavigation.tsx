@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import TopBar from '@layout/TopBar';
+import styled from 'styled-components';
 
 type TopNavigationProps = {
   _TopBar: React.ReactNode;

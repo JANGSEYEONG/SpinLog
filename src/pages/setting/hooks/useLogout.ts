@@ -1,8 +1,8 @@
-import { useMutation } from 'react-query';
-import { logoutUser } from '@service/user/userService';
-
 import useToast from '@hooks/useToast';
+import { logoutUser } from '@service/user/userService';
 import { useAuthStore } from '@stores/authStore';
+
+import { useMutation } from 'react-query';
 
 const useLogout = (isDemoMode: boolean) => {
   const { showToast } = useToast();

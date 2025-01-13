@@ -1,11 +1,9 @@
-import styled from 'styled-components';
-
-import TopNavigation from '@layout/TopNavigation';
-import BottomNavigation from '@layout/BottomNavigation';
-import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
 import MetaThemeColor from '@components/background/MetaThemeColor';
-
+import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
+import BottomNavigation from '@layout/BottomNavigation';
+import TopNavigation from '@layout/TopNavigation';
 import { PagePath } from '@models/navigation';
+import styled from 'styled-components';
 
 type DashboardNavProps = {
   currentDate: Date;

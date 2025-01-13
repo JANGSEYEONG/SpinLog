@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
-
 import CheckIcon from '@assets/images/icon/checkIcon.svg?react';
-import type { EmotionKey } from '@models/index';
 import { getEmotionIcon, getEmotionText } from '@models/emotion';
+import type { EmotionKey } from '@models/index';
+import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
 
 type EmotionProps = {
   emotionKey: EmotionKey; // key에 맞는 감정의 아이콘(색), 텍스트 표시

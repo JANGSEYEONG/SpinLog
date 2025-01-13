@@ -1,15 +1,14 @@
-import styled, { css } from 'styled-components';
-
-import PrevIcon from '@assets/images/icon/prevButton.svg?react';
+import EditIcon from '@assets/images/icon/editIcon.svg?react';
+import FilterIcon from '@assets/images/icon/filterIcon.svg?react';
 import LogoIcon from '@assets/images/icon/logoGreen.svg?react';
 import LogoWhiteIcon from '@assets/images/icon/logoWhite.svg?react';
-import SpeechBubbleIcon from '@assets/images/icon/speechBubble.svg?react';
 import MikeIcon from '@assets/images/icon/mikeIcon.svg?react';
-import EditIcon from '@assets/images/icon/editIcon.svg?react';
+import PrevIcon from '@assets/images/icon/prevButton.svg?react';
 import SearchIcon from '@assets/images/icon/searchIcon.svg?react';
-import FilterIcon from '@assets/images/icon/filterIcon.svg?react';
+import SpeechBubbleIcon from '@assets/images/icon/speechBubble.svg?react';
 import TrashIcon from '@assets/images/icon/trashIcon.svg?react';
 import VolumeIcon from '@assets/images/icon/volumeIcon.svg?react';
+import styled, { css } from 'styled-components';
 
 // SVG 아이콘 스타일
 const buttonStyle = css`

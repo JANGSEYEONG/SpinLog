@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { RouterProvider } from 'react-router-dom';
 
 import { router } from './routes/routes.tsx';
-import { RouterProvider } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { HelmetProvider } from 'react-helmet-async';
 
 const queryClient = new QueryClient();
 

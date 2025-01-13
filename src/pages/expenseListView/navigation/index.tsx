@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
-
-import TopNavigation from '@layout/TopNavigation';
-import BottomNavigation from '@layout/BottomNavigation';
-
 import Background from '@components/background';
 import MetaThemeColor from '@components/background/MetaThemeColor';
-
+import BottomNavigation from '@layout/BottomNavigation';
+import TopNavigation from '@layout/TopNavigation';
 import { PagePath } from '@models/navigation';
+
+import { useEffect, useState } from 'react';
 
 type NavLayoutProps = {
   children: React.ReactNode;

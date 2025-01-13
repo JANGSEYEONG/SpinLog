@@ -1,9 +1,9 @@
-import type { MainDataType, MainSubDataType } from '@service/main/types';
-import type { DemoExpenseDataType, DemoStoreType } from './types';
-import type { EmotionKey, Register } from '@models/index';
-import type { MainMonthSpendType } from '@service/main/types';
 import type { ExpenseSummaryType } from '@models/expense';
+import type { EmotionKey, Register } from '@models/index';
+import type { MainDataType, MainSubDataType } from '@service/main/types';
+import type { MainMonthSpendType } from '@service/main/types';
 
+import type { DemoExpenseDataType, DemoStoreType } from './types';
 import { getGroupSumAmountsByDate, getSameYMDSpendList, getSameYMSpendList } from './util';
 
 export const getDemoMainData = (get: () => DemoStoreType, selectDate: string): MainDataType => {

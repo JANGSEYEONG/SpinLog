@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import { flexBetween, flexColumnCenter } from '@styles/CommonStyles';
-
-import MainIcon from '@assets/images/navigation/main.svg?react';
-import DashboardIcon from '@assets/images/navigation/dashboard.svg?react';
 import AddIcon from '@assets/images/navigation/addExpense.svg?react';
-import ViewIcon from '@assets/images/navigation/view.svg?react';
+import DashboardIcon from '@assets/images/navigation/dashboard.svg?react';
+import MainIcon from '@assets/images/navigation/main.svg?react';
 import StatisticsIcon from '@assets/images/navigation/statistics.svg?react';
+import ViewIcon from '@assets/images/navigation/view.svg?react';
 import { PagePath } from '@models/navigation';
+import { flexBetween, flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
+
+import { useNavigate } from 'react-router-dom';
 
 type BottomNavigationProps = {
   location: string;

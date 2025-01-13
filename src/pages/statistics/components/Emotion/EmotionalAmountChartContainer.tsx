@@ -1,16 +1,14 @@
+import Spinner from '@components/information/Spinner';
+import type { EmotionKey, Gender, MbitFactor, Register } from '@models/index';
+import type {
+  EmotionAmountsByGenderDto,
+  EmotionAmountsByMbtiDto,
+} from '@service/statistics/emotionAmountService';
 import styled from 'styled-components';
 
-import type { TabOption } from '../../type';
-import type { EmotionKey, Gender, MbitFactor, Register } from '@models/index';
-
-import useEmotionalAmount from './hooks/useEmotionalAmount';
-import Spinner from '@components/information/Spinner';
+import { STATISTICS_TAB, type StatisticsTabOption } from '../../type';
 import EmotionalAmountChart from './EmotionalAmountChart';
-
-import type {
-  EmotionAmountsByMbtiDto,
-  EmotionAmountsByGenderDto,
-} from '@service/statistics/emotionAmountService';
+import useEmotionalAmount from './hooks/useEmotionalAmount';
 
 interface OutputData {
   data: { type: EmotionKey; left: number; right: number }[];
@@ -98,7 +96,7 @@ const transformGenderData = (input: EmotionAmountsByGenderDto): OutputData[] => 
 };
 
 type EmotionalAmountChartContainerProps = {
-  tabOption: TabOption;
+  tabOption: StatisticsTabOption;
   register: Register;
 };
 const EmotionalAmountChartContainer = ({
@@ -116,7 +114,7 @@ const EmotionalAmountChartContainer = ({
   }
 
   const emotionalAmounts =
-    tabOption === 'TAB_GENDER'
+    tabOption === STATISTICS_TAB.GENDER
       ? transformGenderData(genderData ? genderData : [])
       : transformMbtiData(mbtiData ? mbtiData.mbtiEmotionAmountAverages : []);
 

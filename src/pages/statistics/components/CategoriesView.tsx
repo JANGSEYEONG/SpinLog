@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import styled from 'styled-components';
 import Bird from '@assets/images/bird/satisfactionBird.svg?react';
+import styled from 'styled-components';
+
+import { useState } from 'react';
 
 type Category = { id: string; name: string; component: JSX.Element };
 

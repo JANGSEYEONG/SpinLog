@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
-import styled, { keyframes } from 'styled-components';
-import ModalPortal from '@utils/ui/ModalPortal';
 import useOutsideClick from '@hooks/useOutsideClick';
 import { flexCenter } from '@styles/CommonStyles';
+import ModalPortal from '@utils/ui/ModalPortal';
+import styled, { keyframes } from 'styled-components';
+
+import React, { useRef } from 'react';
 
 type ModalProps = {
   onClose: () => void;

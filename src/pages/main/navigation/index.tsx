@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react';
-import styled, { useTheme } from 'styled-components';
-
-import TopNavigation from '@layout/TopNavigation';
-import BottomNavigation from '@layout/BottomNavigation';
-
-import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
-
 import Background from '@components/background';
 import MetaThemeColor from '@components/background/MetaThemeColor';
-
+import MonthNavigatorBtn from '@components/date/MonthNavigatorBtn';
+import BottomNavigation from '@layout/BottomNavigation';
+import TopNavigation from '@layout/TopNavigation';
 import { PagePath } from '@models/navigation';
+import styled, { useTheme } from 'styled-components';
+
+import { useEffect, useState } from 'react';
+
 // import DarkModeButton from '@components/button/DarkModeButton';
 
 type MainNavProps = {

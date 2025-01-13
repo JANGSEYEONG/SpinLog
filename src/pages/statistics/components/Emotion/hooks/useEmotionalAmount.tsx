@@ -1,26 +1,26 @@
-import { useQuery } from 'react-query';
-
+import type { Register } from '@models/index';
 import {
   fetchEmotionAmountsByGender,
   fetchEmotionAmountsByMbti,
 } from '@service/statistics/emotionAmountService';
 
-import type { Register } from '@models/index';
-import type { TabOption } from '../../../type';
+import { useQuery } from 'react-query';
 
-const useEmotionalAmount = (tabOption: TabOption, register: Register) => {
+import { STATISTICS_TAB, type StatisticsTabOption } from '../../../type';
+
+const useEmotionalAmount = (tabOption: StatisticsTabOption, register: Register) => {
   const { data: mbtiData, isLoading: isMbtiDataLoading } = useQuery(
     ['fetchEmotionAmountsByMbti', register],
     () => fetchEmotionAmountsByMbti(register),
     {
-      enabled: tabOption === 'TAB_MBTI',
+      enabled: tabOption === STATISTICS_TAB.MBTI,
     },
   );
   const { data: genderData, isLoading: isGenderDataLoading } = useQuery(
     ['fetchEmotionAmountsByGender', register],
     () => fetchEmotionAmountsByGender(register),
     {
-      enabled: tabOption === 'TAB_GENDER',
+      enabled: tabOption === STATISTICS_TAB.GENDER,
     },
   );
 

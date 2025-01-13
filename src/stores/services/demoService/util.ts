@@ -1,8 +1,8 @@
+import type { ExpenseFilterType } from '@models/expense';
+import type { EmotionKey } from '@models/index';
 import { compareYMDString, compareYMString, formatFromServer } from '@utils/dateUtils';
 
 import type { DemoExpenseDataType } from './types';
-import type { EmotionKey } from '@models/index';
-import type { ExpenseFilterType } from '@models/expense';
 
 type DailyGroupedDataType = {
   [date: string]: {

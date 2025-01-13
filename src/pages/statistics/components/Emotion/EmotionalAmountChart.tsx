@@ -1,13 +1,11 @@
+import SwipeLayout from '@components/layout/SwipeLayout';
+import { Emotions, getEmotionText } from '@models/emotion';
+import { getRegisterTypeText } from '@models/expense';
+import type { EmotionKey, Register } from '@models/index';
+import { addCommasToNumber } from '@utils/numberUtils';
 import styled from 'styled-components';
 
-import SwipeLayout from '@components/layout/SwipeLayout';
 import StatisticsContentLayout from '../StatisticsContentLayout';
-
-import type { EmotionKey, Register } from '@models/index';
-import { Emotions, getEmotionText } from '@models/emotion';
-
-import { addCommasToNumber } from '@utils/numberUtils';
-import { getRegisterTypeText } from '@models/expense';
 
 type EmotionalChartData = { type: EmotionKey; left: number; right: number }[];
 type EmotionChartProps = {

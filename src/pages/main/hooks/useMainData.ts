@@ -1,10 +1,9 @@
-import { useQuery } from 'react-query';
-
 import { fetchMainData } from '@service/main/mainService';
-import { formatYMD } from '@utils/dateUtils';
-
 import type { MainDataType, MainSubDataType } from '@service/main/types';
 import { useDemoStore } from '@stores/demoStore';
+import { formatYMD } from '@utils/dateUtils';
+
+import { useQuery } from 'react-query';
 
 const useMainData = (currentDate: Date, isDemoMode: boolean) => {
   const selectDate = formatYMD(currentDate, 'none');

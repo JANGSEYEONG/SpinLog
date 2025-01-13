@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import { flexBetween, flexColumnCenter } from '@styles/CommonStyles';
-import { LogoBtn, LogoWhiteBtn, TrashBtn, EditBtn } from '@components/button';
-import DemoText from '@components/information/DemoText';
+import { EditBtn, LogoBtn, LogoWhiteBtn, TrashBtn } from '@components/button';
 import GoSettingButton from '@components/button/GoSettingButton';
-
 import { PrevIcon, XIcon } from '@components/icon';
+import DemoText from '@components/information/DemoText';
+import { flexBetween, flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
 
 // top bar은 왼/중/오 세가지를 가진다.
 type TopBarProps = {

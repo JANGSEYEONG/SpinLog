@@ -1,17 +1,15 @@
-import styled from 'styled-components';
+import MetaThemeColor from '@components/background/MetaThemeColor';
+import { PagePath } from '@models/navigation';
+import { UserStatus } from '@models/user';
+import { useAuthStore } from '@stores/authStore';
 import { flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
 
 import { useEffect, useState } from 'react';
 import { Navigate, useSearchParams } from 'react-router-dom';
-import { useAuthStore } from '@stores/authStore';
 
-import { UserStatus } from '@models/user';
-import { PagePath } from '@models/navigation';
-
-import MetaThemeColor from '@components/background/MetaThemeColor';
-
-import SwipeContainer from './components/SwipeContainer';
 import LoginButtonContainer from './components/LoginButtonContainer';
+import SwipeContainer from './components/SwipeContainer';
 
 const LoginPage = () => {
   const { userStatus, setLogoutState } = useAuthStore((state) => {

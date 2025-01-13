@@ -1,12 +1,10 @@
+import Emotion from '@components/emotion';
+import { XIcon } from '@components/icon';
+import { type EmotionKey, type EmotionKeyWithNone, EmotionKeys } from '@models/index';
 import { flexBetween, flexCenter, overflowWithoutScroll } from '@styles/CommonStyles';
 import styled from 'styled-components';
 
-import { type EmotionKey, type EmotionKeyWithNone, EmotionKeys } from '@models/index';
-
 import { useState } from 'react';
-
-import Emotion from '@components/emotion';
-import { XIcon } from '@components/icon';
 
 type EmotionPopupProps = {
   defaultEmotion: EmotionKeyWithNone; // 빈값 허용 (감정 선택 안된 경우)

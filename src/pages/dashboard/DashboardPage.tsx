@@ -1,26 +1,24 @@
+import Spinner from '@components/information/Spinner';
+import TabLayout, { TabProps } from '@components/layout/TabLayout';
+import useIsDemoMode from '@hooks/useIsDemo';
+import useMonthNavigator from '@hooks/useMonthNavigator';
+import { getRegisterTypeText } from '@models/expense';
 import styled from 'styled-components';
 
 import { useState } from 'react';
-import useMonthNavigator from '@hooks/useMonthNavigator';
-import useDashboardData from './hooks/useDashboardData';
 
-import NavigationLayout from './navigation';
-import TabLayout, { TabProps } from '@components/layout/TabLayout';
 import TabContent from './components/TabContent';
-import Spinner from '@components/information/Spinner';
-
-import { TabOption } from './type';
-
-import useIsDemoMode from '@hooks/useIsDemo';
-import { getRegisterTypeText } from '@models/expense';
+import useDashboardData from './hooks/useDashboardData';
+import NavigationLayout from './navigation';
+import { DASHBOARD_TAB, type DashboardTabOption } from './type';
 
 const DashboardPage = () => {
   const isDemoMode = useIsDemoMode();
   const monthNav = useMonthNavigator(); // monthNav.currentDate = 현재 선택된 월
   const navigationProps = { ...monthNav, isDemoMode };
 
-  const [selectedTab, setSelectedTab] = useState<TabOption>('TAB_SPEND'); // 지출 탭 기본 선택
-  const registerType = selectedTab === 'TAB_SPEND' ? 'SPEND' : 'SAVE';
+  const [selectedTab, setSelectedTab] = useState<DashboardTabOption>(DASHBOARD_TAB.SPEND); // 지출 탭 기본 선택
+  const registerType = selectedTab === DASHBOARD_TAB.SPEND ? 'SPEND' : 'SAVE';
 
   // react-query가 반응해야 하는 것 : slelectedTab 변경, monthNav.currentDate.getMonth()
   const { data, isLoading, error } = useDashboardData(
@@ -30,13 +28,13 @@ const DashboardPage = () => {
     isDemoMode,
   );
 
-  const handleTabSelect = (tabId: string) => {
-    setSelectedTab(tabId as TabOption);
+  const handleTabSelect = (tabId: DashboardTabOption) => {
+    setSelectedTab(tabId as DashboardTabOption);
   };
 
-  const tabData: TabProps<TabOption>[] = [
+  const tabData: TabProps<DashboardTabOption>[] = [
     {
-      id: 'TAB_SPEND',
+      id: DASHBOARD_TAB.SPEND,
       label: getRegisterTypeText('SPEND'),
       content:
         !data || isLoading || error ? (
@@ -46,7 +44,7 @@ const DashboardPage = () => {
         ),
     },
     {
-      id: 'TAB_SAVE',
+      id: DASHBOARD_TAB.SAVE,
       label: getRegisterTypeText('SAVE'),
       content:
         !data || isLoading || error ? (

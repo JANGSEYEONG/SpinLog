@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+
+import { IoIosArrowBack } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { RiSettings4Fill } from 'react-icons/ri';
-import { IoIosArrowBack } from 'react-icons/io';
 
 const commonButtonStyle = css`
   transition: transform 0.3s;

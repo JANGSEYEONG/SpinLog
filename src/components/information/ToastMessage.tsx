@@ -1,7 +1,6 @@
-import styled, { keyframes } from 'styled-components';
-import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
-
 import { useToastStore } from '@stores/toastStore';
+import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import styled, { keyframes } from 'styled-components';
 
 const ToastMessage = () => {
   const toasts = useToastStore((state) => state.toasts);

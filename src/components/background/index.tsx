@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import BackgroundPortal from '@utils/ui/BackgroundPortal';
+import styled from 'styled-components';
 
 type BackgroundProps = {
   height: string;

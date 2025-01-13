@@ -1,3 +1,6 @@
+import { XIcon } from '@components/icon';
+import useToast from '@hooks/useToast';
+import type { ExpenseFilterType } from '@models/expense';
 import {
   divider,
   flexBetween,
@@ -7,17 +10,13 @@ import {
 } from '@styles/CommonStyles';
 import styled from 'styled-components';
 
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import useToast from '@hooks/useToast';
-
-import type { ExpenseFilterType } from '@models/expense';
 
 import SelectEmotion from './SelectEmotion';
 import SelectPeriod from './SelectPeriod';
 import SelectRegister from './SelectRegister';
 import SelectSatisfaction from './SelectSatisfaction';
-import { XIcon } from '@components/icon';
 
 type FilterPopupProps = {
   onClose: () => void;

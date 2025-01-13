@@ -1,12 +1,11 @@
-import styled, { useTheme } from 'styled-components';
-import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
 import ErrorBird from '@assets/images/bird/errorBird.svg?react';
-
-import { useNavigate } from 'react-router-dom';
-
 import MetaThemeColor from '@components/background/MetaThemeColor';
 import { PagePath } from '@models/navigation';
 import { useAuthStore } from '@stores/authStore';
+import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import styled, { useTheme } from 'styled-components';
+
+import { useNavigate } from 'react-router-dom';
 
 type ErrorPageProps = {
   isRootError?: boolean;

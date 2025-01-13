@@ -1,33 +1,28 @@
 // 소비 입력 페이지
-import styled from 'styled-components';
+// import WriteEmotion from './components/WriteEmotion';
+// import WriteSatisfaction from './components/WriteSatisfaction';
+import GoLogin from '@components/information/GoLogin';
+import Spinner from '@components/information/Spinner';
+import LoadingModal from '@components/modal/LoadingModal';
+import useIsDemoMode from '@hooks/useIsDemo';
+import { getCombineRegisterTypeText } from '@models/expense';
+import type { ExpenseDetailDataType } from '@service/expense/types';
+import { useDemoStore } from '@stores/demoStore';
+import { MAX_EXPENSE_SIZE } from '@stores/storeConfig';
 import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
+import styled from 'styled-components';
 
 import { Suspense, useState } from 'react';
 import { FormProvider } from 'react-hook-form';
 
-import useIsDemoMode from '@hooks/useIsDemo';
-import useSaveExpense from './hooks/useSaveExpense';
-import useAddExpenseForm from './hooks/useAddExpenseForm';
-import { useDemoStore } from '@stores/demoStore';
-
-import NavigationLayout from './navigation';
 import WriteExpense from './components/WriteExpense';
+import useAddExpenseForm from './hooks/useAddExpenseForm';
+import useSaveExpense from './hooks/useSaveExpense';
+import NavigationLayout from './navigation';
 
 const WriteEmotion = lazyWithRetries(() => import('./components/WriteEmotion'));
 const WriteSatisfaction = lazyWithRetries(() => import('./components/WriteSatisfaction'));
-
-// import WriteEmotion from './components/WriteEmotion';
-// import WriteSatisfaction from './components/WriteSatisfaction';
-
-import GoLogin from '@components/information/GoLogin';
-import LoadingModal from '@components/modal/LoadingModal';
-
-import { MAX_EXPENSE_SIZE } from '@stores/storeConfig';
-import type { ExpenseDetailDataType } from '@service/expense/types';
-
-import { getCombineRegisterTypeText } from '@models/expense';
-import { lazyWithRetries } from 'src/routes/lazyWithRetries';
-import Spinner from '@components/information/Spinner';
 
 const AddExpensePage = () => {
   const isDemoMode = useIsDemoMode();

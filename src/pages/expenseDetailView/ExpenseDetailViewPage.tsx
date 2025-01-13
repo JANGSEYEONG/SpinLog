@@ -1,4 +1,13 @@
-import styled from 'styled-components';
+import { VolumeBtn } from '@components/button';
+import ExpenseSummary from '@components/expense/ExpenseSummary';
+import Spinner from '@components/information/Spinner';
+import MultiText from '@components/input/MultiText';
+import LoadingModal from '@components/modal/LoadingModal';
+import useIsDemoMode from '@hooks/useIsDemo';
+import useToast from '@hooks/useToast';
+import type { EmotionKey } from '@models/index';
+import { PagePath } from '@models/navigation';
+import type { ExpenseDetailDataType } from '@service/expense/types';
 import {
   flexCenter,
   flexColumnCenter,
@@ -6,36 +15,22 @@ import {
   overflowWithoutScroll,
   summaryArea,
 } from '@styles/CommonStyles';
-
-import { useNavigate } from 'react-router-dom';
+import { formatAmountNumber } from '@utils/numberUtils';
+import { getSpendSumamryText } from '@utils/textsUtils';
+import styled from 'styled-components';
 
 import { useEffect, useReducer, useState } from 'react';
 import { FormProvider } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { useParams, useSearchParams } from 'react-router-dom';
 
-import useExpenseData from './hooks/useExpenseData';
-import useUpdateExpense from './hooks/useUpdateExpense';
-import useDeleteExpense from './hooks/useDeleteExpense';
-import useAICommentData from './hooks/useAICommentData';
-
-import type { EmotionKey } from '@models/index';
-import type { ExpenseDetailDataType } from '@service/expense/types';
-
-import NavigationLayout from './navigation';
-import ExpenseSummary from '@components/expense/ExpenseSummary';
-import MultiText from '@components/input/MultiText';
-import LoadingModal from '@components/modal/LoadingModal';
-import { VolumeBtn } from '@components/button';
 import EditSummary from './components/EditSummary';
-
-import { formatAmountNumber } from '@utils/numberUtils';
-import { getSpendSumamryText } from '@utils/textsUtils';
-import Spinner from '@components/information/Spinner';
-import { PagePath } from '@models/navigation';
-
-import useIsDemoMode from '@hooks/useIsDemo';
-import useToast from '@hooks/useToast';
+import useAICommentData from './hooks/useAICommentData';
+import useDeleteExpense from './hooks/useDeleteExpense';
+import useExpenseData from './hooks/useExpenseData';
 import useExpenseDetailForm from './hooks/useExpenseDetailForm';
+import useUpdateExpense from './hooks/useUpdateExpense';
+import NavigationLayout from './navigation';
 
 const ExpenseDetailViewPage = () => {
   const navigate = useNavigate();

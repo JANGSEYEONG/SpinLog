@@ -1,7 +1,8 @@
-import { useQuery } from 'react-query';
-import { fetchUserData } from '@service/user/userService';
 import type { UserSettingDataType } from '@service/user/types';
+import { fetchUserData } from '@service/user/userService';
 import { useDemoStore } from '@stores/demoStore';
+
+import { useQuery } from 'react-query';
 
 const useUserData = (isDemoMode: boolean) => {
   const {

@@ -1,26 +1,26 @@
-import { useQuery } from 'react-query';
-
+import type { Register } from '@models/index';
 import {
   fetchDailyAmountsByGender,
   fetchDailyAmountsByMbti,
 } from '@service/statistics/dailyAmountService';
 
-import type { Register } from '@models/index';
-import type { TabOption } from '../../../type';
+import { useQuery } from 'react-query';
 
-const useDailyAmountsData = (tabOption: TabOption, register: Register) => {
+import { STATISTICS_TAB, type StatisticsTabOption } from '../../../type';
+
+const useDailyAmountsData = (tabOption: StatisticsTabOption, register: Register) => {
   const { data: mbtiData, isLoading: isMbtiDataLoading } = useQuery(
     ['fetchDailyAmountsByMbti', register],
     () => fetchDailyAmountsByMbti(register),
     {
-      enabled: tabOption === 'TAB_MBTI',
+      enabled: tabOption === STATISTICS_TAB.MBTI,
     },
   );
   const { data: genderData, isLoading: isGenderDataLoading } = useQuery(
     ['fetchDailyAmountsByGender', register],
     () => fetchDailyAmountsByGender(register),
     {
-      enabled: tabOption === 'TAB_GENDER',
+      enabled: tabOption === STATISTICS_TAB.GENDER,
     },
   );
 

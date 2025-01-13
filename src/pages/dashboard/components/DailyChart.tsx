@@ -1,11 +1,10 @@
+import type { DailyAmountType } from '@service/dashboard/types';
+import { compareYMDString, getTargetMonthDateObjArray } from '@utils/dateUtils';
+import { addCommasToNumber } from '@utils/numberUtils';
+import { getDate } from 'date-fns';
 import styled, { useTheme } from 'styled-components';
 
 import ReactApexChart from 'react-apexcharts';
-import type { DailyAmountType } from '@service/dashboard/types';
-
-import { getDate } from 'date-fns';
-import { compareYMDString, getTargetMonthDateObjArray } from '@utils/dateUtils';
-import { addCommasToNumber } from '@utils/numberUtils';
 
 // 차트 옵션과 시리즈 데이터 타입 정의
 type ChartOptions = {

@@ -1,8 +1,7 @@
-import styled from 'styled-components';
-import { flexColumnCenter } from '@styles/CommonStyles';
-
 import LogoIcon from '@assets/images/icon/logoGreen.svg?react';
 import LogoIconTitle from '@assets/images/icon/logoTitleGray.svg?react';
+import { flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
 
 const LogoContainer = () => {
   return (

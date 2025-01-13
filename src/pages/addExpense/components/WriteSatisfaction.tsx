@@ -1,3 +1,4 @@
+import VoiceMultiText from '@components/input/VoiceMultiText';
 import {
   addPageContainer,
   addPageSubject,
@@ -8,10 +9,10 @@ import {
   radioButtonLabelStyle,
   radioButtonStyle,
 } from '@styles/CommonStyles';
-import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
-import VoiceMultiText from '@components/input/VoiceMultiText';
+
 import { useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 const WriteSatisfaction = () => {
   const { register, watch } = useFormContext();

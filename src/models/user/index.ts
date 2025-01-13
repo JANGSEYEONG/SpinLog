@@ -1,4 +1,4 @@
-import { Gender, EI, NS, PJ, TF } from '..';
+import { EI, Gender, NS, PJ, TF } from '..';
 
 // 로그인 유형
 export const UserStatus = {

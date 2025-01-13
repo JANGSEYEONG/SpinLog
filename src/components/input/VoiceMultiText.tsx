@@ -1,12 +1,12 @@
-import styled, { keyframes } from 'styled-components';
-import { flexCenter } from '@styles/CommonStyles';
 import { MikeBtn } from '@components/button';
-
 import useVoiceMultiText from '@hooks/useVoiceMutlText';
-import MultiText from './MultiText';
+import { flexCenter } from '@styles/CommonStyles';
+import styled, { keyframes } from 'styled-components';
 
-import { useFormContext } from 'react-hook-form';
 import { useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
+
+import MultiText from './MultiText';
 
 // react hook form + FormProvider 전용
 // 한 페이지 내에서 여러개의 VoiceMultiText를 사용할 경우, ActiveListeningField를 넘겨 한번에 하나만 동작하게 해야함.

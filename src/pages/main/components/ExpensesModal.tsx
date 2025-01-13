@@ -1,13 +1,10 @@
-import { flexColumnCenter, mainSection, overflowWithoutScroll } from '@styles/CommonStyles';
-import styled from 'styled-components';
-
-import Modal from '@components/modal';
-import TopBar from '@components/layout/TopBar';
 import ExpenseSummary from '@components/expense/ExpenseSummary';
-
+import TopBar from '@components/layout/TopBar';
+import Modal from '@components/modal';
 import { type ExpenseSummaryType, getCombineRegisterTypeText } from '@models/expense';
-
+import { flexColumnCenter, mainSection, overflowWithoutScroll } from '@styles/CommonStyles';
 import { formatMD } from '@utils/dateUtils';
+import styled from 'styled-components';
 
 type ExpensesModalProps = {
   data: ExpenseSummaryType[];

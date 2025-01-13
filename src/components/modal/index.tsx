@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import useOutSideClick from '@hooks/useOutsideClick';
 import { flexCenter } from '@styles/CommonStyles';
+import ModalPortal from '@utils/ui/ModalPortal';
+import styled from 'styled-components';
 
 import { useRef } from 'react';
-
-import ModalPortal from '@utils/ui/ModalPortal';
-import useOutSideClick from '@hooks/useOutsideClick';
 
 type ModalProps = {
   onClose: () => void; // 모달창 닫기 함수를 넘겨받는다.

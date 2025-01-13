@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
+
 import { flexCenter } from './CommonStyles';
+
 const GlobalStyles = createGlobalStyle<{ isStandalone: boolean }>` 
 
   html, body, div, span, applet, object, iframe,

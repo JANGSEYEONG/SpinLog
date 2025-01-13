@@ -1,9 +1,8 @@
+import Spinner from '@components/information/Spinner';
+import type { Gender, Register } from '@models/index';
 import styled from 'styled-components';
 
-import type { TabOption } from '../../type';
-import type { Gender, Register } from '@models/index';
-
-import Spinner from '@components/information/Spinner';
+import { STATISTICS_TAB, type StatisticsTabOption } from '../../type';
 import SatisFaction from './Satisfaction';
 import useSatisfactionData from './hooks/useSatisfactionData';
 
@@ -75,7 +74,7 @@ const transformGenderData = (
 };
 
 type SatisfactionContainerProps = {
-  tabOption: TabOption;
+  tabOption: StatisticsTabOption;
   register: Register;
 };
 
@@ -89,7 +88,7 @@ const SatisfactionContainer = ({ tabOption, register }: SatisfactionContainerPro
     );
   }
   const satisfactions =
-    tabOption === 'TAB_GENDER'
+    tabOption === STATISTICS_TAB.GENDER
       ? transformGenderData(genderData)
       : transformMbtiData(mbtiData.mbtiSatisfactionAverages);
   return <SatisFaction satisfactions={satisfactions} registerType={register} />;

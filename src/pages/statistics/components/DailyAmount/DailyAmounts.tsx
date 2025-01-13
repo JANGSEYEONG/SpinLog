@@ -1,15 +1,15 @@
-import styled, { useTheme } from 'styled-components';
-import Chart from 'react-apexcharts';
-
 import SwipeLayout from '@components/layout/SwipeLayout';
-import StatisticsContentLayout from '../StatisticsContentLayout';
 import { getRegisterTypeText } from '@models/expense';
 import type { Register } from '@models/index';
-import type { DailyAmountsChartData } from './types';
-
-import { format } from 'date-fns';
-import { addCommasToNumber } from '@utils/numberUtils';
 import { getThirtyDaysDateObjArray } from '@utils/dateUtils';
+import { addCommasToNumber } from '@utils/numberUtils';
+import { format } from 'date-fns';
+import styled, { useTheme } from 'styled-components';
+
+import Chart from 'react-apexcharts';
+
+import StatisticsContentLayout from '../StatisticsContentLayout';
+import type { DailyAmountsChartData } from './types';
 
 type DailyAmountProps = {
   date: Date;

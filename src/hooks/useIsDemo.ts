@@ -1,5 +1,5 @@
-import { useAuthStore } from '@stores/authStore';
 import { UserStatus } from '@models/user';
+import { useAuthStore } from '@stores/authStore';
 
 const useIsDemoMode = (): boolean => {
   const userStatus = useAuthStore((state) => state.userStatus);

@@ -1,5 +1,6 @@
-import axiosInstance from './../axios';
 import type { UserFormType } from '@models/user';
+
+import axiosInstance from './../axios';
 import type { UserSettingDataType } from './types';
 
 /* 유저 정보 (환경설정) */

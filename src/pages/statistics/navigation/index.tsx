@@ -1,7 +1,6 @@
-import TopNavigation from '@layout/TopNavigation';
-import BottomNavigation from '@layout/BottomNavigation';
-
 import MetaThemeColor from '@components/background/MetaThemeColor';
+import BottomNavigation from '@layout/BottomNavigation';
+import TopNavigation from '@layout/TopNavigation';
 import { PagePath } from '@models/navigation';
 
 type NavLayoutProps = {

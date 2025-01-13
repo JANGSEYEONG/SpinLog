@@ -1,12 +1,11 @@
-import styled from 'styled-components';
-import { absoluteCenter, flexBetween, flexCenter } from '@styles/CommonStyles';
 import { SpeechBubbleBtn } from '@components/button';
+import useWindowWidthResize from '@hooks/useWindowWidthResize';
+import { getEmotionIcon } from '@models/emotion';
+import type { EmotionKey } from '@models/index';
+import { absoluteCenter, flexBetween, flexCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
 
 import { useEffect, useRef, useState } from 'react';
-
-import useWindowWidthResize from '@hooks/useWindowWidthResize';
-import type { EmotionKey } from '@models/index';
-import { getEmotionIcon } from '@models/emotion';
 
 type SatisfactionRangeProps = {
   emotion: EmotionKey;

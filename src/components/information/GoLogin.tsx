@@ -1,11 +1,10 @@
-import styled from 'styled-components';
-import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
-
-import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '@stores/authStore';
-
 import GoLoginBird from '@assets/images/bird/goLoginBird.svg?react';
 import useToast from '@hooks/useToast';
+import { useAuthStore } from '@stores/authStore';
+import { flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
+
+import { useNavigate } from 'react-router-dom';
 
 type GoLoginProps = {
   birdTop?: string; // 새 위치 조정 (텍스트 높이에 따라 조정 필요)

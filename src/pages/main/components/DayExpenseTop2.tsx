@@ -1,14 +1,12 @@
-import styled from 'styled-components';
+import { PrevIcon } from '@components/icon';
 import Spinner from '@components/information/Spinner';
+import { type ExpenseSummaryType } from '@models/expense';
 import { divider, flexBetween } from '@styles/CommonStyles';
+import { formatMD } from '@utils/dateUtils';
+import { lazyWithRetries } from 'src/routes/lazyWithRetries';
+import styled from 'styled-components';
 
 import { Suspense, useReducer } from 'react';
-import { lazyWithRetries } from 'src/routes/lazyWithRetries';
-
-import { type ExpenseSummaryType } from '@models/expense';
-
-import { formatMD } from '@utils/dateUtils';
-import { PrevIcon } from '@components/icon';
 
 const ExpenseSummary = lazyWithRetries(() => import('@components/expense/ExpenseSummary'));
 const ExpensesModal = lazyWithRetries(() => import('./ExpensesModal'));

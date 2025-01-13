@@ -1,5 +1,5 @@
-import axiosInstance from '@service/axios';
 import type { Register } from '@models/index';
+import axiosInstance from '@service/axios';
 
 /* MBTI별 만족도 */
 export const fetchSatisfactionByMbti = async (registerType: Register) => {

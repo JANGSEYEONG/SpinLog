@@ -1,7 +1,8 @@
 import { getRegisterTypeText } from '@models/expense';
+import type { Register } from '@models/index';
+
 import { formatFromServer, formatYMD } from './dateUtils';
 import { addCommasToNumber } from './numberUtils';
-import type { Register } from '@models/index';
 
 // 날짜, 내용, 금액, 지출 여부를 글로 돌려주는 함수 (spendDate = `yyyy-MM-ddThh:mm:ss` 형태)
 export const getSpendSumamryText = (

@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import { flexColumnCenter } from '@styles/CommonStyles';
-
+import FixedWidthImage from '@components/image/FixedWidthImage';
 import SwipeLayout from '@components/layout/SwipeLayout';
+import { flexColumnCenter } from '@styles/CommonStyles';
+import styled from 'styled-components';
 
 import LogoContainer from './LogoContainer';
-import FixedWidthImage from '@components/image/FixedWidthImage';
 
 const SwipeContainer = () => {
   const introData = [

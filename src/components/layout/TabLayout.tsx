@@ -1,7 +1,8 @@
 import useWindowWidthResize from '@hooks/useWindowWidthResize';
 import { flexCenter } from '@styles/CommonStyles';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled, { useTheme } from 'styled-components';
+
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export type TabProps<T extends string> = {
   id: T;

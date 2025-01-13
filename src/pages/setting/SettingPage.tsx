@@ -1,23 +1,20 @@
-import styled from 'styled-components';
+import { PrevBtn } from '@components/button';
+import Spinner from '@components/information/Spinner';
+import useIsDemoMode from '@hooks/useIsDemo';
+import type { EI, NS, PJ, TF } from '@models/index';
+import { type UserFormType, mbtiKeys } from '@models/user';
 import { flexBetween, flexCenter, flexColumnCenter, mainSection } from '@styles/CommonStyles';
+import { formatAmountNumber } from '@utils/numberUtils';
+import styled from 'styled-components';
 
 import { useEffect } from 'react';
 import { Controller } from 'react-hook-form';
 
-import NavigationLayout from './navigation';
-import Spinner from '@components/information/Spinner';
-import { PrevBtn } from '@components/button';
-
-import type { EI, NS, TF, PJ } from '@models/index';
-import { mbtiKeys, type UserFormType } from '@models/user';
-
-import useIsDemoMode from '@hooks/useIsDemo';
-import useUserForm from './hooks/useUserForm';
+import useLogout from './hooks/useLogout';
 import useSaveUserData from './hooks/useSaveUserData';
 import useUserData from './hooks/useUserData';
-import useLogout from './hooks/useLogout';
-
-import { formatAmountNumber } from '@utils/numberUtils';
+import useUserForm from './hooks/useUserForm';
+import NavigationLayout from './navigation';
 
 const SettingPage = () => {
   const isDemoMode = useIsDemoMode();

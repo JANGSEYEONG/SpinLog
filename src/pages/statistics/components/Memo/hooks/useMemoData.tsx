@@ -1,26 +1,26 @@
-import { useQuery } from 'react-query';
-
+import type { Register } from '@models/index';
 import {
   fetchWordFrequencyByGender,
   fetchWordFrequencyByMbti,
 } from '@service/statistics/frequencyService';
 
-import type { Register } from '@models/index';
-import type { TabOption } from '../../../type';
+import { useQuery } from 'react-query';
 
-const useMemoData = (tabOption: TabOption, register: Register) => {
+import { STATISTICS_TAB, type StatisticsTabOption } from '../../../type';
+
+const useMemoData = (tabOption: StatisticsTabOption, register: Register) => {
   const { data: mbtiData, isLoading: isMbtiDataLoading } = useQuery(
     ['fetchWordFrequencyByMbti', register],
     () => fetchWordFrequencyByMbti(register),
     {
-      enabled: tabOption === 'TAB_MBTI',
+      enabled: tabOption === STATISTICS_TAB.MBTI,
     },
   );
   const { data: genderData, isLoading: isGenderDataLoading } = useQuery(
     ['fetchWordFrequencyByGender', register],
     () => fetchWordFrequencyByGender(register),
     {
-      enabled: tabOption === 'TAB_GENDER',
+      enabled: tabOption === STATISTICS_TAB.GENDER,
     },
   );
 

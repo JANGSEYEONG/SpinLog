@@ -1,13 +1,12 @@
-import { Outlet } from 'react-router-dom';
+import { useThemeStore } from '@stores/themeStore';
+import { ThemeProvider } from 'styled-components';
+
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import GlobalFonts from './styles/GlobalFonts';
 import GlobalStyles from './styles/GlobalStyles';
-
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './styles/Theme';
-
-import { useThemeStore } from '@stores/themeStore';
+import { darkTheme, lightTheme } from './styles/Theme';
 
 const App = () => {
   const isDarkMode = useThemeStore((state) => state.isDarkMode);

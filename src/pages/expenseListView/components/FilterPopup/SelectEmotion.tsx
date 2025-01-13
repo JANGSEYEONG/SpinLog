@@ -1,12 +1,12 @@
+import { PrevBtn } from '@components/button';
+import Emotion from '@components/emotion';
+import { getEmotionText } from '@models/emotion';
+import { EmotionKey, EmotionKeys } from '@models/index';
+import { flexBetween, flexCenter } from '@styles/CommonStyles';
 import styled, { css } from 'styled-components';
 
-import { EmotionKey, EmotionKeys } from '@models/index';
-import Emotion from '@components/emotion';
-import { useFormContext } from 'react-hook-form';
-import { flexBetween, flexCenter } from '@styles/CommonStyles';
-import { getEmotionText } from '@models/emotion';
-import { PrevBtn } from '@components/button';
 import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 const SelectEmotion = () => {
   const { setValue, watch, getValues } = useFormContext();

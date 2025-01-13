@@ -1,11 +1,10 @@
+import GoLogin from '@components/information/GoLogin';
+import { PagePath } from '@models/navigation';
+import { UserStatus } from '@models/user';
+import { useAuthStore } from '@stores/authStore';
+
 import { ReactNode } from 'react';
 import { Navigate, useSearchParams } from 'react-router-dom';
-
-import { useAuthStore } from '@stores/authStore';
-import { UserStatus } from '@models/user';
-import { PagePath } from '@models/navigation';
-
-import GoLogin from '@components/information/GoLogin';
 
 type ProtectedRouteProps = {
   allowDemoMode?: boolean;

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-
 import { SettingIcon } from '@components/icon';
 import { PagePath } from '@models/navigation';
+import styled from 'styled-components';
+
 import { useNavigate } from 'react-router-dom';
 
 type GoSettingButtonProps = {

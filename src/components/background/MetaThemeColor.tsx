@@ -1,5 +1,6 @@
-import { Helmet } from 'react-helmet-async';
 import { useTheme } from 'styled-components';
+
+import { Helmet } from 'react-helmet-async';
 
 interface MetaThemeColorProps {
   isBackgroundGreen?: boolean;

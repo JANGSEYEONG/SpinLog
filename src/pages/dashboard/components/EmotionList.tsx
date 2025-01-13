@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-import { divider, flexBetween, flexCenter, flexColumnCenter } from '@styles/CommonStyles';
-
-import type { EmotionAmountTotalType } from '@service/dashboard/types';
-import { addCommasToNumber, calculatePercentages } from '@utils/numberUtils';
 import { getEmotionIcon, getEmotionText } from '@models/emotion';
+import type { EmotionAmountTotalType } from '@service/dashboard/types';
+import { divider, flexBetween, flexCenter, flexColumnCenter } from '@styles/CommonStyles';
+import { addCommasToNumber, calculatePercentages } from '@utils/numberUtils';
+import styled from 'styled-components';
 
 type EmotionChartProps = {
   data: EmotionAmountTotalType[];
